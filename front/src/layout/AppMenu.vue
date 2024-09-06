@@ -20,69 +20,69 @@ const model = ref([
             }
         ]
     },
-    {
-        label: 'Apps',
-        icon: 'pi pi-th-large',
-        items: [
-            {
-                label: 'Blog',
-                icon: 'pi pi-fw pi-comment',
-                items: [
-                    {
-                        label: 'List',
-                        icon: 'pi pi-fw pi-image',
-                        to: '/apps/blog/list'
-                    },
-                    {
-                        label: 'Detail',
-                        icon: 'pi pi-fw pi-list',
-                        to: '/apps/blog/detail'
-                    },
-                    {
-                        label: 'Edit',
-                        icon: 'pi pi-fw pi-pencil',
-                        to: '/apps/blog/edit'
-                    }
-                ]
-            },
-            {
-                label: 'Chat',
-                icon: 'pi pi-fw pi-comments',
-                to: '/apps/chat'
-            },
-            {
-                label: 'Files',
-                icon: 'pi pi-fw pi-folder',
-                to: '/apps/files'
-            },
-            {
-                label: 'Mail',
-                icon: 'pi pi-fw pi-envelope',
-                items: [
-                    {
-                        label: 'Inbox',
-                        icon: 'pi pi-fw pi-inbox',
-                        to: '/apps/mail/inbox'
-                    },
-                    {
-                        label: 'Compose',
-                        icon: 'pi pi-fw pi-pencil',
-                        to: '/apps/mail/compose'
-                    },
-                    {
-                        label: 'Detail',
-                        icon: 'pi pi-fw pi-comment',
-                        to: '/apps/mail/detail/1000'
-                    }
-                ]
-            },
-            {
-                label: 'Task List',
-                icon: 'pi pi-fw pi-check-square',
-                to: '/apps/tasklist'
-            }
-        ]
-    },
+    // {
+    //     label: 'Apps',
+    //     icon: 'pi pi-th-large',
+    //     items: [
+    //         {
+    //             label: 'Blog',
+    //             icon: 'pi pi-fw pi-comment',
+    //             items: [
+    //                 {
+    //                     label: 'List',
+    //                     icon: 'pi pi-fw pi-image',
+    //                     to: '/apps/blog/list'
+    //                 },
+    //                 {
+    //                     label: 'Detail',
+    //                     icon: 'pi pi-fw pi-list',
+    //                     to: '/apps/blog/detail'
+    //                 },
+    //                 {
+    //                     label: 'Edit',
+    //                     icon: 'pi pi-fw pi-pencil',
+    //                     to: '/apps/blog/edit'
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             label: 'Chat',
+    //             icon: 'pi pi-fw pi-comments',
+    //             to: '/apps/chat'
+    //         },
+    //         {
+    //             label: 'Files',
+    //             icon: 'pi pi-fw pi-folder',
+    //             to: '/apps/files'
+    //         },
+    //         {
+    //             label: 'Mail',
+    //             icon: 'pi pi-fw pi-envelope',
+    //             items: [
+    //                 {
+    //                     label: 'Inbox',
+    //                     icon: 'pi pi-fw pi-inbox',
+    //                     to: '/apps/mail/inbox'
+    //                 },
+    //                 {
+    //                     label: 'Compose',
+    //                     icon: 'pi pi-fw pi-pencil',
+    //                     to: '/apps/mail/compose'
+    //                 },
+    //                 {
+    //                     label: 'Detail',
+    //                     icon: 'pi pi-fw pi-comment',
+    //                     to: '/apps/mail/detail/1000'
+    //                 }
+    //             ]
+    //         },
+    //         {
+    //             label: 'Task List',
+    //             icon: 'pi pi-fw pi-check-square',
+    //             to: '/apps/tasklist'
+    //         }
+    //     ]
+    // },
     {
         label: 'UI Kit',
         icon: 'pi pi-fw pi-star-fill',
@@ -336,15 +336,25 @@ const model = ref([
         icon: 'pi pi-fw pi-user',
         items: [
             {
-                label: 'List',
+                label: 'Liste utilisateurs',
                 icon: 'pi pi-fw pi-list',
                 to: '/profile/list'
             },
             {
-                label: 'Create',
+                label: 'Créer utilisateur',
                 icon: 'pi pi-fw pi-plus',
                 to: '/profile/create'
-            }
+            },
+            // {
+            //     label: 'Liste agent',
+            //     icon: 'pi pi-fw pi-list',
+            //     to: '/agent/list'
+            // },
+            {
+                label: 'Ajout agent',
+                icon: 'pi pi-fw pi-plus',
+                to: '/agent/create'
+            },
         ]
     },
     {

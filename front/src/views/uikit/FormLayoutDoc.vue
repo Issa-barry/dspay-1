@@ -10,7 +10,7 @@ const dropdownItems = ref([
 const dropdownItem = ref(null);
 </script>
 
-<template>
+<template> 
     <Fluid>
         <div class="flex flex-col md:flex-row gap-8">
             <div class="md:w-1/2">
