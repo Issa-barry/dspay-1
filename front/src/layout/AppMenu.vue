@@ -332,29 +332,29 @@ const model = ref([
         ]
     },
     {
-        label: 'User Management',
+        label: 'Gestion Utilisateur',
         icon: 'pi pi-fw pi-user',
         items: [
             {
-                label: 'Liste utilisateurs',
+                label: 'Liste',
                 icon: 'pi pi-fw pi-list',
-                to: '/profile/list'
+                to: '/utilisateur/list'
             },
             {
-                label: 'Créer utilisateur',
+                label: 'Ajout',
                 icon: 'pi pi-fw pi-plus',
-                to: '/profile/create'
-            },
+                to: '/utilisateur/create'
+            }
             // {
-            //     label: 'Liste agent',
+            //     label: 'Liste',
             //     icon: 'pi pi-fw pi-list',
-            //     to: '/agent/list'
+            //     to: '/profile/list'
             // },
-            {
-                label: 'Ajout agent',
-                icon: 'pi pi-fw pi-plus',
-                to: '/agent/create'
-            },
+            // {
+            //     label: 'Ajout',
+            //     icon: 'pi pi-fw pi-plus',
+            //     to: '/profile/create'
+            // }
         ]
     },
     {

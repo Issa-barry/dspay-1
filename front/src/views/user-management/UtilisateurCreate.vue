@@ -143,7 +143,7 @@ const selectedCountry = ref(null);
     </div>
     <div class="grid grid-cols-12 gap-4">
         <div class="mb-3 col-span-1 md:col-span-6">
-            <Button label="Sauvegarder" class="w-auto mt-4"></Button>
+            <Button label="Sauvegarder" class="w-auto mt-4" disabled></Button>
         </div>
     </div>
    

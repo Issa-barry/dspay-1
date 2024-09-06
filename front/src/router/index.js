@@ -293,12 +293,20 @@ const router = createRouter({
                     component: () => import('@/views/e-commerce/OrderSummary.vue')
                 },
                 {
-                    path: '/agent/create',
-                    name: 'agent-create',
+                    path: '/utilisateur/create',
+                    name: 'utilisateur-create',
                     meta: {
                         breadcrumb: ['User Management', 'Create']
                     },
-                    component: () => import('@/views/user-management/AgentCreate.vue')
+                    component: () => import('@/views/user-management/UtilisateurCreate.vue')
+                },
+                {
+                    path: '/utilisateur/list',
+                    name: 'utilisateur-list',
+                    meta: {
+                        breadcrumb: ['User Management', 'List']
+                    },
+                    component: () => import('@/views/user-management/UtilisateurListe.vue')
                 },
                 {
                     path: '/profile/create',
