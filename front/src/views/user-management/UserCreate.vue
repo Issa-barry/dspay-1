@@ -46,7 +46,7 @@ const selectedAgence = ref(null);
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-2">
                 <!-- <div class="text-surface-900 dark:text-surface-0 font-medium text-xl mb-4">Profile</div> -->
-                <p class="m-0 p-0 text-surface-600 dark:text-surface-200 leading-normal mr-4">Information personnel.</p>
+                <p class="m-0 p-0 text-surface-600 dark:text-surface-200 leading-normal mr-4">Information personnel & Adresse.</p>
             </div>
             <div class="col-span-12 lg:col-span-10">
                 <div class="grid grid-cols-12 gap-4">
