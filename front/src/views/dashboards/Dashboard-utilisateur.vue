@@ -47,7 +47,7 @@ function setChartData() {
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
     pieData.value = {
-        labels: ['Electronics', 'Fashion', 'Household'],
+        labels: ['Orange-Money', 'Carte-Bancaire','Paiement Cash', ],
         datasets: [
             {
                 data: [300, 50, 100],
@@ -179,12 +179,12 @@ watch(
 </script>
 <template>
     <div class="grid grid-cols-12 gap-8">
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Sales</span>
+                <span class="font-semibold text-lg">Clients</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">120</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">11 000 000</span>
                         <div class="text-green-500">
                             <span class="font-medium">+12%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -202,12 +202,12 @@ watch(
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Revenue</span>
+                <span class="font-semibold text-lg">Transferts</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">$4500</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">4500</span>
                         <div class="text-green-500">
                             <span class="font-medium">+20%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -224,9 +224,9 @@ watch(
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Visitors</span>
+                <span class="font-semibold text-lg">Agences</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
                         <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">360</span>
@@ -248,10 +248,10 @@ watch(
         </div>
         <div class="col-span-12 md:col-span-6 xl:col-span-3">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Stock</span>
+                <span class="font-semibold text-lg">Agents</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">164</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">2</span>
                         <div class="text-green-500">
                             <span class="font-medium">+30%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -266,7 +266,7 @@ watch(
         <div class="col-span-12 xl:col-span-9">
             <div class="card h-full">
                 <div class="flex items-start justify-between mb-12">
-                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Revenue Overview</span>
+                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Chiffre d'affaire</span>
                     <Select :options="weeks" v-model="selectedWeek" class="w-40" optionLabel="label" @change="onWeekChange"></Select>
                 </div>
                 <Chart type="bar" :height="300" :data="barData" :options="barOptions"></Chart>
@@ -274,14 +274,14 @@ watch(
         </div>
         <div class="col-span-12 xl:col-span-3">
             <div class="card h-full">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Sales by Category</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Transfert par Categorie</div>
                 <Chart type="pie" :data="pieData" :height="300" :options="pieOptions"></Chart>
             </div>
         </div>
-        <div class="col-span-12 lg:col-span-7">
+        <div class="col-span-12 lg:col-span-9">
             <div class="card">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4 md:mb-0">Recent Sales</div>
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4 md:mb-0">Transfert recent</div>
                     <div class="inline-flex items-center">
                         <IconField>
                             <InputIcon class="pi pi-search" />

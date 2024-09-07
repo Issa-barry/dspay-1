@@ -9,18 +9,18 @@ const model = ref([
         icon: 'pi pi-home',
         items: [
             {
-                label: 'Dashboard-1',
-                icon: 'pi pi-fw pi-home',
+                label: 'Dashboard-utilisateur',
+                icon: 'pi pi-fw pi-bolt',
                 to: '/'
             },
             {
-                label: 'Dashboard-2',
-                icon: 'pi pi-fw pi-image',
+                label: 'Dashboard-affaire',
+                icon: 'pi pi-fw pi-chart-line',
                 to: '/dashboard-banking'
             },
             {
                 label: 'Point de retrait',
-                icon: 'pi pi-fw pi-image',
+                icon: 'pi pi-fw pi-map-marker',
                 to: '/point-de-retrait/liste'
             }
         ]
@@ -255,7 +255,7 @@ const model = ref([
             // },
             {
                 label: 'Nouveau',
-                icon: 'pi pi-fw pi-plus',
+                icon: 'pi pi-fw pi-sort-alt-slash',
                 to: '/transfert/create'
             },
             {
@@ -347,7 +347,7 @@ const model = ref([
             },
             {
                 label: 'Nouveau',
-                icon: 'pi pi-fw pi-plus',
+                icon: 'pi pi-fw pi-user-plus',
                 to: '/utilisateur/create'
             }
             // {

@@ -12,17 +12,17 @@ const router = createRouter({
                     path: '/',
                     name: 'e-commerce',
                     meta: {
-                        breadcrumb: ['E-Commerce Dashboard']
+                        breadcrumb: ['Dashboard utilisateurs']
                     },
-                    component: () => import('@/views/dashboards/Ecommerce.vue')
+                    component: () => import('@/views/dashboards/Dashboard-utilisateur.vue')
                 },
                 {
                     path: '/dashboard-banking',
                     name: 'dashboard-banking',
                     meta: {
-                        breadcrumb: ['Banking Dashboard']
+                        breadcrumb: ['Dashboard Affaires']
                     },
-                    component: () => import('@/views/dashboards/Banking.vue')
+                    component: () => import('@/views/dashboards/Dashboard-affaire.vue')
                 },
                 {
                     path: '/point-de-retrait/create',
@@ -30,7 +30,7 @@ const router = createRouter({
                     meta: {
                         breadcrumb: ['Point De Retrait', 'Ajout']
                     },
-                    component: () => import('@/views/dashboards/PointDeRetraitCreate.vue')
+                    component: () => import('@/views/Agence/PointDeRetraitCreate.vue')
                 },
                 {
                     path: '/point-de-retrait/liste',
@@ -38,7 +38,7 @@ const router = createRouter({
                     meta: {
                         breadcrumb: ['Point De Retrait', 'Liste']
                     },
-                    component: () => import('@/views/dashboards/PointDeRetraitListe.vue')
+                    component: () => import('@/views/Agence/PointDeRetraitListe.vue')
                 },
                 {
                     path: '/apps/blog/list',
