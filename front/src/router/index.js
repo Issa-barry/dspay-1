@@ -25,6 +25,22 @@ const router = createRouter({
                     component: () => import('@/views/dashboards/Banking.vue')
                 },
                 {
+                    path: '/point-de-retrait/create',
+                    name: 'ajout-point-de-retrait',
+                    meta: {
+                        breadcrumb: ['Point De Retrait', 'Ajout']
+                    },
+                    component: () => import('@/views/dashboards/PointDeRetraitCreate.vue')
+                },
+                {
+                    path: '/point-de-retrait/liste',
+                    name: 'liste-point-de-retrait',
+                    meta: {
+                        breadcrumb: ['Point De Retrait', 'Liste']
+                    },
+                    component: () => import('@/views/dashboards/PointDeRetraitListe.vue')
+                },
+                {
                     path: '/apps/blog/list',
                     component: () => import('@/views/apps/blog/List.vue')
                 },
@@ -235,6 +251,16 @@ const router = createRouter({
                     path: '/pages/crud',
                     name: 'crud',
                     component: () => import('@/views/pages/Crud.vue')
+                },
+                {
+                    path: '/transfert/create',
+                    name: 'transfert-create',
+                    component: () => import('@/views/transfert/TransfertCreate.vue')
+                },
+                {
+                    path: '/transfert/liste',
+                    name: 'transfert-liste',
+                    component: () => import('@/views/transfert/TransfertListe.vue')
                 },
                 {
                     path: '/ecommerce/product-overview',
