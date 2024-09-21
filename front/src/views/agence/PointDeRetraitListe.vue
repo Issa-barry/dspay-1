@@ -1,74 +1,129 @@
 <script setup>
-import { CustomerService } from '@/service/CustomerService';
 import { ProductService } from '@/service/ProductService';
-import { FilterMatchMode, FilterOperator } from '@primevue/core/api';
-import { onBeforeMount, reactive, ref } from 'vue';
+import { FilterMatchMode } from '@primevue/core/api';
+import { useToast } from 'primevue/usetoast';
+import { onMounted, ref } from 'vue';
+
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const customers1 = ref(null);
-const customers2 = ref(null);
-const customers3 = ref(null);
-const filters1 = ref(null);
-const loading1 = ref(null);
-const balanceFrozen = ref(false);
-const products = ref(null);
-const expandedRows = ref([]);
-const statuses = reactive(['unqualified', 'qualified', 'new', 'negotiation', 'renewal', 'proposal']);
-const representatives = reactive([
-    { name: 'Amy Elsner', image: 'amyelsner.png' },
-    { name: 'Anna Fali', image: 'annafali.png' },
-    { name: 'Asiya Javayant', image: 'asiyajavayant.png' },
-    { name: 'Bernardo Dominic', image: 'bernardodominic.png' },
-    { name: 'Elwin Sharvill', image: 'elwinsharvill.png' },
-    { name: 'Ioni Bowcher', image: 'ionibowcher.png' },
-    { name: 'Ivan Magalhaes', image: 'ivanmagalhaes.png' },
-    { name: 'Onyama Limba', image: 'onyamalimba.png' },
-    { name: 'Stephen Shaw', image: 'stephenshaw.png' },
-    { name: 'XuXue Feng', image: 'xuxuefeng.png' }
+
+onMounted(() => {
+    ProductService.getProducts().then((data) => (products.value = data));
+});
+
+const toast = useToast();
+const dt = ref();
+const products = ref();
+const productDialog = ref(false);
+const deleteProductDialog = ref(false);
+const deleteProductsDialog = ref(false);
+const product = ref({});
+const selectedProducts = ref();
+const filters = ref({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS }
+});
+const submitted = ref(false);
+const statuses = ref([
+    { label: 'INSTOCK', value: 'instock' },
+    { label: 'LOWSTOCK', value: 'lowstock' },
+    { label: 'OUTOFSTOCK', value: 'outofstock' }
 ]);
 
-function getOrderSeverity(order) {
-    switch (order.status) {
-        case 'DELIVERED':
-            return 'success';
+function formatCurrency(value) {
+    if (value) return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+    return;
+}
 
-        case 'CANCELLED':
-            return 'danger';
+function openNew() {
+    product.value = {};
+    submitted.value = false;
+    productDialog.value = true;
+}
 
-        case 'PENDING':
-            return 'warn';
+function hideDialog() {
+    productDialog.value = false;
+    submitted.value = false;
+}
 
-        case 'RETURNED':
-            return 'info';
+function saveProduct() {
+    submitted.value = true;
 
-        default:
-            return null;
+    if (product?.value.name?.trim()) {
+        if (product.value.id) {
+            product.value.inventoryStatus = product.value.inventoryStatus.value ? product.value.inventoryStatus.value : product.value.inventoryStatus;
+            products.value[findIndexById(product.value.id)] = product.value;
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+        } else {
+            product.value.id = createId();
+            product.value.code = createId();
+            product.value.image = 'product-placeholder.svg';
+            product.value.inventoryStatus = product.value.inventoryStatus ? product.value.inventoryStatus.value : 'INSTOCK';
+            products.value.push(product.value);
+            toast.add({ severity: 'success', summary: 'Succéss', detail: 'Retrait effectué avec succées', life: 3000 });
+        }
+
+        productDialog.value = false;
+        product.value = {};
     }
 }
 
-function getSeverity(status) {
+function editProduct(prod) {
+    product.value = { ...prod };
+    productDialog.value = true;
+}
+
+function confirmDeleteProduct(prod) {
+    product.value = prod;
+    deleteProductDialog.value = true;
+}
+
+function deleteProduct() {
+    products.value = products.value.filter((val) => val.id !== product.value.id);
+    deleteProductDialog.value = false;
+    product.value = {};
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+}
+
+function findIndexById(id) {
+    let index = -1;
+    for (let i = 0; i < products.value.length; i++) {
+        if (products.value[i].id === id) {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+}
+
+function createId() {
+    let id = '';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < 5; i++) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+}
+
+function exportCSV() {
+    dt.value.exportCSV();
+}
+
+function confirmDeleteSelected() {
+    deleteProductsDialog.value = true;
+}
+
+function deleteSelectedProducts() {
+    products.value = products.value.filter((val) => !selectedProducts.value.includes(val));
+    deleteProductsDialog.value = false;
+    selectedProducts.value = null;
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+}
+
+function getStatusLabel(status) {
     switch (status) {
-        case 'unqualified':
-            return 'danger';
-
-        case 'qualified':
-            return 'success';
-
-        case 'new':
-            return 'info';
-
-        case 'negotiation':
-            return 'warn';
-
-        case 'renewal':
-            return null;
-    }
-}
-
-function getStockSeverity(product) {
-    switch (product.inventoryStatus) {
         case 'INSTOCK':
             return 'success';
 
@@ -83,319 +138,160 @@ function getStockSeverity(product) {
     }
 }
 
-onBeforeMount(() => {
-    ProductService.getProductsWithOrdersSmall().then((data) => (products.value = data));
-    CustomerService.getCustomersLarge().then((data) => {
-        customers1.value = data;
-        loading1.value = false;
-        customers1.value.forEach((customer) => (customer.date = new Date(customer.date)));
-    });
-    CustomerService.getCustomersLarge().then((data) => (customers2.value = data));
-    CustomerService.getCustomersMedium().then((data) => (customers3.value = data));
-
-    initFilters1();
-});
-
-function initFilters1() {
-    filters1.value = {
-        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-        'country.name': { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
-        representative: { value: null, matchMode: FilterMatchMode.IN },
-        date: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.DATE_IS }] },
-        balance: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-        status: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] },
-        activity: { value: [0, 100], matchMode: FilterMatchMode.BETWEEN },
-        verified: { value: null, matchMode: FilterMatchMode.EQUALS }
-    };
+function navigateToNouveauTransfert() {
+    router.push({ name: 'transfert-create' });
 }
 
-function expandAll() {
-    expandedRows.value = products.value.reduce((acc, p) => (acc[p.id] = true) && acc, {});
-}
-
-function collapseAll() {
-    expandedRows.value = null;
-}
-
-function formatCurrency(value) {
-    return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-}
-
-function formatDate(value) {
-    return value.toLocaleDateString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric'
-    });
-}
-
-function calculateCustomerTotal(name) {
-    let total = 0;
-    if (customers3.value) {
-        for (let customer of customers3.value) {
-            if (customer.representative.name === name) {
-                total++;
-            }
-        }
-    }
-
-    return total;
-}
-
-function navigateToAjoutPointDeRetraitPage() {
-    router.push({ name: 'ajout-point-de-retrait' });
-}
 </script>
 
 <template>
-    <div class="card">
-        <div class="font-semibold text-xl mb-4">
-            <!-- Filtre -->
-            <Button type="button" icon="pi pi-plus" label="Ajouter point de retrait" outlined @click="navigateToAjoutPointDeRetraitPage" />
+    <div>
+        <div class="card">
+            <Toolbar class="mb-6">
+                <template #start>
+                    <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToNouveauTransfert" />
+                    <Button label="Retrait" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
+                    <Button label="Delete" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
+                </template>
+
+                <template #end>
+                    <Button label="Export" icon="pi pi-upload" severity="secondary" @click="exportCSV($event)" />
+                </template>
+            </Toolbar>
+
+            <DataTable
+                ref="dt"
+                v-model:selection="selectedProducts"
+                :value="products"
+                dataKey="id"
+                :paginator="true"
+                :rows="10"
+                :filters="filters"
+                paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                :rowsPerPageOptions="[5, 10, 25]"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+            >
+                <template #header>
+                    <div class="flex flex-wrap gap-2 items-center justify-between">
+                        <h4 class="m-0">Nos Agences</h4>
+                        <IconField>
+                            <InputIcon>
+                                <i class="pi pi-search" />
+                            </InputIcon>
+                            <InputText v-model="filters['global'].value" placeholder="Search..." />
+                        </IconField>
+                    </div>
+                </template>
+
+                <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
+                <Column field="code" header="Reference" sortable style="min-width: 10rem"></Column>
+                <Column field="name" header="Responssable" sortable style="min-width: 16rem"></Column>
+                <Column field="phone" header="Téléphone" sortable style="min-width: 12rem"></Column>
+                <Column field="address" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <!-- <Column field="email" header="Email" sortable style="min-width: 16rem"></Column> -->
+                <!-- <Column header="Image">
+                    <template #body="slotProps">
+                        <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
+                    </template>
+                </Column> -->
+                <!-- <Column field="price" header="Chiffre" sortable style="min-width: 8rem">
+                    <template #body="slotProps">
+                        {{ formatCurrency(slotProps.data.price) }}
+                    </template>
+                </Column> -->
+                <!-- <Column field="category" header="Category" sortable style="min-width: 10rem"></Column> -->
+
+                <!-- <Column field="rating" header="Reviews" sortable style="min-width: 12rem">
+                    <template #body="slotProps">
+                        <Rating :modelValue="slotProps.data.rating" :readonly="true" />
+                    </template>
+                </Column> -->
+
+                <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
+                    <template #body="slotProps">
+                        <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
+                    </template>
+                </Column>
+                <Column :exportable="false" style="min-width: 12rem">
+                    <template #body="slotProps">
+                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
+                    </template>
+                </Column>
+            </DataTable>
         </div>
-        <DataTable
-            :value="customers1"
-            :paginator="true"
-            :rows="10"
-            dataKey="id"
-            :rowHover="true"
-            v-model:filters="filters1"
-            filterDisplay="menu"
-            :loading="loading1"
-            :filters="filters1"
-            :globalFilterFields="['name', 'country.name', 'representative.name', 'balance', 'status']"
-            showGridlines
-        >
-            <template #header>
-                <div class="flex justify-between">
-                    <Button type="button" icon="pi pi-filter-slash" label="Effacer" outlined @click="clearFilter()" />
-                    <IconField>
-                        <InputIcon>
-                            <i class="pi pi-search" />
-                        </InputIcon>
-                        <InputText v-model="filters1['global'].value" placeholder="Recherche" />
-                    </IconField>
-                </div>
-            </template>
-            <template #empty> No customers found. </template>
-            <template #loading> Loading customers data. Please wait. </template>
-            <Column field="name" header="Nom" style="min-width: 12rem">
-                <template #body="{ data }">
-                    {{ data.name }}
-                </template>
-                <template #filter="{ filterModel }">
-                    <InputText v-model="filterModel.value" type="text" placeholder="Search by name" />
-                </template>
-            </Column>
-            <Column header="Pays" filterField="country.name" style="min-width: 12rem">
-                <template #body="{ data }">
-                    <div class="flex items-center gap-2">
-                        <img alt="flag" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${data.country.code}`" style="width: 24px" />
-                        <span>{{ data.country.name }}</span>
-                    </div>
-                </template>
-                <template #filter="{ filterModel }">
-                    <InputText v-model="filterModel.value" type="text" placeholder="Search by country" />
-                </template>
-                <template #filterclear="{ filterCallback }">
-                    <Button type="button" icon="pi pi-times" @click="filterCallback()" severity="secondary"></Button>
-                </template>
-                <template #filterapply="{ filterCallback }">
-                    <Button type="button" icon="pi pi-check" @click="filterCallback()" severity="success"></Button>
-                </template>
-            </Column>
-            <Column header="Responssable" filterField="representative" :showFilterMatchModes="false" :filterMenuStyle="{ width: '14rem' }" style="min-width: 14rem">
-                <template #body="{ data }">
-                    <div class="flex items-center gap-2">
-                        <img :alt="data.representative.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${data.representative.image}`" style="width: 32px" />
-                        <span>{{ data.representative.name }}</span>
-                    </div>
-                </template>
-                <template #filter="{ filterModel }">
-                    <MultiSelect v-model="filterModel.value" :options="representatives" optionLabel="name" placeholder="Any">
-                        <template #option="slotProps">
-                            <div class="flex items-center gap-2">
-                                <img :alt="slotProps.option.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.option.image}`" style="width: 32px" />
-                                <span>{{ slotProps.option.name }}</span>
-                            </div>
-                        </template>
-                    </MultiSelect>
-                </template>
-            </Column>
-            <Column header="Date" filterField="date" dataType="date" style="min-width: 10rem">
-                <template #body="{ data }">
-                    {{ formatDate(data.date) }}
-                </template>
-                <template #filter="{ filterModel }">
-                    <DatePicker v-model="filterModel.value" dateFormat="mm/dd/yy" placeholder="mm/dd/yyyy" />
-                </template>
-            </Column>
-            <Column header="Chifre d'affaire" filterField="balance" dataType="numeric" style="min-width: 10rem">
-                <template #body="{ data }">
-                    {{ formatCurrency(data.balance) }}
-                </template>
-                <template #filter="{ filterModel }">
-                    <InputNumber v-model="filterModel.value" mode="currency" currency="USD" locale="en-US" />
-                </template>
-            </Column>
-            <Column header="Status" field="status" :filterMenuStyle="{ width: '14rem' }" style="min-width: 12rem">
-                <template #body="{ data }">
-                    <Tag :value="data.status" :severity="getSeverity(data.status)" />
-                </template>
-                <template #filter="{ filterModel }">
-                    <Select v-model="filterModel.value" :options="statuses" placeholder="Select One" showClear>
-                        <template #option="slotProps">
-                            <Tag :value="slotProps.option" :severity="getSeverity(slotProps.option)" />
-                        </template>
-                    </Select>
-                </template>
-            </Column>
-            <Column field="activity" header="Activity" :showFilterMatchModes="false" style="min-width: 12rem">
-                <template #body="{ data }">
-                    <ProgressBar :value="data.activity" :showValue="false" style="height: 6px"></ProgressBar>
-                </template>
-                <template #filter="{ filterModel }">
-                    <Slider v-model="filterModel.value" range class="m-4"></Slider>
-                    <div class="flex items-center justify-between px-2">
-                        <span>{{ filterModel.value ? filterModel.value[0] : 0 }}</span>
-                        <span>{{ filterModel.value ? filterModel.value[1] : 100 }}</span>
-                    </div>
-                </template>
-            </Column>
-            <Column field="verified" header="Verified" dataType="boolean" bodyClass="text-center" style="min-width: 8rem">
-                <template #body="{ data }">
-                    <i class="pi" :class="{ 'pi-check-circle text-green-500 ': data.verified, 'pi-times-circle text-red-500': !data.verified }"></i>
-                </template>
-                <template #filter="{ filterModel }">
-                    <label for="verified-filter" class="font-bold"> Verified </label>
-                    <Checkbox v-model="filterModel.value" :indeterminate="filterModel.value === null" binary inputId="verified-filter" />
-                </template>
-            </Column>
-        </DataTable>
-    </div>
 
-    <div class="card">
-        <div class="font-semibold text-xl mb-4">Frozen Columns</div>
-        <ToggleButton v-model="balanceFrozen" onIcon="pi pi-lock" offIcon="pi pi-lock-open" onLabel="Balance" offLabel="Balance" />
-
-        <DataTable :value="customers2" scrollable scrollHeight="400px" class="mt-6">
-            <Column field="name" header="Name" style="min-width: 200px" frozen class="font-bold"></Column>
-            <Column field="id" header="Id" style="min-width: 100px"></Column>
-            <Column field="name" header="Name" style="min-width: 200px"></Column>
-            <Column field="country.name" header="Country" style="min-width: 200px"></Column>
-            <Column field="date" header="Date" style="min-width: 200px"></Column>
-            <Column field="company" header="Company" style="min-width: 200px"></Column>
-            <Column field="status" header="Status" style="min-width: 200px"></Column>
-            <Column field="activity" header="Activity" style="min-width: 200px"></Column>
-            <Column field="representative.name" header="Representative" style="min-width: 200px"></Column>
-            <Column field="balance" header="Balance" style="min-width: 200px" alignFrozen="right" :frozen="balanceFrozen">
-                <template #body="{ data }">
-                    <span class="font-bold">{{ formatCurrency(data.balance) }}</span>
-                </template>
-            </Column>
-        </DataTable>
-    </div>
-
-    <div class="card">
-        <div class="font-semibold text-xl mb-4">Row Expansion</div>
-        <DataTable v-model:expandedRows="expandedRows" :value="products" dataKey="id" tableStyle="min-width: 60rem">
-            <template #header>
-                <div class="flex flex-wrap justify-end gap-2">
-                    <Button text icon="pi pi-plus" label="Expand All" @click="expandAll" />
-                    <Button text icon="pi pi-minus" label="Collapse All" @click="collapseAll" />
+        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Retrait" :modal="true">
+            <div class="flex flex-col gap-6">
+                <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" />
+                <div>
+                    <label for="name" class="block font-bold mb-3">Code</label>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
                 </div>
-            </template>
-            <Column expander style="width: 5rem" />
-            <Column field="name" header="Name"></Column>
-            <Column header="Image">
-                <template #body="slotProps">
-                    <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="shadow-lg" width="64" />
-                </template>
-            </Column>
-            <Column field="price" header="Price">
-                <template #body="slotProps">
-                    {{ formatCurrency(slotProps.data.price) }}
-                </template>
-            </Column>
-            <Column field="category" header="Category"></Column>
-            <Column field="rating" header="Reviews">
-                <template #body="slotProps">
-                    <Rating :modelValue="slotProps.data.rating" readonly />
-                </template>
-            </Column>
-            <Column header="Status">
-                <template #body="slotProps">
-                    <Tag :value="slotProps.data.inventoryStatus" :severity="getStockSeverity(slotProps.data)" />
-                </template>
-            </Column>
-            <template #expansion="slotProps">
-                <div class="p-4">
-                    <h5>Orders for {{ slotProps.data.name }}</h5>
-                    <DataTable :value="slotProps.data.orders">
-                        <Column field="id" header="Id" sortable></Column>
-                        <Column field="customer" header="Customer" sortable></Column>
-                        <Column field="date" header="Date" sortable></Column>
-                        <Column field="amount" header="Amount" sortable>
-                            <template #body="slotProps">
-                                {{ formatCurrency(slotProps.data.amount) }}
-                            </template>
-                        </Column>
-                        <Column field="status" header="Status" sortable>
-                            <template #body="slotProps">
-                                <Tag :value="slotProps.data.status.toLowerCase()" :severity="getOrderSeverity(slotProps.data)" />
-                            </template>
-                        </Column>
-                        <Column headerStyle="width:4rem">
-                            <template #body>
-                                <Button icon="pi pi-search" />
-                            </template>
-                        </Column>
-                    </DataTable>
-                </div>
-            </template>
-        </DataTable>
-    </div>
-
-    <div class="card">
-        <div class="font-semibold text-xl mb-4">Grouping</div>
-        <DataTable :value="customers3" rowGroupMode="subheader" groupRowsBy="representative.name" sortMode="single" sortField="representative.name" :sortOrder="1" scrollable scrollHeight="400px" tableStyle="min-width: 50rem">
-            <template #groupheader="slotProps">
-                <div class="flex items-center gap-2">
-                    <img :alt="slotProps.data.representative.name" :src="`https://primefaces.org/cdn/primevue/images/avatar/${slotProps.data.representative.image}`" width="32" style="vertical-align: middle" />
-                    <span>{{ slotProps.data.representative.name }}</span>
-                </div>
-            </template>
-            <Column field="representative.name" header="Representative"></Column>
-            <Column field="name" header="Name" style="min-width: 200px"></Column>
-            <Column field="country" header="Country" style="min-width: 200px">
-                <template #body="slotProps">
-                    <div class="flex items-center gap-2">
-                        <img alt="flag" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${slotProps.data.country.code}`" style="width: 24px" />
-                        <span>{{ slotProps.data.country.name }}</span>
+                <!-- <div>
+                    <span class="block font-bold mb-4">Receveur</span>
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category1">Mamadou saliou BARRY</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2">Montant : 1 230 000 GNF</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category3">Tel : +224 621 17 70 06</label>
+                        </div>
                     </div>
-                </template>
-            </Column>
-            <Column field="company" header="Company" style="min-width: 200px"></Column>
-            <Column field="status" header="Status" style="min-width: 200px">
-                <template #body="slotProps">
-                    <Tag :value="slotProps.data.status" :severity="getSeverity(slotProps.data.status)" />
-                </template>
-            </Column>
-            <Column field="date" header="Date" style="min-width: 200px"></Column>
-            <template #groupfooter="slotProps">
-                <div class="flex justify-end font-bold w-full">Total Customers: {{ calculateCustomerTotal(slotProps.data.representative.name) }}</div>
+                </div>
+
+                <div>
+                    <span class="block font-bold mb-4">Expediteur</span>
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category1">Aissatou BALDE</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2">Montant : 105 €</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2"> Frais : 5 €</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category3">Tel : +224 621 17 70 06</label>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <template #footer>
+                <Button label="Annuler" icon="pi pi-times" text @click="hideDialog" />
+                <Button label="Enregistrer" icon="pi pi-check" @click="saveProduct" />
             </template>
-        </DataTable>
+        </Dialog>
+
+        <Dialog v-model:visible="deleteProductDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+            <div class="flex items-center gap-4">
+                <i class="pi pi-exclamation-triangle !text-3xl" />
+                <span v-if="product"
+                    >Are you sure you want to delete <b>{{ product.name }}</b
+                    >?</span
+                >
+            </div>
+            <template #footer>
+                <Button label="No" icon="pi pi-times" text @click="deleteProductDialog = false" />
+                <Button label="Yes" icon="pi pi-check" @click="deleteProduct" />
+            </template>
+        </Dialog>
+
+        <Dialog v-model:visible="deleteProductsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+            <div class="flex items-center gap-4">
+                <i class="pi pi-exclamation-triangle !text-3xl" />
+                <span v-if="product">Are you sure you want to delete the selected products?</span>
+            </div>
+            <template #footer>
+                <Button label="No" icon="pi pi-times" text @click="deleteProductsDialog = false" />
+                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedProducts" />
+            </template>
+        </Dialog>
     </div>
 </template>
-
-<style scoped lang="scss">
-:deep(.p-datatable-frozen-tbody) {
-    font-weight: bold;
-}
-
-:deep(.p-datatable-scrollable .p-frozen-column) {
-    font-weight: bold;
-}
-</style>

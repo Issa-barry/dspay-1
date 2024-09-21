@@ -366,22 +366,22 @@ const model = ref([
         label: 'Autres',
         icon: 'pi pi-fw pi-align-left',
         items: [
-            {
-                label: 'Aide ?',
-                icon: 'pi pi-fw pi-question-circle',
-                to: '/pages/help'
-            },
+            // {
+            //     label: 'Aide ?',
+            //     icon: 'pi pi-fw pi-question-circle',
+            //     to: '/pages/help'
+            // },
             {
                 label: 'Parametre',
-                icon: 'pi pi-fw pi-align-left',
+                icon: 'pi pi-fw pi-cog',
                 items: [
                     {
                         label: 'Taux',
-                        icon: 'pi pi-fw pi-align-left',
+                        icon: 'pi pi-fw pi-percentage',
                     },
                     {
                         label: 'Devise',
-                        icon: 'pi pi-fw pi-align-left',
+                        icon: 'pi pi-fw pi-wallet',
                         // items: [
                         //     {
                         //         label: 'Submenu 2.2.1',
