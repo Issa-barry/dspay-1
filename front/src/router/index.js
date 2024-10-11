@@ -258,6 +258,11 @@ const router = createRouter({
                     component: () => import('@/views/transfert/TransfertCreate.vue')
                 },
                 {
+                    path: '/transfert/create2',
+                    name: 'transfert-create2',
+                    component: () => import('@/views/transfert/TransfertCreate2.vue')
+                },
+                {
                     path: '/transfert/liste',
                     name: 'transfert-liste',
                     component: () => import('@/views/transfert/TransfertListe.vue')

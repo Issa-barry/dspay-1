@@ -111,10 +111,10 @@ watch(
         <div class="col-span-12">
             <div class="flex flex-col sm:flex-row items-center gap-6">
                 <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img alt="avatar" src="/demo/images/avatar/circle/avatar-f-1.png" class="w-16 h-16 flex-shrink-0" />
+                    <img alt="avatar" src="/demo/images/avatar/circle/avatar-m-7-1.png" class="w-16 h-16 flex-shrink-0" />
                     <div class="flex flex-col items-center sm:items-start">
                         <span class="text-surface-900 dark:text-surface-0 font-bold text-4xl">Bienvenue Ibrahim</span>
-                        <p class="text-surface-600 dark:text-surface-200 m-0">Derniere connexion 04/05/2022 à 10:24 GMT+0</p>
+                        <p class="text-surface-600 dark:text-surface-200 m-0">Derniere connexion 04/05/2022 à 10:24 </p>
                     </div>
                 </div>
                 <div class="flex gap-2 sm:ml-auto">
@@ -194,7 +194,7 @@ watch(
                 <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agence</div>
                 <ul class="list-none p-0 m-0">
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/airbnb.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/airbnb.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
                             <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Paris-C1</span>
                             <span>05/23/2022</span>
@@ -202,33 +202,33 @@ watch(
                         <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 458 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Ibrahime barry dabola centre</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Ibrahime  dabola </span>
                             <span>04/12/2022</span>
                         </div>
                         <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">145 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/nike.svg" class="w-12 flex-shrink-0 mr-4 rounded-full" />
+                        <!-- <img alt="brands" src="/demo/images/banking/nike.svg" class="w-12 flex-shrink-0 mr-4 rounded-full" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Nike Store</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Agence Pita</span>
                             <span>04/29/2022</span>
                         </div>
                         <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">654 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/starbucks.svg" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/starbucks.svg" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Starbucks</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Telecentre-Boba</span>
                             <span>04/15/2022</span>
                         </div>
                         <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">200 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Amazon</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Cosa-Pharmacie</span>
                             <span>04/12/2022</span>
                         </div>
                         <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">325 654 212 GNF</span>

@@ -11,9 +11,9 @@
                 </StepList>
                 <StepPanels>
                     <StepPanel v-slot="{ activateCallback }" value="1">
-                        <div class="flex flex-col">
+                        <!-- <div class="flex flex-col">
                             <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-                                <div class="flex flex-col gap-2 mx-auto" style="max-width: 100rem">
+                                <div class="flex flex-col gap-4 mx-auto" style="max-width: 300rem">
                                     <div class="text-center mt-4 mb-4 text-xl font-semibold">Transfert</div>
                                     <div class="field">
                                         <InputText id="input" v-model="name" type="text" placeholder="Montant en €" fluid />
@@ -26,16 +26,66 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+                        <!-- <div class="card flex justify-content-center">
+                            <FloatLabel>
+                                <InputText id="username" v-model="montant" />
+                                <label for="username">Montant en €</label>
+                            </FloatLabel>
+                            <FloatLabel class="ml-4">
+                                <InputText id="username" v-model="montant" />
+                                <label for="username">Montant en GNF</label>
+                            </FloatLabel>
+                        </div> -->
+
+                        <div class="card flex justify-content-center">
+                            <!-- Champ pour le montant en euros -->
+                            <FloatLabel>
+                              <InputText id="euro" v-model="euro" @input="convertToGNF" />
+                              <label for="euro">Montant en €</label>
+                            </FloatLabel>
+                        
+                            <!-- Champ pour le montant en GNF -->
+                            <FloatLabel class="ml-4">
+                              <InputText id="gnf" v-model="gnfFormatted" @input="convertToEuro" />
+                              <label for="gnf">Montant en GNF</label>
+                            </FloatLabel>
+                          </div>
+
+                          <!-- BOUTON SUIVANT -->
+
                         <div class="flex pt-6 justify-end">
                             <Button label="Suivant" icon="pi pi-arrow-right" iconPos="right" @click="activateCallback('2')" />
                         </div>
                     </StepPanel>
 
                     <StepPanel v-slot="{ activateCallback }" value="2">
+                        
                         <div class="flex flex-col">
-                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-                                Content II
+                            <!-- <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium"> -->
+
+                            <div class="  dark:border-surface-500   bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                
+                                <div class="col-span-12 lg:col-span-10">
+                                    <div class="grid grid-cols-12 gap-2">
+                                        <div class="mt-6 col-span-12 md:col-span-12">
+                                            <label for="nickname" class="font-medium text-surface-900 dark:text-surface-0"> Nom </label>
+                                            <InputText id="nickname" type="text" fluid />
+                                        </div>
+                                        <div class="mb-2 col-span-12 md:col-span-12">
+                                            <label for="nickname" class="font-medium text-surface-900 dark:text-surface-0"> Prenom </label>
+                                            <InputText id="nickname" type="text" fluid />
+                                        </div>
+                                        <div class="mb-2 col-span-12 md:col-span-12">
+                                            <label for="email" class="font-medium text-surface-900 dark:text-surface-0"> Téléphone </label>
+                                            <InputText id="email" type="text" fluid />
+                                        </div>
+                                        <div class="mb-6 col-span-12 md:col-span-12">
+                                            <label for="email" class="font-medium text-surface-900 dark:text-surface-0"> Email </label>
+                                            <InputText id="email" type="text" fluid />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="flex pt-6 justify-between">
@@ -46,8 +96,21 @@
 
                     <StepPanel v-slot="{ activateCallback }" value="3">
                         <div class="flex flex-col">
-                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
-                                Content III
+                            <div class="bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                <div class="grid grid-cols-12 gap-2">
+                                    <div class="mt-6 col-span-12 md:col-span-12">
+                                        <label for="nickname" class="font-medium text-surface-900 dark:text-surface-0"> Nom </label>
+                                        <InputText id="nickname" type="text" fluid />
+                                    </div>
+                                    <div class="mb-2 col-span-12 md:col-span-12">
+                                        <label for="nickname" class="font-medium text-surface-900 dark:text-surface-0"> Prenom </label>
+                                        <InputText id="nickname" type="text" fluid />
+                                    </div>
+                                    <div class="mb-6 col-span-12 md:col-span-12">
+                                        <label for="email" class="font-medium text-surface-900 dark:text-surface-0"> Téléphone </label>
+                                        <InputText id="email" type="text" fluid />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="flex pt-6 justify-between">
@@ -125,7 +188,9 @@
                     <Step>Expediteur</Step>
                     <StepPanel v-slot="{ activateCallback }">
                         <div class="flex flex-col">
-                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">Content II</div>
+                            <div class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium">
+                                Content II issa</div>
+                       
                         </div>
                         <div class="flex py-6 gap-2">
                             <Button label="Back" severity="secondary" @click="activateCallback('1')" />
@@ -160,3 +225,54 @@
         </div>
     </div>
 </template>
+
+
+<script setup>
+import { ref, watch } from 'vue';
+
+const euro = ref(null);  // Référence pour le montant en euros
+const gnf = ref(null);   // Référence pour le montant en GNF (valeur brute)
+const gnfFormatted = ref(null);  // Référence pour le montant en GNF formaté (avec espaces)
+const conversionRate = 967000;  // Taux de conversion EUR -> GNF
+
+// Fonction pour convertir l'euro en GNF
+const convertToGNF = () => {
+  if (euro.value) {
+    gnf.value = Math.floor(parseFloat(euro.value) * conversionRate);  // Conversion sans décimales pour GNF
+    formatGNF();
+  } else {
+    gnf.value = null;
+    gnfFormatted.value = null;
+  }
+};
+
+// Fonction pour convertir le GNF en euro
+const convertToEuro = () => {
+  // On supprime les espaces du format GNF pour pouvoir faire la conversion
+  let gnfRaw = gnfFormatted.value ? gnfFormatted.value.replace(/\s+/g, '') : null;
+
+  if (gnfRaw) {
+    euro.value = (parseFloat(gnfRaw) / conversionRate).toFixed(2);  // Conversion inverse
+    gnf.value = parseInt(gnfRaw);  // Conserver la version brute sans espaces
+  } else {
+    euro.value = null;
+    gnf.value = null;
+  }
+};
+
+// Fonction pour formater le montant en GNF avec des espaces tous les 3 chiffres
+const formatGNF = () => {
+  if (gnf.value) {
+    gnfFormatted.value = gnf.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');  // Ajout d'espaces tous les 3 chiffres
+  } else {
+    gnfFormatted.value = null;
+  }
+};
+
+// Watcher pour actualiser la version formatée dès que le montant en GNF change
+watch(gnf, formatGNF);
+</script>
+
+ 
+ 
+ 

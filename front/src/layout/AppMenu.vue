@@ -9,7 +9,7 @@ const model = ref([
         icon: 'pi pi-home',
         items: [
             {
-                label: 'Dashboard-utilisateur',
+                label: 'Dashboard-RH',
                 icon: 'pi pi-fw pi-bolt',
                 to: '/'
             },
@@ -19,10 +19,20 @@ const model = ref([
                 to: '/dashboard-banking'
             },
             {
+                label: 'Transfert',
+                icon: 'pi pi-fw pi-arrow-right-arrow-left',
+                to: '/transfert/liste'
+            },
+            {
                 label: 'Point de retrait',
                 icon: 'pi pi-fw pi-map-marker',
                 to: '/point-de-retrait/liste'
-            }
+            },
+            {
+                label: 'Contact',
+                icon: 'pi pi-fw pi-user',
+                to: '/utilisateur/list'
+            },
         ]
     },
     // {
@@ -198,10 +208,10 @@ const model = ref([
     //         }
     //     ]
     // },
-    {
-        label: 'Transfert',
-        icon: 'pi pi-fw pi-briefcase',
-        items: [
+    // {
+        // label: 'Transfert',
+        // icon: 'pi pi-fw pi-briefcase',
+        // items: [
             // {
             //     label: 'Landing',
             //     icon: 'pi pi-fw pi-globe',
@@ -253,16 +263,16 @@ const model = ref([
             //         }
             //     ]
             // },
-            {
-                label: 'Nouveau',
-                icon: 'pi pi-fw pi-sort-alt-slash',
-                to: '/transfert/create'
-            },
-            {
-                label: 'Liste Transfert',
-                icon: 'pi pi-fw pi-list',
-                to: '/transfert/liste'
-            },
+            // {
+            //     label: 'Nouveau',
+            //     icon: 'pi pi-fw pi-sort-alt-slash',
+            //     to: '/transfert/create'
+            // },
+            // {
+            //     label: 'Liste Transfert',
+            //     icon: 'pi pi-fw pi-list',
+            //     to: '/transfert/liste'
+            // },
             // {
             //     label: 'Invoice',
             //     icon: 'pi pi-fw pi-dollar',
@@ -293,8 +303,9 @@ const model = ref([
             //     icon: 'pi pi-fw pi-phone',
             //     to: '/pages/contact'
             // }
-        ]
-    },
+    //     ]
+    // },
+
     // {
     //     label: 'E-Commerce',
     //     icon: 'pi pi-fw pi-wallet',
@@ -336,20 +347,20 @@ const model = ref([
     //         }
     //     ]
     // },
-    {
-        label: 'Gestion Utilisateur',
-        icon: 'pi pi-fw pi-user',
-        items: [
-            {
-                label: 'Liste',
-                icon: 'pi pi-fw pi-list',
-                to: '/utilisateur/list'
-            },
-            {
-                label: 'Nouveau',
-                icon: 'pi pi-fw pi-user-plus',
-                to: '/utilisateur/create'
-            }
+    // {
+        // label: 'Gestion Utilisateur',
+        // icon: 'pi pi-fw pi-user',
+        // items: [
+            // {
+            //     label: 'Gestion Utilisateur',
+            //     icon: 'pi pi-fw pi-user',
+            //     to: '/utilisateur/list'
+            // },
+            // {
+            //     label: 'Nouveau',
+            //     icon: 'pi pi-fw pi-user-plus',
+            //     to: '/utilisateur/create'
+            // }
             // {
             //     label: 'Liste',
             //     icon: 'pi pi-fw pi-list',
@@ -360,11 +371,11 @@ const model = ref([
             //     icon: 'pi pi-fw pi-plus',
             //     to: '/profile/create'
             // }
-        ]
-    },
+    //     ]
+    // },
     {
-        label: 'Autres',
-        icon: 'pi pi-fw pi-align-left',
+        // label: 'Autres',
+        // icon: 'pi pi-fw pi-align-left',
         items: [
             // {
             //     label: 'Aide ?',
