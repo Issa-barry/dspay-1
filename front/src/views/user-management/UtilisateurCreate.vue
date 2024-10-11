@@ -17,7 +17,7 @@ const selectedCountry = ref(null);
 
 const role = ref([
     { name: 'Agent', code: 'Option 1' },
-    { name: 'Admin', code: 'Option 2' },
+    { name: 'Admin', code: 'Option 2' }, 
     { name: 'Manager', code: 'Option 3' },
     { name: 'Partenaire', code: 'Option 3' },
     { name: 'SuperAdmin', code: 'Option 3' }
