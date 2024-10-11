@@ -1,0 +1,3 @@
+<template>
+    Devise creation
+</template>

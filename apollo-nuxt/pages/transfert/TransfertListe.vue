@@ -1,0 +1,3 @@
+<template>
+    transfert liste
+</template>
