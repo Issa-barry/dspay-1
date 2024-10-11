@@ -4,134 +4,167 @@ export const ProductService = {
             {
                 id: '1000',
                 code: 'f230fh0g3',
-                name: 'Bamboo Watch',
+                name: 'Ibrahim Diallo',
                 description: 'Product Description',
                 image: 'bamboo-watch.jpg',
                 price: 65,
                 category: 'Accessories',
                 quantity: 24,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                email: 'ibrahim@yahoo.fr',
+                phone: '+224 66 54 85 62',
+                address: 'Dogomet-Centre'
             },
             {
                 id: '1001',
                 code: 'nvklal433',
-                name: 'Black Watch',
+                name: 'Moussa Diallo',
                 description: 'Product Description',
                 image: 'black-watch.jpg',
                 price: 72,
                 category: 'Accessories',
                 quantity: 61,
                 inventoryStatus: 'INSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'moussa@yahoo.fr',
+                phone: '+224 622 34 56 78',
+                address: 'Dabola Hamdallaye'
             },
             {
                 id: '1002',
                 code: 'zz21cz3c1',
-                name: 'Blue Band',
+                name: 'Almamy Barry',
                 description: 'Product Description',
                 image: 'blue-band.jpg',
                 price: 79,
                 category: 'Fitness',
                 quantity: 2,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                rating: 3,
+                email: 'mariam@gmail.com',
+                phone: '+33 06 12 34 56 78',
+                address: 'Paris 7e'
             },
             {
                 id: '1003',
                 code: '244wgerg2',
-                name: 'Blue T-Shirt',
+                name: 'Néné Asma',
                 description: 'Product Description',
                 image: 'blue-t-shirt.jpg',
                 price: 29,
                 category: 'Clothing',
                 quantity: 25,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                email: 'alpha@outlook.fr',
+                phone: '+224 620 23 45 67',
+                address: 'Conakry Cosa'
             },
             {
                 id: '1004',
                 code: 'h456wer53',
-                name: 'Bracelet',
+                name: 'Oumou Sow',
                 description: 'Product Description',
                 image: 'bracelet.jpg',
                 price: 15,
                 category: 'Accessories',
                 quantity: 73,
                 inventoryStatus: 'INSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'julie@hotmail.com',
+                phone: '+33 07 98 76 54 32',
+                address: 'Lyon Croix-Rousse'
             },
             {
                 id: '1005',
                 code: 'av2231fwg',
-                name: 'Brown Purse',
+                name: 'Adourahmane Baldé',
                 description: 'Product Description',
                 image: 'brown-purse.jpg',
                 price: 120,
                 category: 'Accessories',
                 quantity: 0,
                 inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'abdoulaye@yahoo.fr',
+                phone: '+224 622 34 56 78',
+                address: 'Dabola Marché'
             },
             {
                 id: '1006',
                 code: 'bib36pfvm',
-                name: 'Chakra Bracelet',
+                name: 'Moussa Sidibé',
                 description: 'Product Description',
                 image: 'chakra-bracelet.jpg',
                 price: 32,
                 category: 'Accessories',
                 quantity: 5,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 3
+                rating: 3,
+                email: 'camille@gmail.com',
+                phone: '+33 01 23 45 67 89',
+                address: 'Marseille Vieux-Port'
             },
             {
                 id: '1007',
                 code: 'mbvjkgip5',
-                name: 'Galaxy Earrings',
+                name: 'Elhadj Tall',
                 description: 'Product Description',
                 image: 'galaxy-earrings.jpg',
                 price: 34,
                 category: 'Accessories',
                 quantity: 23,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                email: 'fatoumata@outlook.fr',
+                phone: '+224 625 12 34 56',
+                address: 'Siguiri Hamdallaye'
             },
             {
                 id: '1008',
                 code: 'vbb124btr',
-                name: 'Game Controller',
+                name: 'Mody Ousmane Sy',
                 description: 'Product Description',
                 image: 'game-controller.jpg',
                 price: 99,
                 category: 'Electronics',
                 quantity: 2,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'laurent@hotmail.com',
+                phone: '+33 02 98 76 54 32',
+                address: 'Bordeaux Saint-Pierre'
             },
             {
                 id: '1009',
                 code: 'cm230f032',
-                name: 'Gaming Set',
+                name: 'Ali Camara',
                 description: 'Product Description',
                 image: 'gaming-set.jpg',
                 price: 299,
                 category: 'Electronics',
                 quantity: 63,
                 inventoryStatus: 'INSTOCK',
-                rating: 3
+                rating: 3,
+                email: 'mohamed@yahoo.fr',
+                phone: '+224 666 45 67 89',
+                address: 'Conakry Cosa'
             },
             {
                 id: '1010',
                 code: 'plb34234v',
-                name: 'Gold Phone Case',
+                name: 'Moise Kamano',
                 description: 'Product Description',
                 image: 'gold-phone-case.jpg',
                 price: 24,
                 category: 'Accessories',
                 quantity: 0,
                 inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'sophie@gmail.com',
+                phone: '+33 06 78 12 34 56',
+                address: 'Nice Promenade'
             },
             {
                 id: '1011',
@@ -143,7 +176,10 @@ export const ProductService = {
                 category: 'Electronics',
                 quantity: 23,
                 inventoryStatus: 'INSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'kadiatou@outlook.fr',
+                phone: '+224 624 23 45 67',
+                address: 'Mamou Abattoir'
             },
             {
                 id: '1012',
@@ -155,7 +191,10 @@ export const ProductService = {
                 category: 'Clothing',
                 quantity: 74,
                 inventoryStatus: 'INSTOCK',
-                rating: 5
+                rating: 5,
+                email: 'pierre@hotmail.com',
+                phone: '+33 07 65 43 21 09',
+                address: 'Montpellier Centre'
             },
             {
                 id: '1013',
@@ -167,7 +206,10 @@ export const ProductService = {
                 category: 'Clothing',
                 quantity: 0,
                 inventoryStatus: 'OUTOFSTOCK',
-                rating: 3
+                rating: 3,
+                email: 'binta@yahoo.fr',
+                phone: '+224 620 98 76 54',
+                address: 'Conakry Kipé'
             },
             {
                 id: '1014',
@@ -179,7 +221,10 @@ export const ProductService = {
                 category: 'Electronics',
                 quantity: 8,
                 inventoryStatus: 'LOWSTOCK',
-                rating: 5
+                rating: 5,
+                email: 'nathalie@gmail.com',
+                phone: '+33 01 98 76 54 32',
+                address: 'Lille Fives'
             },
             {
                 id: '1015',
@@ -191,7 +236,10 @@ export const ProductService = {
                 category: 'Clothing',
                 quantity: 34,
                 inventoryStatus: 'INSTOCK',
-                rating: 4
+                rating: 4,
+                email: 'mamadou@outlook.fr',
+                phone: '+224 622 54 32 10',
+                address: 'Conakry Cité Enco 5'
             },
             {
                 id: '1016',
@@ -203,164 +251,11 @@ export const ProductService = {
                 category: 'Fitness',
                 quantity: 12,
                 inventoryStatus: 'INSTOCK',
-                rating: 3
+                rating: 3,
+                email: 'jean@hotmail.com',
+                phone: '+33 02 34 56 78 90',
+                address: 'Toulouse Capitole'
             },
-            {
-                id: '1017',
-                code: 'v435nn85n',
-                name: 'Mini Speakers',
-                description: 'Product Description',
-                image: 'mini-speakers.jpg',
-                price: 85,
-                category: 'Clothing',
-                quantity: 42,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1018',
-                code: '09zx9c0zc',
-                name: 'Painted Phone Case',
-                description: 'Product Description',
-                image: 'painted-phone-case.jpg',
-                price: 56,
-                category: 'Accessories',
-                quantity: 41,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
-            },
-            {
-                id: '1019',
-                code: 'mnb5mb2m5',
-                name: 'Pink Band',
-                description: 'Product Description',
-                image: 'pink-band.jpg',
-                price: 79,
-                category: 'Fitness',
-                quantity: 63,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1020',
-                code: 'r23fwf2w3',
-                name: 'Pink Purse',
-                description: 'Product Description',
-                image: 'pink-purse.jpg',
-                price: 110,
-                category: 'Accessories',
-                quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
-                rating: 4
-            },
-            {
-                id: '1021',
-                code: 'pxpzczo23',
-                name: 'Purple Band',
-                description: 'Product Description',
-                image: 'purple-band.jpg',
-                price: 79,
-                category: 'Fitness',
-                quantity: 6,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
-            },
-            {
-                id: '1022',
-                code: '2c42cb5cb',
-                name: 'Purple Gemstone Necklace',
-                description: 'Product Description',
-                image: 'purple-gemstone-necklace.jpg',
-                price: 45,
-                category: 'Accessories',
-                quantity: 62,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1023',
-                code: '5k43kkk23',
-                name: 'Purple T-Shirt',
-                description: 'Product Description',
-                image: 'purple-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 5
-            },
-            {
-                id: '1024',
-                code: 'lm2tny2k4',
-                name: 'Shoes',
-                description: 'Product Description',
-                image: 'shoes.jpg',
-                price: 64,
-                category: 'Clothing',
-                quantity: 0,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1025',
-                code: 'nbm5mv45n',
-                name: 'Sneakers',
-                description: 'Product Description',
-                image: 'sneakers.jpg',
-                price: 78,
-                category: 'Clothing',
-                quantity: 52,
-                inventoryStatus: 'INSTOCK',
-                rating: 4
-            },
-            {
-                id: '1026',
-                code: 'zx23zc42c',
-                name: 'Teal T-Shirt',
-                description: 'Product Description',
-                image: 'teal-t-shirt.jpg',
-                price: 49,
-                category: 'Clothing',
-                quantity: 3,
-                inventoryStatus: 'LOWSTOCK',
-                rating: 3
-            },
-            {
-                id: '1027',
-                code: 'acvx872gc',
-                name: 'Yellow Earbuds',
-                description: 'Product Description',
-                image: 'yellow-earbuds.jpg',
-                price: 89,
-                category: 'Electronics',
-                quantity: 35,
-                inventoryStatus: 'INSTOCK',
-                rating: 3
-            },
-            {
-                id: '1028',
-                code: 'tx125ck42',
-                name: 'Yoga Mat',
-                description: 'Product Description',
-                image: 'yoga-mat.jpg',
-                price: 20,
-                category: 'Fitness',
-                quantity: 15,
-                inventoryStatus: 'INSTOCK',
-                rating: 5
-            },
-            {
-                id: '1029',
-                code: 'gwuby345v',
-                name: 'Yoga Set',
-                description: 'Product Description',
-                image: 'yoga-set.jpg',
-                price: 20,
-                category: 'Fitness',
-                quantity: 25,
-                inventoryStatus: 'INSTOCK',
-                rating: 8
-            }
         ];
     },
 

@@ -12,17 +12,33 @@ const router = createRouter({
                     path: '/',
                     name: 'e-commerce',
                     meta: {
-                        breadcrumb: ['E-Commerce Dashboard']
+                        breadcrumb: ['Dashboard utilisateurs']
                     },
-                    component: () => import('@/views/dashboards/Ecommerce.vue')
+                    component: () => import('@/views/dashboards/Dashboard-utilisateur.vue')
                 },
                 {
                     path: '/dashboard-banking',
                     name: 'dashboard-banking',
                     meta: {
-                        breadcrumb: ['Banking Dashboard']
+                        breadcrumb: ['Dashboard Affaires']
                     },
-                    component: () => import('@/views/dashboards/Banking.vue')
+                    component: () => import('@/views/dashboards/Dashboard-affaire.vue')
+                },
+                {
+                    path: '/point-de-retrait/create',
+                    name: 'ajout-point-de-retrait',
+                    meta: {
+                        breadcrumb: ['Point De Retrait', 'Ajout']
+                    },
+                    component: () => import('@/views/Agence/PointDeRetraitCreate.vue')
+                },
+                {
+                    path: '/point-de-retrait/liste',
+                    name: 'liste-point-de-retrait',
+                    meta: {
+                        breadcrumb: ['Point De Retrait', 'Liste']
+                    },
+                    component: () => import('@/views/Agence/PointDeRetraitListe.vue')
                 },
                 {
                     path: '/apps/blog/list',
@@ -235,6 +251,21 @@ const router = createRouter({
                     path: '/pages/crud',
                     name: 'crud',
                     component: () => import('@/views/pages/Crud.vue')
+                },
+                {
+                    path: '/transfert/create',
+                    name: 'transfert-create',
+                    component: () => import('@/views/transfert/TransfertCreate.vue')
+                },
+                {
+                    path: '/transfert/create2',
+                    name: 'transfert-create2',
+                    component: () => import('@/views/transfert/TransfertCreate2.vue')
+                },
+                {
+                    path: '/transfert/liste',
+                    name: 'transfert-liste',
+                    component: () => import('@/views/transfert/TransfertListe.vue')
                 },
                 {
                     path: '/ecommerce/product-overview',

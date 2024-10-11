@@ -27,7 +27,7 @@ function formatDate(value) {
 function navigateToCreateListPage() {
     router.push({ name: 'user-create' });
 }
-
+ 
 function navigateToCreateUtilisateurPage() {
     router.push({ name: 'utilisateur-create' });
 }

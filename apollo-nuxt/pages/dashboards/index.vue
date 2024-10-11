@@ -1,6 +1,5 @@
 <script setup>
-import { useLayout } from '@/layout/composables/layout';
-import { ProductService } from '@/service/ProductService';
+import { ProductService } from '../../service/ProductService';
 import { FilterMatchMode } from '@primevue/core/api';
 import { onMounted, ref, watch } from 'vue';
 
@@ -169,13 +168,9 @@ function getBadgeSeverity(inventoryStatus) {
     }
 }
 
-watch(
-    [getPrimary, getSurface, isDarkTheme],
-    () => {
-        setChartData();
-    },
-    { immediate: true }
-);
+watch([getPrimary, getSurface, isDarkTheme], () => {
+    setChartData();
+});
 </script>
 <template>
     <div class="grid grid-cols-12 gap-8">
@@ -290,7 +285,7 @@ watch(
                         <Button icon="pi pi-upload" class="mx-4 export-target-button" rounded v-tooltip="'Export'" @click="exportCSV"></Button>
                     </div>
                 </div>
-                <DataTable ref="salesTableRef" :value="products" dataKey="id" paginator :rows="5" v-model:filters="filterSalesTable">
+                <DataTable ref="salesTableRef" :value="products" dataKey="id" paginator :rows="5" responsiveLayout="scroll" v-model:filters="filterSalesTable">
                     <template #empty> No products found.</template>
                     <Column field="name" header="Name" sortable :headerStyle="{ minWidth: '12rem' }">
                         <template #body="{ data }">

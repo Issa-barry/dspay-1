@@ -111,10 +111,10 @@ watch(
         <div class="col-span-12">
             <div class="flex flex-col sm:flex-row items-center gap-6">
                 <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img alt="avatar" src="/demo/images/avatar/circle/avatar-f-1.png" class="w-16 h-16 flex-shrink-0" />
+                    <img alt="avatar" src="/demo/images/avatar/circle/avatar-m-7-1.png" class="w-16 h-16 flex-shrink-0" />
                     <div class="flex flex-col items-center sm:items-start">
-                        <span class="text-surface-900 dark:text-surface-0 font-bold text-4xl">Welcome Isabel</span>
-                        <p class="text-surface-600 dark:text-surface-200 m-0">Your last login was on 04/05/2022 at 10:24 am</p>
+                        <span class="text-surface-900 dark:text-surface-0 font-bold text-4xl">Bienvenue Ibrahim</span>
+                        <p class="text-surface-600 dark:text-surface-200 m-0">Derniere connexion 04/05/2022 à 10:24 </p>
                     </div>
                 </div>
                 <div class="flex gap-2 sm:ml-auto">
@@ -136,12 +136,12 @@ watch(
                     ></path>
                 </svg>
                 <div class="z-20 relative text-white">
-                    <div class="text-xl font-semibold mb-4">Debit Card</div>
-                    <div class="mb-1 font-semibold">Balance</div>
-                    <div class="text-2xl mb-8 font-bold">$2.000,00</div>
+                    <div class="text-xl font-semibold mb-4">Cash</div>
+                    <!-- <div class="mb-1 font-semibold">Balance</div> -->
+                    <div class="text-2xl mb-8 font-bold">GNF 2.000,00</div>
                     <div class="flex items-center justify-between">
-                        <span class="text-lg">**** **** **** 1412</span>
-                        <span class="font-medium text-lg">12/26</span>
+                        <span class="text-lg">Chiffre d'affaire</span>
+                        <span class="font-medium text-lg">au 12/01/2024</span>
                     </div>
                 </div>
             </div>
@@ -149,75 +149,89 @@ watch(
         <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
                 <div class="flex items-center justify-between mb-4">
-                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Credit Card</div>
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Carte de credit</div>
                     <img alt="avatar" src="/demo/images/banking/visa.svg" class="h-4" />
                 </div>
-                <div class="text-surface-600 dark:text-surface-200 mb-1 font-semibold">Debt</div>
-                <div class="text-2xl text-primary mb-8 font-bold">$1.500,00</div>
+                <!-- <div class="text-surface-600 dark:text-surface-200 mb-1 font-semibold">Debt</div> -->
+                <div class="text-2xl text-primary mb-8 font-bold">GNF 1.500,00</div>
                 <div class="flex items-center justify-between">
-                    <span class="text-surface-900 dark:text-surface-0 text-lg">**** **** **** 1231</span>
-                    <span class="text-surface-600 dark:text-surface-200 font-medium text-lg">12/24</span>
+                    <span class="text-surface-900 dark:text-surface-0 text-lg">Chiffre d'affaire</span>
+                    <span class="text-surface-600 dark:text-surface-200 font-medium text-lg">au 12/01/2024</span>
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-2">
-            <div class="card h-full flex flex-col items-center justify-center">
-                <i class="pi pi-dollar text-primary !text-4xl mb-6"></i>
-                <span class="text-surface-900 dark:text-surface-0 text-lg mb-6 font-medium">Primary</span>
-                <span class="text-2xl text-primary font-bold">$24,345.21</span>
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
+            <div class="card h-full">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Orange-Money</div>
+                    <img alt="avatar" src="/demo/images/banking/visa.svg" class="h-4" />
+                </div>
+                <!-- <div class="text-surface-600 dark:text-surface-200 mb-1 font-semibold">Debt</div> -->
+                <div class="text-2xl text-primary mb-8 font-bold">GNF 1.500,00</div>
+                <div class="flex items-center justify-between">
+                    <span class="text-surface-900 dark:text-surface-0 text-lg">Chiffre d'affaire</span>
+                    <span class="text-surface-600 dark:text-surface-200 font-medium text-lg">au 12/01/2024</span>
+                </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-2">
+        <!-- <div class="col-span-12 md:col-span-6 xl:col-span-4">
+            <div class="card h-full flex flex-col items-center justify-center">
+                <i class="pi pi-dollar text-primary !text-4xl mb-6"></i>
+                <span class="text-surface-900 dark:text-surface-0 text-lg mb-6 font-medium">Cash</span>
+                <span class="text-2xl text-primary font-bold">GNF 24,345.21</span>
+            </div>
+        </div> -->
+        <!-- <div class="col-span-12 md:col-span-6 xl:col-span-2">
             <div class="card h-full flex flex-col items-center justify-center">
                 <i class="pi pi-euro text-primary !text-4xl mb-6"></i>
                 <span class="text-surface-900 dark:text-surface-0 text-lg mb-6 font-medium">Currency</span>
-                <span class="text-2xl text-primary font-bold">$10,416.11</span>
+                <span class="text-2xl text-primary font-bold">GNF 10,416.11</span>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-span-12 xl:col-span-4">
             <div class="card">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Recent Transactions</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agence</div>
                 <ul class="list-none p-0 m-0">
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/airbnb.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/airbnb.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Airbnb</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Paris-C1</span>
                             <span>05/23/2022</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">$250.00</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 458 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Amazon</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Ibrahime  dabola </span>
                             <span>04/12/2022</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">$50.00</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">145 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/nike.svg" class="w-12 flex-shrink-0 mr-4 rounded-full" />
+                        <!-- <img alt="brands" src="/demo/images/banking/nike.svg" class="w-12 flex-shrink-0 mr-4 rounded-full" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Nike Store</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Agence Pita</span>
                             <span>04/29/2022</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">$60.00</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">654 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/starbucks.svg" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/starbucks.svg" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Starbucks</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Telecentre-Boba</span>
                             <span>04/15/2022</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">$15.24</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">200 654 212 GNF</span>
                     </li>
                     <li class="flex items-center p-4 mb-4">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
+                        <!-- <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" /> -->
                         <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Amazon</span>
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Cosa-Pharmacie</span>
                             <span>04/12/2022</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">$12.50</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">325 654 212 GNF</span>
                     </li>
                 </ul>
             </div>
