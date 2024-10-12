@@ -28,6 +28,16 @@ const model = ref([
                         to: '/transfert/liste'
                     },
                     {
+                        label: 'Envoie',
+                        icon: 'pi pi-fw pi-list',
+                        to: '/transfert/create'
+                    },
+                    {
+                        label: 'Retrait',
+                        icon: 'pi pi-fw pi-list',
+                        to: '/transfert/retrait'
+                    },
+                    {
                         label: 'Historique',
                         icon: 'pi pi-fw pi-wallet',
                         to: '/transfert/historique'

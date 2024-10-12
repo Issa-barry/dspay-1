@@ -10,7 +10,7 @@ export const ProductService = {
                 price: 6547854,
                 category: 'Accessories',
                 quantity: 24,
-                inventoryStatus: 'ACTIVE',
+                inventoryStatus: 'FINIE',
                 rating: 5,
                 email: 'ibrahim@yahoo.fr',
                 phone: '+224 66 54 85 62',
