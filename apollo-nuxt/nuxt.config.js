@@ -81,6 +81,14 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'transfert-retrait2',
+                path: '/transfert/retrait2',
+                file: '@/pages/transfert/TransfertRetrait2.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Retrait2']
+                }
+            });
+            pages.push({
                 name: 'agence-liste',
                 path: '/agence/liste',
                 file: '@/pages/agence/AgenceListe.vue',

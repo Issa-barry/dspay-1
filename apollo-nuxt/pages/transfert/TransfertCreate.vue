@@ -65,21 +65,41 @@ function valider() {
             <!-- Formulaire de saisie -->
             <div class="md:w-1/2">
                 <div class="card flex flex-col gap-4">
+                    <!-- MONTANT -->
                     <div class="font-semibold text-xl mt-8">Montant à envoyer ?</div>
-                    
-                    <div class="flex flex-col md:flex-row gap-4 mb-8">
+                    <div class="flex flex-col md:flex-row gap-4 mb-4">
                         <div class="flex flex-wrap gap-2 w-full">
                             <label for="montantEuro">Montant en €</label>
                             <InputText id="montantEuro" v-model="montantEuro" type="text" />
                         </div>
                         <div class="flex flex-wrap gap-2 w-full">
                             <label for="montantGNF">Montant en GNF</label>
-                            <InputText id="montantGNF" :value="montantGNF" type="text" disabled />
+                            <InputText id="montantGNF" :value="montantGNF" type="text"  />
                         </div>
                     </div>
 
-                    <div class="font-semibold text-xl">Expéditeur ?</div>
+                    <!-- RECEVEUR -->
+                    <div class="font-semibold text-xl mt-0">Receveur ?</div>
                     <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex flex-wrap gap-2 w-full">
+                            <label for="receveurTel">Téléphone</label>
+                            <InputText id="receveurTel" v-model="receveurTel" type="text" />
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex flex-wrap gap-2 w-full">
+                            <label for="receveurNom">Nom</label>
+                            <InputText id="receveurNom" v-model="receveurNom" type="text" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 w-full">
+                            <label for="receveurPrenom">Prénom</label>
+                            <InputText id="receveurPrenom" v-model="receveurPrenom" type="text" />
+                        </div>
+                    </div>
+
+                    <!-- EXPEDITEUR -->
+                    <div class="font-semibold text-xl mt-4">Expéditeur ?</div>
+                    <div class="flex flex-col md:flex-row gap-4 ">
                         <div class="flex flex-wrap gap-2 w-full">
                             <label for="expediteurTel">Téléphone</label>
                             <InputText id="expediteurTel" v-model="expediteurTel" type="text" />
@@ -98,24 +118,6 @@ function valider() {
                         <div class="flex flex-wrap gap-2 w-full">
                             <label for="expediteurPrenom">Prénom</label>
                             <InputText id="expediteurPrenom" v-model="expediteurPrenom" type="text" />
-                        </div>
-                    </div>
-
-                    <div class="font-semibold text-xl mt-8">Receveur ?</div>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex flex-wrap gap-2 w-full">
-                            <label for="receveurTel">Téléphone</label>
-                            <InputText id="receveurTel" v-model="receveurTel" type="text" />
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex flex-wrap gap-2 w-full">
-                            <label for="receveurNom">Nom</label>
-                            <InputText id="receveurNom" v-model="receveurNom" type="text" />
-                        </div>
-                        <div class="flex flex-wrap gap-2 w-full">
-                            <label for="receveurPrenom">Prénom</label>
-                            <InputText id="receveurPrenom" v-model="receveurPrenom" type="text" />
                         </div>
                     </div>
                 </div>

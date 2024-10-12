@@ -29,19 +29,24 @@ const model = ref([
                     },
                     {
                         label: 'Envoie',
-                        icon: 'pi pi-fw pi-list',
+                        icon: 'pi pi-fw pi-arrow-up-right',
                         to: '/transfert/create'
                     },
                     {
                         label: 'Retrait',
-                        icon: 'pi pi-fw pi-list',
+                        icon: 'pi pi-fw pi-arrow-down-left',
                         to: '/transfert/retrait'
                     },
                     {
-                        label: 'Historique',
-                        icon: 'pi pi-fw pi-wallet',
-                        to: '/transfert/historique'
-                    }
+                        label: 'Retrait2',
+                        icon: 'pi pi-fw pi-arrow-down-left',
+                        to: '/transfert/retrait2'
+                    },
+                    // {
+                    //     label: 'Historique',
+                    //     icon: 'pi pi-fw pi-wallet',
+                    //     to: '/transfert/historique'
+                    // }
                 ]
             },
             {
