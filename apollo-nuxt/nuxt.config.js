@@ -29,6 +29,7 @@ export default defineNuxtConfig({
             include: ['quill']
         }
     },
+    compatibilityDate: '2024-10-12',
     hooks: {
         'pages:extend'(pages) {
             pages.push({
