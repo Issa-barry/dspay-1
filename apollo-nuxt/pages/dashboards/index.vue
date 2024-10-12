@@ -8,7 +8,7 @@ const knobValue = ref(90);
 const products = ref([]);
 const weeks = ref([
     {
-        label: 'Last Week',
+        label: 'dernier Semaine',
         value: 0,
         data: [
             [65, 59, 80, 81, 56, 55, 40],
@@ -16,7 +16,7 @@ const weeks = ref([
         ]
     },
     {
-        label: 'This Week',
+        label: 'Cette semaine',
         value: 1,
         data: [
             [35, 19, 40, 61, 16, 55, 30],
@@ -46,7 +46,7 @@ function setChartData() {
     const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
     pieData.value = {
-        labels: ['Electronics', 'Fashion', 'Household'],
+        labels: ['Agents', 'Clients', 'Partenaires'],
         datasets: [
             {
                 data: [300, 50, 100],
@@ -79,14 +79,14 @@ function setChartData() {
         labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
         datasets: [
             {
-                label: 'Revenue',
+                label: 'Ajout',
                 backgroundColor: documentStyle.getPropertyValue('--p-primary-500'),
                 barThickness: 12,
                 borderRadius: 12,
                 data: selectedWeek.value.data[0]
             },
             {
-                label: 'Profit',
+                label: 'Suppression',
                 backgroundColor: documentStyle.getPropertyValue('--p-primary-200'),
                 barThickness: 12,
                 borderRadius: 12,
@@ -176,10 +176,10 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
     <div class="grid grid-cols-12 gap-8">
         <div class="col-span-12 md:col-span-6 xl:col-span-3">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Sales</span>
+                <span class="font-semibold text-lg">Clients</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">120</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">120 454</span>
                         <div class="text-green-500">
                             <span class="font-medium">+12%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -199,10 +199,10 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 md:col-span-6 xl:col-span-3">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Revenue</span>
+                <span class="font-semibold text-lg">Agences</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">$4500</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">3500</span>
                         <div class="text-green-500">
                             <span class="font-medium">+20%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -221,7 +221,7 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 md:col-span-6 xl:col-span-3">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Visitors</span>
+                <span class="font-semibold text-lg">Agents</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
                         <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">360</span>
@@ -243,10 +243,10 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 md:col-span-6 xl:col-span-3">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Stock</span>
+                <span class="font-semibold text-lg">Partenaire</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">164</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">22</span>
                         <div class="text-green-500">
                             <span class="font-medium">+30%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -261,7 +261,7 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         <div class="col-span-12 xl:col-span-9">
             <div class="card h-full">
                 <div class="flex items-start justify-between mb-12">
-                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Revenue Overview</span>
+                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Ajout de clients</span>
                     <Select :options="weeks" v-model="selectedWeek" class="w-40" optionLabel="label" @change="onWeekChange"></Select>
                 </div>
                 <Chart type="bar" :height="300" :data="barData" :options="barOptions"></Chart>
@@ -269,7 +269,7 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 xl:col-span-3">
             <div class="card h-full">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Sales by Category</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Categorie de contact</div>
                 <Chart type="pie" :data="pieData" :height="300" :options="pieOptions"></Chart>
             </div>
         </div>
@@ -317,7 +317,7 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 lg:col-span-5">
             <div class="card h-full">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Products</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agences</div>
                 <ul class="list-none p-0 m-0">
                     <template v-for="(product, i) in products" :key="{ i }">
                         <li v-if="i < 6" class="flex items-center justify-between p-4">

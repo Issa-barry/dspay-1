@@ -48,6 +48,96 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'transfert-liste',
+                path: '/transfert/liste',
+                file: '@/pages/transfert/TransfertListe.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Liste']
+                }
+            });
+            pages.push({
+                name: 'transfert-create',
+                path: '/transfert/create',
+                file: '@/pages/transfert/TransfertCreate.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'creation']
+                }
+            });
+            pages.push({
+                name: 'transfert-historique',
+                path: '/transfert/historique',
+                file: '@/pages/transfert/TransfertHistorique.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Historique']
+                }
+            });
+            pages.push({
+                name: 'agence-liste',
+                path: '/agence/liste',
+                file: '@/pages/agence/AgenceListe.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'Liste']
+                }
+            });
+            pages.push({
+                name: 'agence-create',
+                path: '/agence/create',
+                file: '@/pages/agence/AgenceCreate.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'creation']
+                }
+            });
+            pages.push({
+                name: 'contact-liste',
+                path: '/contact/liste',
+                file: '@/pages/contact/ContactListe.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'Liste']
+                }
+            });
+            pages.push({
+                name: 'contact-create',
+                path: '/contact/create',
+                file: '@/pages/contact/ContactCreate.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'creation']
+                }
+            });
+            pages.push({
+                name: 'taux-liste',
+                path: '/parametres/taux/liste',
+                file: '@/pages/parametres/TauxListe.vue',
+                meta: {
+                    breadcrumb: ['Taux', 'Liste']
+                }
+            });
+            pages.push({
+                name: 'taux-create',
+                path: '/parametres/taux/create',
+                file: '@/pages/parametres/TauxCreate.vue',
+                meta: {
+                    breadcrumb: ['Taux', 'creation']
+                }
+            });
+            pages.push({
+                name: 'devise-liste',
+                path: '/parametres/devise/liste',
+                file: '@/pages/parametres/DeviseListe.vue',
+                meta: {
+                    breadcrumb: ['Devise', 'Liste']
+                }
+            });
+            pages.push({
+                name: 'devise-create',
+                path: '/parametres/devise/create',
+                file: '@/pages/parametres/DeviseCreate.vue',
+                meta: {
+                    breadcrumb: ['Devise', 'creation']
+                }
+            });
+
+
+            pages.push({
                 name: 'chat',
                 path: '/apps/chat/',
                 file: '@/pages/apps/chat/Index.vue'

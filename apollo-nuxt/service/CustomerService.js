@@ -3,25 +3,25 @@ export const CustomerService = {
         return [
             {
                 id: 1000,
-                name: 'James Butt',
+                name: 'Mamadou DIALLO',
                 country: {
                     name: 'Algeria',
                     code: 'dz'
                 },
-                company: 'Benton, John B Jr',
+                company: 'FELLO-transfert',
                 date: '2015-09-13',
                 status: 'unqualified',
                 verified: true,
                 activity: 17,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 70663
             },
             {
                 id: 1001,
-                name: 'Josephine Darakjy',
+                name: 'Asma BALDE',
                 country: {
                     name: 'Egypt',
                     code: 'eg'
@@ -32,14 +32,14 @@ export const CustomerService = {
                 verified: true,
                 activity: 0,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 82429
             },
             {
                 id: 1002,
-                name: 'Art Venere',
+                name: 'Alpha Ousmane, BARRY',
                 country: {
                     name: 'Panama',
                     code: 'pa'
@@ -50,14 +50,14 @@ export const CustomerService = {
                 verified: false,
                 activity: 63,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 28334
             },
             {
                 id: 1003,
-                name: 'Lenna Paprocki',
+                name: 'Aminata DIALLO',
                 country: {
                     name: 'Slovenia',
                     code: 'si'
@@ -75,7 +75,7 @@ export const CustomerService = {
             },
             {
                 id: 1004,
-                name: 'Donette Foller',
+                name: 'Maladho BALDE',
                 country: {
                     name: 'South Africa',
                     code: 'za'
@@ -86,14 +86,14 @@ export const CustomerService = {
                 verified: true,
                 activity: 33,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 93905
             },
             {
                 id: 1005,
-                name: 'Simona Morasca',
+                name: 'Ali Kourouma',
                 country: {
                     name: 'Egypt',
                     code: 'eg'
@@ -104,14 +104,14 @@ export const CustomerService = {
                 verified: false,
                 activity: 68,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 50041
             },
             {
                 id: 1006,
-                name: 'Mitsue Tollner',
+                name: 'Mitsue TOLNO',
                 country: {
                     name: 'Paraguay',
                     code: 'py'
@@ -122,14 +122,14 @@ export const CustomerService = {
                 verified: true,
                 activity: 54,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 58706
             },
             {
                 id: 1007,
-                name: 'Leota Dilliard',
+                name: 'Leota KAMANO',
                 country: {
                     name: 'Serbia',
                     code: 'rs'
@@ -147,7 +147,7 @@ export const CustomerService = {
             },
             {
                 id: 1008,
-                name: 'Sage Wieser',
+                name: 'Fatou CISSE',
                 country: {
                     name: 'Egypt',
                     code: 'eg'
@@ -158,14 +158,14 @@ export const CustomerService = {
                 verified: true,
                 activity: 76,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 65369
             },
             {
                 id: 1009,
-                name: 'Kris Marrier',
+                name: 'Elhadj Oumar TALL',
                 country: {
                     name: 'Mexico',
                     code: 'mx'
@@ -183,7 +183,7 @@ export const CustomerService = {
             },
             {
                 id: 1010,
-                name: 'Minna Amigon',
+                name: 'Ibrahim BARRY',
                 country: {
                     name: 'Romania',
                     code: 'ro'
@@ -248,7 +248,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 59,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 45250
@@ -266,7 +266,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 90,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 30236
@@ -302,7 +302,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 31,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 37279
@@ -392,7 +392,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 72,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 26565
@@ -410,7 +410,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 94,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 75876
@@ -464,7 +464,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 1,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 40137
@@ -482,7 +482,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 26,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 21304
@@ -500,7 +500,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 76,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 60454
@@ -536,7 +536,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 81,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 17774
@@ -554,7 +554,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 56,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 49201
@@ -572,7 +572,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 94,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 67126
@@ -626,7 +626,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 46,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 12237
@@ -662,7 +662,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 77,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 94909
@@ -680,7 +680,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 66,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 57245
@@ -716,7 +716,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 51,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 82075
@@ -752,7 +752,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 5,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 50194
@@ -806,7 +806,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 54,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 30790
@@ -896,7 +896,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 92,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 65005
@@ -950,7 +950,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 31,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 78527
@@ -1076,7 +1076,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 79,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 8454
@@ -1112,7 +1112,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 87,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 15656
@@ -1130,7 +1130,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 5,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 60586
@@ -1148,7 +1148,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 77,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 86239
@@ -1166,7 +1166,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 94,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 15621
@@ -1184,7 +1184,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 25,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 77248
@@ -1202,7 +1202,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 96,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 478
@@ -1256,7 +1256,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 16,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 21671
@@ -1274,7 +1274,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 25,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 13775
@@ -1328,7 +1328,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 92,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 3308
@@ -1346,7 +1346,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 22,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 19711
@@ -1382,7 +1382,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 80,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 62392
@@ -1454,7 +1454,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 96,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 36435
@@ -1472,7 +1472,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 77,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 39197
@@ -1490,7 +1490,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 46,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 72707
@@ -1688,7 +1688,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 79,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 87736
@@ -1742,7 +1742,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 88,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 81299
@@ -1760,7 +1760,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 44,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 64794
@@ -1778,7 +1778,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 7,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 7815
@@ -1850,7 +1850,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 88,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 58964
@@ -1886,7 +1886,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 19,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 63863
@@ -1904,7 +1904,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 21,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 37510
@@ -1922,7 +1922,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 97,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 63876
@@ -1976,7 +1976,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 81,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 89147
@@ -1994,7 +1994,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 54,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 41466
@@ -2066,7 +2066,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 34,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 40847
@@ -2192,7 +2192,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 77,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 48759
@@ -2210,7 +2210,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 65,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 37568
@@ -2246,7 +2246,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 10,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 13764
@@ -2300,7 +2300,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 4,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 61651
@@ -2336,7 +2336,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 41,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 44037
@@ -2372,7 +2372,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 22,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 32372
@@ -2408,7 +2408,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 47,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 30674
@@ -2516,7 +2516,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 19724
@@ -2570,7 +2570,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 58,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 23118
@@ -2678,7 +2678,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 44,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 85657
@@ -2714,7 +2714,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 21,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 38004
@@ -2732,7 +2732,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 91,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 29038
@@ -2804,7 +2804,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 58,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 5085
@@ -2822,7 +2822,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 78,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 93021
@@ -2876,7 +2876,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 13,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 64422
@@ -2894,7 +2894,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 75,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 36826
@@ -2930,7 +2930,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 13,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 60177
@@ -2948,7 +2948,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 73,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 47198
@@ -2966,7 +2966,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 76,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 71305
@@ -2984,7 +2984,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 60,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 17526
@@ -3038,7 +3038,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 30,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 82928
@@ -3056,7 +3056,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 93,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 64181
@@ -3110,7 +3110,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 61,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 77860
@@ -3128,7 +3128,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 91,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 25664
@@ -3146,7 +3146,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 98,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 98113
@@ -3164,7 +3164,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 97,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 14763
@@ -3326,7 +3326,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 9,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 13368
@@ -3362,7 +3362,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 13,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 4989
@@ -3398,7 +3398,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 45,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 3525
@@ -3434,7 +3434,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 74,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 49148
@@ -3470,7 +3470,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 19,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 23253
@@ -3578,7 +3578,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 40,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 87668
@@ -3596,7 +3596,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 27,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 99417
@@ -3614,7 +3614,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 82,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 89792
@@ -3668,7 +3668,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 22,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 45082
@@ -3686,7 +3686,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 61,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 9871
@@ -3704,7 +3704,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 90,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 47043
@@ -3722,7 +3722,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 48,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 92763
@@ -3776,7 +3776,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 94,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 16410
@@ -3866,7 +3866,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 56,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 13111
@@ -3902,7 +3902,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 2,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 89221
@@ -3974,7 +3974,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 63,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 45436
@@ -3992,7 +3992,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 55,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 72645
@@ -4046,7 +4046,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 62,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 84436
@@ -4100,7 +4100,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 38,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 14959
@@ -4136,7 +4136,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 28,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 80328
@@ -4154,7 +4154,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 83,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 56392
@@ -4298,7 +4298,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 71,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 28331
@@ -4370,7 +4370,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 43,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 97068
@@ -4406,7 +4406,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 51,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 89374
@@ -4478,7 +4478,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 86,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 23037
@@ -4496,7 +4496,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 30,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 35637
@@ -4514,7 +4514,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 68,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 70379
@@ -4604,7 +4604,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 7,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 54606
@@ -4712,7 +4712,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 32,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 38077
@@ -4748,7 +4748,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 57,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 19164
@@ -4766,7 +4766,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 100,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 21880
@@ -4874,7 +4874,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 80,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 41216
@@ -4910,7 +4910,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 52,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 77610
@@ -4946,7 +4946,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 28,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 45311
@@ -4964,7 +4964,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 2,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 88737
@@ -4982,7 +4982,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 95,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 13224
@@ -5018,7 +5018,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 78,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 61947
@@ -5036,7 +5036,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 86,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 6380
@@ -5090,7 +5090,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 35,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 36052
@@ -5108,7 +5108,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 96,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 51660
@@ -5144,7 +5144,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 64,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 21631
@@ -5234,7 +5234,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 58,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 95552
@@ -5252,7 +5252,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 0,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 39725
@@ -5270,7 +5270,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 59,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 62251
@@ -5324,7 +5324,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 86,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 24208
@@ -5396,7 +5396,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 22,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 69703
@@ -5666,7 +5666,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 79,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 92900
@@ -5720,7 +5720,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 57,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 24026
@@ -5828,7 +5828,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 22,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 5644
@@ -5864,7 +5864,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 59,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 13353
@@ -5900,7 +5900,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 21,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 30074
@@ -5918,7 +5918,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 74,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 36310
@@ -5936,7 +5936,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 8,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 27563
@@ -5972,7 +5972,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 2,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 52970
@@ -6026,7 +6026,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 88,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 6733
@@ -6062,7 +6062,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 24,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 82613
@@ -6080,7 +6080,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 44,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 97960
@@ -6134,7 +6134,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 6,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 58826
@@ -6152,7 +6152,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 90,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 22419
@@ -6170,7 +6170,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 72,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 86006
@@ -6206,7 +6206,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 76,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 73493
@@ -6242,7 +6242,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 26,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 19662
@@ -6260,7 +6260,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 80,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 80534
@@ -6350,7 +6350,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 66,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 9173
@@ -6386,7 +6386,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 62,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 54300
@@ -6404,7 +6404,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 12,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 94652
@@ -6422,7 +6422,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 67,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 88295
@@ -6458,7 +6458,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 25145
@@ -6476,7 +6476,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 69,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 61630
@@ -6494,7 +6494,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 25,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 66134
@@ -6548,7 +6548,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 33,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 14922
@@ -6620,7 +6620,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 60,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 31837
@@ -6710,7 +6710,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 17,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 16490
@@ -6746,7 +6746,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 46,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 11918
@@ -6818,7 +6818,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 79,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 47531
@@ -6836,7 +6836,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 88950
@@ -6854,7 +6854,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 28,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 88497
@@ -6890,7 +6890,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 24,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 21164
@@ -6980,7 +6980,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 85,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 40262
@@ -7070,7 +7070,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 82,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 93576
@@ -7088,7 +7088,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 21,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 2009
@@ -7106,7 +7106,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 54,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 35341
@@ -7124,7 +7124,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 53,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 13077
@@ -7232,7 +7232,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 59,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 82391
@@ -7250,7 +7250,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 9,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 48071
@@ -7376,7 +7376,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 86,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 21459
@@ -7430,7 +7430,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 81,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 34878
@@ -7556,7 +7556,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 91,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 82539
@@ -7628,7 +7628,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 41,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 93316
@@ -7646,7 +7646,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 47,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 23786
@@ -7682,7 +7682,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 0,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 68683
@@ -7790,7 +7790,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 63,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 93911
@@ -7880,7 +7880,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 99,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 87620
@@ -7916,7 +7916,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 37,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 39339
@@ -7970,7 +7970,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 43,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 71364
@@ -8006,7 +8006,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 39,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 59442
@@ -8024,7 +8024,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 86,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 84338
@@ -8042,7 +8042,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 85,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 72545
@@ -8150,7 +8150,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 99,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 33427
@@ -8204,7 +8204,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 74,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 44560
@@ -8222,7 +8222,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 50922
@@ -8330,7 +8330,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 41,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 39947
@@ -8402,7 +8402,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 99,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 45956
@@ -8420,7 +8420,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 72627
@@ -8456,7 +8456,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 71,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 97227
@@ -8528,7 +8528,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 72,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 71061
@@ -8654,7 +8654,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 11,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 12090
@@ -8708,7 +8708,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 38,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 25518
@@ -8726,7 +8726,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 69,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 7300
@@ -8798,7 +8798,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 13,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 38294
@@ -8816,7 +8816,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 82,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 56617
@@ -8834,7 +8834,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 71,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 76817
@@ -8888,7 +8888,7 @@ export const CustomerService = {
                 verified: false,
                 activity: 23,
                 representative: {
-                    name: 'Ivan Magalhaes',
+                    name: 'Ousmane SOW',
                     image: 'ivanmagalhaes.png'
                 },
                 balance: 66993
@@ -8906,7 +8906,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 28,
                 representative: {
-                    name: 'Asiya Javayant',
+                    name: 'Ibrahim BARRY',
                     image: 'asiyajavayant.png'
                 },
                 balance: 53330
@@ -8924,7 +8924,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 14,
                 representative: {
-                    name: 'Ioni Bowcher',
+                    name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
                 },
                 balance: 72342
@@ -8960,7 +8960,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 30,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 44528
@@ -8996,7 +8996,7 @@ export const CustomerService = {
                 verified: true,
                 activity: 42,
                 representative: {
-                    name: 'Amy Elsner',
+                    name: 'Issa BARRY',
                     image: 'amyelsner.png'
                 },
                 balance: 88090
