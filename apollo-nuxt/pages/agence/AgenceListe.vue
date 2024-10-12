@@ -124,14 +124,17 @@ function deleteSelectedProducts() {
 
 function getStatusLabel(status) {
     switch (status) {
-        case 'INSTOCK':
+        case 'ACTIVE':
             return 'success';
 
-        case 'LOWSTOCK':
+        case 'ATTENTE':
             return 'warn';
 
-        case 'OUTOFSTOCK':
+        case 'BLOQUE':
             return 'danger';
+
+        case 'ARCHIVE':
+            return 'secondary';
 
         default:
             return null;
@@ -142,7 +145,7 @@ function navigateToAgenceCreate() {
     router.push({ name: 'agence-create' });
 }
 
-</script>
+</script> 
 
 <template>
     <div>
@@ -155,9 +158,9 @@ function navigateToAgenceCreate() {
                 </template>
 
                 <template #end>
-                    <Button label="Import" icon="pi pi-upload" severity="secondary" @click="exportCSV($event)" />
                     <Button label="Export" class="ml-2" icon="pi pi-download" severity="secondary" @click="exportCSV($event)" />
-
+                    <!-- <Button label="Import" class="ml-2" icon="pi pi-filter" severity="secondary" @click="exportCSV($event)" /> -->
+                    <Button type="button"  icon="pi pi-filter" label="Filtrer" class="ml-2 w-full sm:w-auto order-none sm:order-1" outlined />
                 </template>
             </Toolbar>
 

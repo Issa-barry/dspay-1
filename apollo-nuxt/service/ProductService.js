@@ -10,7 +10,22 @@ export const ProductService = {
                 price: 6547854,
                 category: 'Accessories',
                 quantity: 24,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
+                rating: 5,
+                email: 'ibrahim@yahoo.fr',
+                phone: '+224 66 54 85 62',
+                address: 'Dogomet-Centre'
+            },
+            {
+                id: '1000',
+                code: 'f230fh0g3',
+                name: 'Maladho BALDE',
+                description: 'Product Description',
+                image: 'bamboo-watch.jpg',
+                price: 6547854,
+                category: 'Accessories',
+                quantity: 24,
+                inventoryStatus: 'ARCHIVE',
                 rating: 5,
                 email: 'ibrahim@yahoo.fr',
                 phone: '+224 66 54 85 62',
@@ -25,7 +40,7 @@ export const ProductService = {
                 price: 727587496,
                 category: 'Accessories',
                 quantity: 61,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 email: 'moussa@yahoo.fr',
                 phone: '+224 622 34 56 78',
@@ -40,7 +55,7 @@ export const ProductService = {
                 price: 795478,
                 category: 'Fitness',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 email: 'mariam@gmail.com',
                 phone: '+33 06 12 34 56 78',
@@ -55,7 +70,7 @@ export const ProductService = {
                 price: 202100,
                 category: 'Clothing',
                 quantity: 25,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 email: 'alpha@outlook.fr',
                 phone: '+224 620 23 45 67',
@@ -70,7 +85,7 @@ export const ProductService = {
                 price: 1565877,
                 category: 'Accessories',
                 quantity: 73,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 email: 'julie@hotmail.com',
                 phone: '+33 07 98 76 54 32',
@@ -85,7 +100,7 @@ export const ProductService = {
                 price: 120745874,
                 category: 'Accessories',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 4,
                 email: 'abdoulaye@yahoo.fr',
                 phone: '+224 622 34 56 78',
@@ -100,7 +115,7 @@ export const ProductService = {
                 price: 32,
                 category: 'Accessories',
                 quantity: 5,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 email: 'camille@gmail.com',
                 phone: '+33 01 23 45 67 89',
@@ -115,7 +130,7 @@ export const ProductService = {
                 price: 34,
                 category: 'Accessories',
                 quantity: 23,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 email: 'fatoumata@outlook.fr',
                 phone: '+224 625 12 34 56',
@@ -130,7 +145,7 @@ export const ProductService = {
                 price: 99,
                 category: 'Electronics',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 4,
                 email: 'laurent@hotmail.com',
                 phone: '+33 02 98 76 54 32',
@@ -145,7 +160,7 @@ export const ProductService = {
                 price: 299,
                 category: 'Electronics',
                 quantity: 63,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 3,
                 email: 'mohamed@yahoo.fr',
                 phone: '+224 666 45 67 89',
@@ -160,7 +175,7 @@ export const ProductService = {
                 price: 24,
                 category: 'Accessories',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 4,
                 email: 'sophie@gmail.com',
                 phone: '+33 06 78 12 34 56',
@@ -175,7 +190,7 @@ export const ProductService = {
                 price: 89,
                 category: 'Electronics',
                 quantity: 23,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 email: 'kadiatou@outlook.fr',
                 phone: '+224 624 23 45 67',
@@ -190,7 +205,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 74,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 email: 'pierre@hotmail.com',
                 phone: '+33 07 65 43 21 09',
@@ -205,7 +220,7 @@ export const ProductService = {
                 price: 48,
                 category: 'Clothing',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 3,
                 email: 'binta@yahoo.fr',
                 phone: '+224 620 98 76 54',
@@ -220,7 +235,7 @@ export const ProductService = {
                 price: 175,
                 category: 'Electronics',
                 quantity: 8,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 5,
                 email: 'nathalie@gmail.com',
                 phone: '+33 01 98 76 54 32',
@@ -235,7 +250,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 34,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 email: 'mamadou@outlook.fr',
                 phone: '+224 622 54 32 10',
@@ -250,7 +265,7 @@ export const ProductService = {
                 price: 79,
                 category: 'Fitness',
                 quantity: 12,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 3,
                 email: 'jean@hotmail.com',
                 phone: '+33 02 34 56 78 90',
@@ -270,7 +285,7 @@ export const ProductService = {
                 price: 65,
                 category: 'Accessories',
                 quantity: 24,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: [
                     {
@@ -320,7 +335,7 @@ export const ProductService = {
                 price: 72,
                 category: 'Accessories',
                 quantity: 61,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -352,7 +367,7 @@ export const ProductService = {
                 price: 79,
                 category: 'Fitness',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 orders: [
                     {
@@ -384,7 +399,7 @@ export const ProductService = {
                 price: 29,
                 category: 'Clothing',
                 quantity: 25,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: []
             },
@@ -397,7 +412,7 @@ export const ProductService = {
                 price: 15,
                 category: 'Accessories',
                 quantity: 73,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -429,7 +444,7 @@ export const ProductService = {
                 price: 120,
                 category: 'Accessories',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 4,
                 orders: [
                     {
@@ -470,7 +485,7 @@ export const ProductService = {
                 price: 32,
                 category: 'Accessories',
                 quantity: 5,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 orders: [
                     {
@@ -502,7 +517,7 @@ export const ProductService = {
                 price: 34,
                 category: 'Accessories',
                 quantity: 23,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: [
                     {
@@ -525,7 +540,7 @@ export const ProductService = {
                 price: 99,
                 category: 'Electronics',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 4,
                 orders: [
                     {
@@ -557,7 +572,7 @@ export const ProductService = {
                 price: 299,
                 category: 'Electronics',
                 quantity: 63,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 3,
                 orders: [
                     {
@@ -607,7 +622,7 @@ export const ProductService = {
                 price: 24,
                 category: 'Accessories',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 4,
                 orders: [
                     {
@@ -639,7 +654,7 @@ export const ProductService = {
                 price: 89,
                 category: 'Electronics',
                 quantity: 23,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -662,7 +677,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 74,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: [
                     {
@@ -694,7 +709,7 @@ export const ProductService = {
                 price: 48,
                 category: 'Clothing',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 3,
                 orders: [
                     {
@@ -717,7 +732,7 @@ export const ProductService = {
                 price: 175,
                 category: 'Electronics',
                 quantity: 8,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 5,
                 orders: [
                     {
@@ -749,7 +764,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 34,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -772,7 +787,7 @@ export const ProductService = {
                 price: 79,
                 category: 'Fitness',
                 quantity: 12,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 3,
                 orders: []
             },
@@ -785,7 +800,7 @@ export const ProductService = {
                 price: 85,
                 category: 'Clothing',
                 quantity: 42,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -808,7 +823,7 @@ export const ProductService = {
                 price: 56,
                 category: 'Accessories',
                 quantity: 41,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: [
                     {
@@ -840,7 +855,7 @@ export const ProductService = {
                 price: 79,
                 category: 'Fitness',
                 quantity: 63,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: []
             },
@@ -853,7 +868,7 @@ export const ProductService = {
                 price: 110,
                 category: 'Accessories',
                 quantity: 0,
-                inventoryStatus: 'OUTOFSTOCK',
+                inventoryStatus: 'BLOQUE',
                 rating: 4,
                 orders: [
                     {
@@ -885,7 +900,7 @@ export const ProductService = {
                 price: 79,
                 category: 'Fitness',
                 quantity: 6,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 orders: [
                     {
@@ -908,7 +923,7 @@ export const ProductService = {
                 price: 45,
                 category: 'Accessories',
                 quantity: 62,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -940,7 +955,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 2,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 5,
                 orders: [
                     {
@@ -963,7 +978,7 @@ export const ProductService = {
                 price: 64,
                 category: 'Clothing',
                 quantity: 0,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: []
             },
@@ -976,7 +991,7 @@ export const ProductService = {
                 price: 78,
                 category: 'Clothing',
                 quantity: 52,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 4,
                 orders: [
                     {
@@ -1008,7 +1023,7 @@ export const ProductService = {
                 price: 49,
                 category: 'Clothing',
                 quantity: 3,
-                inventoryStatus: 'LOWSTOCK',
+                inventoryStatus: 'ATTENTE',
                 rating: 3,
                 orders: [
                     {
@@ -1031,7 +1046,7 @@ export const ProductService = {
                 price: 89,
                 category: 'Electronics',
                 quantity: 35,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 3,
                 orders: [
                     {
@@ -1063,7 +1078,7 @@ export const ProductService = {
                 price: 20,
                 category: 'Fitness',
                 quantity: 15,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 5,
                 orders: []
             },
@@ -1076,7 +1091,7 @@ export const ProductService = {
                 price: 20,
                 category: 'Fitness',
                 quantity: 25,
-                inventoryStatus: 'INSTOCK',
+                inventoryStatus: 'ACTIVE',
                 rating: 8,
                 orders: [
                     {
