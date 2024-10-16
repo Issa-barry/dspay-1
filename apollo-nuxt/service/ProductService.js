@@ -16,7 +16,7 @@ export const ProductService = {
                 phone: '+224 66 54 85 62',
                 address: 'Dogomet-Centre'
             },
-            {
+            { 
                 id: '1000',
                 code: 'f230fh0g3',
                 name: 'Maladho BALDE',

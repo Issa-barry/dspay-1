@@ -1,34 +1,29 @@
 <script setup>
-import { ProductService } from '@/service/ProductService';
+import { AgenceService } from '../../service/AgenceService';
 import { FilterMatchMode } from '@primevue/core/api';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
-
-import { useRouter } from 'vue-router';
-
 const router = useRouter();
 
-
 onMounted(() => {
-    ProductService.getProducts().then((data) => (products.value = data));
+    AgenceService.getAgences().then((data) => (agences.value = data));
 });
 
 const toast = useToast();
 const dt = ref();
-const products = ref();
-const productDialog = ref(false);
-const deleteProductDialog = ref(false);
-const deleteProductsDialog = ref(false);
-const product = ref({});
-const selectedProducts = ref();
+const agences = ref();
+const agenceDialog = ref(false);
+const deleteAgenceDialog = ref(false);
+const deleteAgencesDialog = ref(false);
+const agence = ref({});
+const selectedAgences = ref();
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS }
 });
 const submitted = ref(false);
-const statuses = ref([
-    { label: 'INSTOCK', value: 'instock' },
-    { label: 'LOWSTOCK', value: 'lowstock' },
-    { label: 'OUTOFSTOCK', value: 'outofstock' }
+const  pays = ref([
+    { label: 'GUINEE-CONAKRY', value: 'Guinée-conakry' },
+    { label: 'FRANCE', value: 'France' },
 ]);
 
 function formatCurrency(value) {
@@ -37,59 +32,59 @@ function formatCurrency(value) {
 }
 
 function openNew() {
-    product.value = {};
+    agence.value = {};
     submitted.value = false;
-    productDialog.value = true;
+    agenceDialog.value = true;
 }
 
 function hideDialog() {
-    productDialog.value = false;
+    agenceDialog.value = false;
     submitted.value = false;
 }
 
-function saveProduct() {
+function saveAgence() {
     submitted.value = true;
 
-    if (product?.value.name?.trim()) {
-        if (product.value.id) {
-            product.value.inventoryStatus = product.value.inventoryStatus.value ? product.value.inventoryStatus.value : product.value.inventoryStatus;
-            products.value[findIndexById(product.value.id)] = product.value;
-            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+    if (agence?.value.name?.trim()) {
+        if (agence.value.id) {
+            agence.value.status = agence.value.status.value ? agence.value.status.value : agence.value.status;
+            agences.value[findIndexById(agence.value.id)] = agence.value;
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence mis à jour', life: 3000 });
         } else {
-            product.value.id = createId();
-            product.value.code = createId();
-            product.value.image = 'product-placeholder.svg';
-            product.value.inventoryStatus = product.value.inventoryStatus ? product.value.inventoryStatus.value : 'INSTOCK';
-            products.value.push(product.value);
-            toast.add({ severity: 'success', summary: 'Succéss', detail: 'Retrait effectué avec succées', life: 3000 });
+            agence.value.id = createId();
+            agence.value.code = createId();
+            agence.value.image = 'agence-placeholder.svg';
+            agence.value.status = agence.value.status ? agence.value.status.value : 'INSTOCK';
+            agences.value.push(agence.value);
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence Créé', life: 3000 });
         }
 
-        productDialog.value = false;
-        product.value = {};
+        agenceDialog.value = false;
+        agence.value = {};
     }
 }
 
-function editProduct(prod) { 
-    product.value = { ...prod };
-    productDialog.value = true;
+function editAgence(prod) {
+    agence.value = { ...prod };
+    agenceDialog.value = true;
 }
 
-function confirmDeleteProduct(prod) {
-    product.value = prod;
-    deleteProductDialog.value = true;
+function confirmDeleteAgence(prod) {
+    agence.value = prod;
+    deleteAgenceDialog.value = true;
 }
 
-function deleteProduct() {
-    products.value = products.value.filter((val) => val.id !== product.value.id);
-    deleteProductDialog.value = false;
-    product.value = {};
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+function deleteAgence() {
+    agences.value = agences.value.filter((val) => val.id !== agence.value.id);
+    deleteAgenceDialog.value = false;
+    agence.value = {};
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence  Supprimé', life: 3000 });
 }
 
 function findIndexById(id) {
     let index = -1;
-    for (let i = 0; i < products.value.length; i++) {
-        if (products.value[i].id === id) {
+    for (let i = 0; i < agences.value.length; i++) {
+        if (agences.value[i].id === id) {
             index = i;
             break;
         }
@@ -112,28 +107,35 @@ function exportCSV() {
 }
 
 function confirmDeleteSelected() {
-    deleteProductsDialog.value = true;
+    deleteAgencesDialog.value = true;
 }
 
-function deleteSelectedProducts() {
-    products.value = products.value.filter((val) => !selectedProducts.value.includes(val));
-    deleteProductsDialog.value = false;
-    selectedProducts.value = null;
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+function deleteSelectedAgences() {
+    agences.value = agences.value.filter((val) => !selectedAgences.value.includes(val));
+    deleteAgencesDialog.value = false;
+    selectedAgences.value = null;
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Agences  Supprimé', life: 3000 });
 }
 
 function getStatusLabel(status) {
     switch (status) {
-        case 'ACTIVE':
+        case 'ACTIVÉ':
             return 'success';
 
         case 'ATTENTE':
             return 'warn';
 
-        case 'BLOQUE':
+        case 'BLOQUÉ':
             return 'danger';
 
-        case 'ARCHIVE':
+        case 'DELOQUÉ':
+            return 'danger';
+
+        case 'ARCHIVÉ':
+            return 'secondary';
+
+        
+        case 'SUPPRIMÉ':
             return 'secondary';
 
         default:
@@ -144,41 +146,37 @@ function getStatusLabel(status) {
 function navigateToAgenceCreate() {
     router.push({ name: 'agence-create' });
 }
-
-</script> 
+</script>
 
 <template>
     <div>
         <div class="card">
             <Toolbar class="mb-6">
                 <template #start>
-                    <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToAgenceCreate" />
-                    <!-- <Button label="Retrait" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" /> -->
-                    <!-- <Button label="Delete" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" /> -->
+                    <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
+                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedAgences || !selectedAgences.length" />
                 </template>
 
                 <template #end>
-                    <Button label="Export" class="ml-2" icon="pi pi-download" severity="secondary" @click="exportCSV($event)" />
-                    <!-- <Button label="Import" class="ml-2" icon="pi pi-filter" severity="secondary" @click="exportCSV($event)" /> -->
-                    <Button type="button"  icon="pi pi-filter" label="Filtrer" class="ml-2 w-full sm:w-auto order-none sm:order-1" outlined />
+                    <Button label="Export" icon="pi pi-upload" severity="secondary" @click="exportCSV($event)" />
                 </template>
             </Toolbar>
 
             <DataTable
                 ref="dt"
-                v-model:selection="selectedProducts"
-                :value="products"
+                v-model:selection="selectedAgences"
+                :value="agences"
                 dataKey="id"
                 :paginator="true"
                 :rows="10"
                 :filters="filters"
                 paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                 :rowsPerPageOptions="[5, 10, 25]"
-                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} agences"
             >
                 <template #header>
                     <div class="flex flex-wrap gap-2 items-center justify-between">
-                        <h4 class="m-0">Nos Agences</h4>
+                        <h4 class="m-0">Gestion Agences</h4>
                         <IconField>
                             <InputIcon>
                                 <i class="pi pi-search" />
@@ -189,113 +187,101 @@ function navigateToAgenceCreate() {
                 </template>
 
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-                <Column field="code" header="Reference" sortable style="min-width: 10rem"></Column>
-                <Column field="name" header="Responssable" sortable style="min-width: 16rem"></Column>
-                <Column field="phone" header="Téléphone" sortable style="min-width: 12rem"></Column>
-                <Column field="address" header="Adresse" sortable style="min-width: 12rem"></Column>
-                <!-- <Column field="email" header="Email" sortable style="min-width: 16rem"></Column> -->
-                <!-- <Column header="Image">
+                <Column field="reference" header="Reference" sortable style="min-width: 12rem"></Column>
+                <Column field="nom" header="Nom" sortable style="min-width: 12rem"></Column>
+                <Column field="addresse.ville" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <Column field="phone" header="Phone" sortable style="min-width: 12rem"></Column>
+                <!-- <Column field="email" header="Email" sortable style="min-width: 10rem"></Column> -->
+                <Column field="status" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
-                        <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
-                    </template>
-                </Column> -->
-                <!-- <Column field="price" header="Chiffre" sortable style="min-width: 8rem">
-                    <template #body="slotProps">
-                        {{ formatCurrency(slotProps.data.price) }}
-                    </template>
-                </Column> -->
-                <!-- <Column field="category" header="Category" sortable style="min-width: 10rem"></Column> -->
-
-                <!-- <Column field="rating" header="Reviews" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Rating :modelValue="slotProps.data.rating" :readonly="true" />
-                    </template>
-                </Column> -->
-
-                <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
+                        <Tag :value="slotProps.data.status" :severity="getStatusLabel(slotProps.data.status)" />
                     </template>
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
-                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
-                        <Button icon="pi pi-eye" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
+                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editAgence(slotProps.data)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteAgence(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
         </div>
 
-        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Retrait" :modal="true">
+        <Dialog v-model:visible="agenceDialog" :style="{ width: '450px' }" header="Agence Details" :modal="true">
             <div class="flex flex-col gap-6">
-                <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" />
+                <!-- <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" /> -->
                 <div>
-                    <label for="name" class="block font-bold mb-3">Code</label>
-                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
+                    <label for="nom" class="block font-bold mb-3">Nom agence</label>
+                    <InputText id="nom" v-model.trim="agence.nom" required="true" autofocus :invalid="submitted && !agence.nom" fluid />
+                    <small v-if="submitted && !agence.nom" class="text-red-500">Le nom de l'agence est obligatoire.</small>
+                </div>
+                <div>
+                    <label for="email" class="block font-bold mb-3">Email</label>
+                    <InputText id="email" v-model.trim="agence.email" required="true" autofocus :invalid="submitted && !agence.email" fluid />
+                    <small v-if="submitted && !agence.email" class="text-red-500">L'email de l'agence est obligatoire.</small>
+                </div>
+                <div>
+                    <label for="phone" class="block font-bold mb-3">Téléphone</label>
+                    <InputText id="phone" v-model.trim="agence.phone" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
+                    <small v-if="submitted && !agence.phone" class="text-red-500">Le numéro de téléphone de l'agence est obligatoire.</small>
                 </div>
                 <!-- <div>
-                    <span class="block font-bold mb-4">Receveur</span>
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category1">Mamadou saliou BARRY</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category2">Montant : 1 230 000 GNF</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category3">Tel : +224 621 17 70 06</label>
-                        </div>
-                    </div>
+                    <label for="description" class="block font-bold mb-3">Description</label>
+                    <Textarea id="description" v-model="product.description" required="true" rows="3" cols="20" fluid />
+                </div> -->
+                <div>
+                    <label for="status" class="block font-bold mb-3">Pays</label>
+                    <Select id="status" v-model="agence.pays" :options="pays" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <small v-if="submitted && !agence.pays" class="text-red-500">Le pays est obligatoire.</small>
                 </div>
 
                 <div>
-                    <span class="block font-bold mb-4">Expediteur</span>
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category1">Aissatou BALDE</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category2">Montant : 105 €</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category2"> Frais : 5 €</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-12">
-                             <label for="category3">Tel : +224 621 17 70 06</label>
-                        </div>
+                    <label for="name" class="block font-bold mb-3">Adresse</label>
+                    <InputText id="name" v-model.trim="agence.name" required="true" autofocus :invalid="submitted && !agence.name" fluid />
+                    <small v-if="submitted && !agence.name" class="text-red-500">L'adresse est obligatoire.</small>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-6">
+                        <label for="price" class="block font-bold mb-3">Code Postal</label>
+                        <InputNumber id="price" v-model="agence.price" mode="currency" currency="USD" locale="en-US" fluid />
+                        <small v-if="submitted && !agence.name" class="text-red-500">Le code postal est obligatoire.</small>
                     </div>
-                </div> -->
+                    <div class="col-span-6">
+                        <label for="quantity" class="block font-bold mb-3">Ville</label>
+                        <InputNumber id="quantity" v-model="agence.quantity" integeronly fluid />
+                        <small v-if="submitted && !agence.name" class="text-red-500">La ville est obligatoire.</small>
+                    </div>
+                </div>
             </div>
 
             <template #footer>
                 <Button label="Annuler" icon="pi pi-times" text @click="hideDialog" />
-                <Button label="Enregistrer" icon="pi pi-check" @click="saveProduct" />
+                <Button label="Enregistrer" icon="pi pi-check" @click="saveAgence" />
             </template>
         </Dialog>
 
-        <Dialog v-model:visible="deleteProductDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+        <Dialog v-model:visible="deleteAgenceDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product"
-                    >Are you sure you want to delete <b>{{ product.name }}</b
+                <span v-if="agence"
+                    >Êtes-vous sûr de vouloir supprimer <b>{{ agence.name }}</b
                     >?</span
                 >
             </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductDialog = false" />
-                <Button label="Yes" icon="pi pi-check" @click="deleteProduct" />
+                <Button label="No" icon="pi pi-times" text @click="deleteAgenceDialog = false" />
+                <Button label="Yes" icon="pi pi-check" @click="deleteAgence" />
             </template>
         </Dialog>
 
-        <Dialog v-model:visible="deleteProductsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+        <Dialog v-model:visible="deleteAgencesDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product">Are you sure you want to delete the selected products?</span>
+                <span v-if="agence">Êtes-vous sûr de vouloir supprimer les agences sélectionnées ?</span>
             </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductsDialog = false" />
-                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedProducts" />
+                <Button label="No" icon="pi pi-times" text @click="deleteAgencesDialog = false" />
+                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedAgences" />
             </template>
         </Dialog>
     </div>
