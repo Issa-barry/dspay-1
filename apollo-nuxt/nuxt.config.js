@@ -2,6 +2,8 @@
 import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
+    ssr: false, // Désactiver le mode SSR pour générer un site statique
+    target: 'static', // Génère une version statique de l'application
     typescript: false,
     app: {
         head: {
