@@ -5,7 +5,7 @@ export const AgenceService = {
                 id: '1000',
                 reference: 'f230fh0g3',
                 nom: 'Ibrahim Diallo',
-                email: 'ibrahim@yahoo.fr', 
+                email: 'ibrahim@yahoo.fr',
                 phone: '+224 666 54 85 62',
                 date: '2015-09-13',
                 description: 'Agence Description',
@@ -14,19 +14,16 @@ export const AgenceService = {
                 quantity: 24,
                 status: 'ACTIVÉ',
                 rating: 5,
-                addresse: {
-                    addresse1: 'Centre-ville',
-                    ville: 'Kankan université',
-                    code_postal: '24000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Mamadou Alpha',
-                    prenom: 'BARRY',
-                    phone: '+33 666 17 58 54 02',
-                    pays: 'Guinée-Conakry'
-                },
-            }, 
+                addresse: 'Centre-ville',
+                ville: 'Kankan université',
+                code_postal: '24000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Mamadou Alpha',
+                prenom_responssable: 'BARRY',
+                phone_responssable: '+33 666 17 58 54 02',
+                email_responssable: 'mamadou.alpha@agence.com',
+                pays_responssable: 'Guinée-Conakry'
+            },
             {
                 id: '1001',
                 reference: 'a123bd4t7',
@@ -40,18 +37,15 @@ export const AgenceService = {
                 quantity: 15,
                 status: 'ATTENTE',
                 rating: 4,
-                addresse: {
-                    addresse1: 'Quartier Aviation',
-                    ville: 'Conakry',
-                    code_postal: '12000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Alpha Oumar',
-                    prenom: 'SOW',
-                    phone: '+33 689 23 54 77',
-                    pays: 'Guinée-Conakry'
-                }
+                addresse: 'Quartier Aviation',
+                ville: 'Conakry',
+                code_postal: '12000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Alpha Oumar',
+                prenom_responssable: 'SOW',
+                phone_responssable: '+33 689 23 54 77',
+                email_responssable: 'alpha.oumar@agence.com',
+                pays_responssable: 'Guinée-Conakry'
             },
             {
                 id: '1002',
@@ -66,18 +60,15 @@ export const AgenceService = {
                 quantity: 30,
                 status: 'ARCHIVÉ',
                 rating: 5,
-                addresse: {
-                    addresse1: 'Madina Marché',
-                    ville: 'Conakry',
-                    code_postal: '14000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Mamadou',
-                    prenom: 'Camara',
-                    phone: '+33 658 74 96 41',
-                    pays: 'Guinée-Conakry'
-                }
+                addresse: 'Madina Marché',
+                ville: 'Conakry',
+                code_postal: '14000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Mamadou',
+                prenom_responssable: 'Camara',
+                phone_responssable: '+33 658 74 96 41',
+                email_responssable: 'mamadou.camara@agence.com',
+                pays_responssable: 'Guinée-Conakry'
             },
             {
                 id: '1003',
@@ -92,18 +83,15 @@ export const AgenceService = {
                 quantity: 12,
                 status: 'BLOQUÉ',
                 rating: 3,
-                addresse: {
-                    addresse1: 'Taouyah',
-                    ville: 'Conakry',
-                    code_postal: '23000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Amadou',
-                    prenom: 'Keita',
-                    phone: '+33 674 58 32 09',
-                    pays: 'Guinée-Conakry'
-                }
+                addresse: 'Taouyah',
+                ville: 'Conakry',
+                code_postal: '23000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Amadou',
+                prenom_responssable: 'Keita',
+                phone_responssable: '+33 674 58 32 09',
+                email_responssable: 'amadou.keita@agence.com',
+                pays_responssable: 'Guinée-Conakry'
             },
             {
                 id: '1004',
@@ -118,18 +106,15 @@ export const AgenceService = {
                 quantity: 22,
                 status: 'ACTIVÉ',
                 rating: 5,
-                addresse: {
-                    addresse1: 'Kaporo',
-                    ville: 'Conakry',
-                    code_postal: '25000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Alpha Mamadou',
-                    prenom: 'BARRY',
-                    phone: '+33 611 45 78 23',
-                    pays: 'Guinée-Conakry'
-                }
+                addresse: 'Kaporo',
+                ville: 'Conakry',
+                code_postal: '25000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Alpha Mamadou',
+                prenom_responssable: 'BARRY',
+                phone_responssable: '+33 611 45 78 23',
+                email_responssable: 'alpha.mamadou@agence.com',
+                pays_responssable: 'Guinée-Conakry'
             },
             {
                 id: '1005',
@@ -138,24 +123,21 @@ export const AgenceService = {
                 email: 'otoure@business.gn',
                 phone: '+224 64 32 98 75',
                 date: '2021-02-10',
-                description: 'Agence d\'événementiel',
+                description: "Agence d'événementiel",
                 image: 'agency-5.jpg',
                 chiffre: 7654000,
                 quantity: 18,
                 status: 'DELOQUÉ',
                 rating: 4,
-                addresse: {
-                    addresse1: 'Lambanyi',
-                    ville: 'Conakry',
-                    code_postal: '20000',
-                    pays: 'Guinée-Conakry'
-                },
-                responssable: {
-                    nom: 'Ibrahima',
-                    prenom: 'Diallo',
-                    phone: '+33 622 78 45 96',
-                    pays: 'Guinée-Conakry'
-                }
+                addresse: 'Lambanyi',
+                ville: 'Conakry',
+                code_postal: '20000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: 'Ibrahima',
+                prenom_responssable: 'Diallo',
+                phone_responssable: '+33 622 78 45 96',
+                email_responssable: 'ibrahima.diallo@agence.com',
+                pays_responssable: 'Guinée-Conakry'
             },
             {
                 id: '1006',
@@ -170,14 +152,16 @@ export const AgenceService = {
                 quantity: 15,
                 status: 'SUPPRIMÉ',
                 rating: 2,
-                addresse: {
-                    addresse1: 'Centre-ville',
-                    ville: 'Kankan',
-                    code_postal: '24000',
-                    pays: 'Guinée-Conakry'
-                },
+                addresse: 'Centre-ville',
+                ville: 'Kankan',
+                code_postal: '24000',
+                pays: 'Guinée-Conakry',
+                nom_responssable: '',
+                prenom_responssable: '',
+                phone_responssable: '',
+                email_responssable: '',
+                pays_responssable: 'Guinée-Conakry'
             }
-            
         ];
     },
 
