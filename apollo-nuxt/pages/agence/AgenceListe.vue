@@ -21,7 +21,7 @@ const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS }
 });
 const submitted = ref(false);
-const  pays = ref([
+const  pays_selected = ref([
     { label: 'GUINEE-CONAKRY', value: 'Guinée-conakry' },
     { label: 'FRANCE', value: 'France' },
 ]);
@@ -47,14 +47,14 @@ function saveAgence() {
 
     if (agence?.value.name?.trim()) {
         if (agence.value.id) {
-            agence.value.status = agence.value.status.value ? agence.value.status.value : agence.value.status;
+            agence.value.pays_selected = agence.value.pays_selected.value ? agence.value.pays_selected.value : agence.value.pays_selected;
             agences.value[findIndexById(agence.value.id)] = agence.value;
             toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence mis à jour', life: 3000 });
         } else {
             agence.value.id = createId();
             agence.value.code = createId();
             agence.value.image = 'agence-placeholder.svg';
-            agence.value.status = agence.value.status ? agence.value.status.value : 'INSTOCK';
+            agence.value.pays_selected = agence.value.pays_selected ? agence.value.pays_selected.value : 'INSTOCK';
             agences.value.push(agence.value);
             toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence Créé', life: 3000 });
         }
@@ -117,8 +117,8 @@ function deleteSelectedAgences() {
     toast.add({ severity: 'success', summary: 'Successful', detail: 'Agences  Supprimé', life: 3000 });
 }
 
-function getStatusLabel(status) {
-    switch (status) {
+function getpays_selectedLabel(pays_selected) {
+    switch (pays_selected) {
         case 'ACTIVÉ':
             return 'success';
 
@@ -192,9 +192,9 @@ function navigateToAgenceCreate() {
                 <Column field="addresse.ville" header="Adresse" sortable style="min-width: 12rem"></Column>
                 <Column field="phone" header="Phone" sortable style="min-width: 12rem"></Column>
                 <!-- <Column field="email" header="Email" sortable style="min-width: 10rem"></Column> -->
-                <Column field="status" header="Status" sortable style="min-width: 12rem">
+                <Column field="pays_selected" header="pays_selected" sortable style="min-width: 12rem">
                     <template #body="slotProps">
-                        <Tag :value="slotProps.data.status" :severity="getStatusLabel(slotProps.data.status)" />
+                        <Tag :value="slotProps.data.pays_selected" :severity="getpays_selectedLabel(slotProps.data.pays_selected)" />
                     </template>
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
@@ -229,8 +229,8 @@ function navigateToAgenceCreate() {
                     <Textarea id="description" v-model="product.description" required="true" rows="3" cols="20" fluid />
                 </div> -->
                 <div>
-                    <label for="status" class="block font-bold mb-3">Pays</label>
-                    <Select id="status" v-model="agence.pays" :options="pays" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <label for="pays_selected" class="block font-bold mb-3">Pays</label>
+                    <Select id="pays_selected" v-model="agence.pays" :options="pays_selected" optionLabel="label" placeholder="Select a pays_selected" fluid></Select>
                     <small v-if="submitted && !agence.pays" class="text-red-500">Le pays est obligatoire.</small>
                 </div>
 
@@ -239,7 +239,7 @@ function navigateToAgenceCreate() {
                     <InputText id="name" v-model.trim="agence.name" required="true" autofocus :invalid="submitted && !agence.name" fluid />
                     <small v-if="submitted && !agence.name" class="text-red-500">L'adresse est obligatoire.</small>
                 </div>
-
+<!-- 
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-6">
                         <label for="price" class="block font-bold mb-3">Code Postal</label>
@@ -251,7 +251,7 @@ function navigateToAgenceCreate() {
                         <InputNumber id="quantity" v-model="agence.quantity" integeronly fluid />
                         <small v-if="submitted && !agence.name" class="text-red-500">La ville est obligatoire.</small>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <template #footer>
@@ -260,6 +260,7 @@ function navigateToAgenceCreate() {
             </template>
         </Dialog>
 
+        <!-- BOITE DE DIALOG -->
         <Dialog v-model:visible="deleteAgenceDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />

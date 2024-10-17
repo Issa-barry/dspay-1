@@ -5,7 +5,7 @@ export const AgenceService = {
                 id: '1000',
                 reference: 'f230fh0g3',
                 nom: 'Ibrahim Diallo',
-                email: 'ibrahim@yahoo.fr',
+                email: 'ibrahim@yahoo.fr', 
                 phone: '+224 666 54 85 62',
                 date: '2015-09-13',
                 description: 'Agence Description',
@@ -15,7 +15,7 @@ export const AgenceService = {
                 status: 'ACTIVÉ',
                 rating: 5,
                 addresse: {
-                    adresse1: 'Centre-ville',
+                    addresse1: 'Centre-ville',
                     ville: 'Kankan université',
                     code_postal: '24000',
                     pays: 'Guinée-Conakry'
@@ -41,7 +41,7 @@ export const AgenceService = {
                 status: 'ATTENTE',
                 rating: 4,
                 addresse: {
-                    adresse1: 'Quartier Aviation',
+                    addresse1: 'Quartier Aviation',
                     ville: 'Conakry',
                     code_postal: '12000',
                     pays: 'Guinée-Conakry'
@@ -67,7 +67,7 @@ export const AgenceService = {
                 status: 'ARCHIVÉ',
                 rating: 5,
                 addresse: {
-                    adresse1: 'Madina Marché',
+                    addresse1: 'Madina Marché',
                     ville: 'Conakry',
                     code_postal: '14000',
                     pays: 'Guinée-Conakry'
@@ -93,7 +93,7 @@ export const AgenceService = {
                 status: 'BLOQUÉ',
                 rating: 3,
                 addresse: {
-                    adresse1: 'Taouyah',
+                    addresse1: 'Taouyah',
                     ville: 'Conakry',
                     code_postal: '23000',
                     pays: 'Guinée-Conakry'
@@ -119,7 +119,7 @@ export const AgenceService = {
                 status: 'ACTIVÉ',
                 rating: 5,
                 addresse: {
-                    adresse1: 'Kaporo',
+                    addresse1: 'Kaporo',
                     ville: 'Conakry',
                     code_postal: '25000',
                     pays: 'Guinée-Conakry'
@@ -145,7 +145,7 @@ export const AgenceService = {
                 status: 'DELOQUÉ',
                 rating: 4,
                 addresse: {
-                    adresse1: 'Lambanyi',
+                    addresse1: 'Lambanyi',
                     ville: 'Conakry',
                     code_postal: '20000',
                     pays: 'Guinée-Conakry'
@@ -171,7 +171,7 @@ export const AgenceService = {
                 status: 'SUPPRIMÉ',
                 rating: 2,
                 addresse: {
-                    adresse1: 'Centre-ville',
+                    addresse1: 'Centre-ville',
                     ville: 'Kankan',
                     code_postal: '24000',
                     pays: 'Guinée-Conakry'
