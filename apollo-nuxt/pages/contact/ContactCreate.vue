@@ -16,11 +16,9 @@ const countries = ref([
 const selectedCountry = ref(null);
 
 const role = ref([
-    { name: 'Agent', code: 'Option 1' },
+    { name: 'Client', code: 'Option 1' },
     { name: 'Admin', code: 'Option 2' },
-    { name: 'Manager', code: 'Option 3' },
     { name: 'Partenaire', code: 'Option 3' },
-    { name: 'SuperAdmin', code: 'Option 3' }
 ]);
 const selectRole = ref(null);
 
@@ -117,14 +115,14 @@ function navigateToContactListe() {
                         <label for="state" class="font-medium text-surface-900 dark:text-surface-0"> Ville </label>
                         <InputText id="state" type="text" fluid />
                     </div>
-                    <!-- <div class="mb-6 col-span-12 md:col-span-6">
+                    <div class="mb-6 col-span-12 md:col-span-6">
                         <label for="country" class="font-medium text-surface-900 dark:text-surface-0"> Role </label>
                         <Select v-model="selectRole" :options="role" optionLabel="name" filter fluid placeholder="Ajouter un role" showClear></Select>
                     </div>
                     <div class="mb-6 col-span-12 md:col-span-6">
                         <label for="country" class="font-medium text-surface-900 dark:text-surface-0"> Agence </label>
                         <Select v-model="selectedAgence" :options="agence" optionLabel="name" filter fluid placeholder="Affecter un agence" showClear></Select>
-                    </div> -->
+                    </div>
                     <div class="col-span-12">
                         <Button class="mt-2 w-auto p-2" severity="secondary" outlined label="Annuler" icon="pi pi-fw pi-arrow-left" @click="navigateToContactListe"></Button> 
                         <Button label="Enregistrer" class="w-auto mt-2 ml-4"></Button>

@@ -1,6 +1,21 @@
 <script setup>
 import { ref } from 'vue';
 
+
+const code = ref('DP-451234');
+const isCodeEditable = ref(false);
+
+// Fonction pour activer l'édition
+function toggleEditCode() {
+    isCodeEditable.value = true;
+}
+
+// Fonction pour valider et désactiver l'édition
+function validateCode() {
+    isCodeEditable.value = false;
+    console.log("Code modifié:", code.value); // Affiche le code modifié dans la console ou faites une autre action si nécessaire
+}
+
 const products = ref([
     {
         name: 'Cotton Sweatshirt',
@@ -29,9 +44,33 @@ const products = ref([
         <div :style="{ height: '3px', background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)' }"></div>
 
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-8">
-            <div class="mb-4 sm:mb-0">
+            <div class="mb-4 sm:mb-0 flex items-center">
                 <span class="font-medium text-xl text-surface-900 dark:text-surface-0 mr-2">Code:</span>
-                <span class="font-medium text-xl text-blue-500">DP-451234</span>
+                <InputText 
+                    v-if="isCodeEditable" 
+                    v-model="code" 
+                    class="font-medium text-xl text-blue-500 mr-2"
+                />
+                <span 
+                    v-else 
+                    class="font-medium text-xl text-blue-500 mr-2"
+                >
+                    {{ code }}
+                </span>
+                <!-- Bouton pour rendre le champ modifiable -->
+                <Button 
+                    icon="pi pi-pencil" 
+                    class="p-button-rounded p-button-secondary mr-2" 
+                    v-if="!isCodeEditable" 
+                    @click="toggleEditCode"
+                />
+                <!-- Bouton pour valider la modification -->
+                <Button 
+                    icon="pi pi-check" 
+                    class="p-button-rounded p-button-success" 
+                    v-if="isCodeEditable" 
+                    @click="validateCode"
+                />
             </div>
             <div>
                 <!-- <Button label="Details" icon="pi pi-list" class="mr-2" outlined></Button> -->
