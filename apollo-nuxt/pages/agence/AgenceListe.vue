@@ -188,9 +188,9 @@ function navigateToAgenceCreate() {
 
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
                 <Column field="reference" header="Reference" sortable style="min-width: 12rem"></Column>
-                <Column field="nom" header="Nom" sortable style="min-width: 12rem"></Column>
-                <Column field="addresse.ville" header="Adresse" sortable style="min-width: 12rem"></Column>
-                <Column field="phone" header="Phone" sortable style="min-width: 12rem"></Column>
+                <Column field="nom" header="Nom-agence" sortable style="min-width: 12rem"></Column>
+                <Column field="addresse" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <Column field="phone" header="Phone" sortable style="min-width: 13rem"></Column>
                 <!-- <Column field="email" header="Email" sortable style="min-width: 10rem"></Column> -->
                 <Column field="status" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
@@ -234,7 +234,7 @@ function navigateToAgenceCreate() {
                 </div> -->
                 <div>
                     <label for="status" class="block font-bold mb-3">Pays</label>
-                    <Select id="status" v-model="agence.status" :options="status" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <Select id="status" v-model="agence.status" :options="status" optionLabel="label" placeholder="Selectionner 1 pays" fluid></Select>
                     <small v-if="submitted && !agence.status" class="text-red-500">Le pays est obligatoire.</small>
                 </div>
 
