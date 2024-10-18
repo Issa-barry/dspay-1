@@ -190,11 +190,18 @@ function getStatusLabel(status) {
             </DataTable>
         </div>
 
+
+
+
+
+
+
+
+
         <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Product Details" :modal="true">
             <div class="flex flex-col gap-6">
-                <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" />
                 <div>
-                    <label for="name" class="block font-bold mb-3">Name</label>
+                    <label for="name" class="block font-bold mb-3">Nom</label>
                     <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
                     <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
                 </div>
@@ -246,6 +253,16 @@ function getStatusLabel(status) {
                 <Button label="Save" icon="pi pi-check" @click="saveProduct" />
             </template>
         </Dialog>
+
+
+
+
+
+
+
+
+
+
 
         <Dialog v-model:visible="deleteProductDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
