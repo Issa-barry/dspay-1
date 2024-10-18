@@ -115,11 +115,27 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'contact-liste2',
+                path: '/contact/liste2',
+                file: '@/pages/contact/ContactListe2.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'Liste2']
+                }
+            });
+            pages.push({
                 name: 'contact-create',
                 path: '/contact/create',
                 file: '@/pages/contact/ContactCreate.vue',
                 meta: {
                     breadcrumb: ['Contact', 'creation']
+                }
+            });
+            pages.push({
+                name: 'contact-create2',
+                path: '/contact/create2',
+                file: '@/pages/contact/ContactCreate2.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'creation 2']
                 }
             });
             pages.push({

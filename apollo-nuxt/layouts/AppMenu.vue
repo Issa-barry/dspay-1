@@ -49,10 +49,15 @@ const model = ref([
                     // }
                 ]
             },
+            // {
+            //     label: 'Contacts',
+            //     icon: 'pi pi-fw pi-users',
+            //     to: '/contact/liste'
+            // },
             {
                 label: 'Contacts',
                 icon: 'pi pi-fw pi-users',
-                to: '/contact/liste'
+                to: '/contact/liste2'
             },
             {
                 label: 'Agences',
