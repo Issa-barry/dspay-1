@@ -67,6 +67,7 @@ function saveProduct() {
 function editProduct(prod) {
     product.value = { ...prod };
     productDialog.value = true;
+    console.log(product.value)
 }
 
 function confirmDeleteProduct(prod) {
@@ -172,10 +173,15 @@ function getStatusLabel(status) {
                     </div>
                 </template>
 
+
+
+
+
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
                 <Column field="code" header="Reference" sortable style="min-width: 12rem"></Column>
                 <Column field="name" header="Nom" sortable style="min-width: 16rem"></Column>
-                <Column field="name" header="Téléphone" sortable style="min-width: 16rem"></Column>
+                <Column field="phone" header="Téléphone" sortable style="min-width: 16rem"></Column>
+                <Column field="test.t1" header="TEST" sortable style="min-width: 16rem"></Column>
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
@@ -203,8 +209,15 @@ function getStatusLabel(status) {
                 <div>
                     <label for="name" class="block font-bold mb-3">Nom</label>
                     <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
+                    <small v-if="submitted && !product.email" class="text-red-500">Name is required.</small>
                 </div>
+
+                <div>
+                    <label for="t" class="block font-bold mb-3">Nom</label>
+                    <InputText id="t" v-model.trim="product.test.pays" required="true" autofocus :invalid="submitted && !product.test.pays" fluid />
+                    <small v-if="submitted && !product.test.pays" class="text-red-500">Name is required.</small>
+                </div>
+
                 <div>
                     <label for="description" class="block font-bold mb-3">Description</label>
                     <Textarea id="description" v-model="product.description" required="true" rows="3" cols="20" fluid />
