@@ -35,13 +35,13 @@ const model = ref([
                     {
                         label: 'Retrait',
                         icon: 'pi pi-fw pi-arrow-down-left',
-                        to: '/transfert/retrait'
+                        to: '/transfert/retrait3'
                     },
-                    {
-                        label: 'Retrait2',
-                        icon: 'pi pi-fw pi-arrow-down-left',
-                        to: '/transfert/retrait2'
-                    },
+                    // {
+                    //     label: 'Retrait2',
+                    //     icon: 'pi pi-fw pi-arrow-down-left',
+                    //     to: '/transfert/retrait2'
+                    // },
                     // {
                     //     label: 'Historique',
                     //     icon: 'pi pi-fw pi-wallet',
@@ -73,14 +73,14 @@ const model = ref([
                 icon: 'pi pi-fw pi-cog',
                 items: [
                     {
-                        label: 'Taux',
+                        label: 'Général',
                         icon: 'pi pi-fw pi-percentage',
                         to:'/parametres/taux/liste'
                     },
                     {
-                        label: 'Devise',
-                        icon: 'pi pi-fw pi-wallet',
-                        to:'/parametres/devise/liste'
+                        label: 'Profile',
+                        icon: 'pi pi-user pi-wallet',
+                        to:'/parametres/profile'
                     }
                 ]
             }

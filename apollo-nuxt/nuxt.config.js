@@ -91,6 +91,14 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'transfert-retrait3',
+                path: '/transfert/retrait3',
+                file: '@/pages/transfert/TransfertRetrait3.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Retrait3']
+                }
+            });
+            pages.push({
                 name: 'agence-liste',
                 path: '/agence/liste',
                 file: '@/pages/agence/AgenceListe.vue',
@@ -166,6 +174,15 @@ export default defineNuxtConfig({
                 name: 'devise-create',
                 path: '/parametres/devise/create',
                 file: '@/pages/parametres/DeviseCreate.vue',
+                meta: {
+                    breadcrumb: ['Devise', 'creation']
+                }
+            });
+
+            pages.push({
+                name: 'profile',
+                path: '/parametres/profile',
+                file: '@/pages/Profile/Profile.vue',
                 meta: {
                     breadcrumb: ['Devise', 'creation']
                 }

@@ -16,7 +16,7 @@ function setSize(val) {
     size.value = val;
 }
 
-function setSelectedImageIndex(index) {
+function setSelectedImageIndex(index) { 
     selectedImageIndex.value = index;
 }
 </script>

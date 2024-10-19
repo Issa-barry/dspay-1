@@ -38,15 +38,15 @@ function setSelectedImageIndex(index) {
          
         <Tabs value="0">
             <TabList>
-                <Tab value="0">Taux</Tab>
-                <Tab value="1">Devise</Tab>
-                <Tab value="2">Notification</Tab>
+                <Tab value="0">Informations</Tab>
+                <Tab value="1">Adresse</Tab>
+                <Tab value="2">Authentification</Tab>
             </TabList>
             <TabPanels>
                 <TabPanel value="0">
                     <div class="flex flex-auto justify-between ">
                         <div class="col-span-12 lg:col-span-6  text-surface-900 dark:text-surface-0 font-bold text-3xl mb-6 mt-2">
-                             Gestion
+                             Informations
                         </div>
                         <div class="col-span-12 lg:col-span-6">
                             <Button label="Sauvegarder" :fluid="false"></Button> 
