@@ -146,6 +146,10 @@ function getStatusLabel(status) {
 function navigateToAgenceCreate() {
     router.push({ name: 'agence-create' });
 }
+
+function navigateToAgenceShow(){
+    router.push({name: 'agence-show'})
+}
 </script>
 
 <template>
@@ -200,7 +204,8 @@ function navigateToAgenceCreate() {
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
                         <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editAgence(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteAgence(slotProps.data)" />
+                        <Button icon="pi pi-eye" outlined rounded severity="danger" @click="navigateToAgenceShow" />
+                        <!-- <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteAgence(slotProps.data)" /> -->
                     </template>
                 </Column>
             </DataTable>

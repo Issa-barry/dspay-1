@@ -115,6 +115,22 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'agence-show',
+                path: '/agence/show',
+                file: '@/pages/agence/AgenceShow.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'Détaille']
+                }
+            });
+            pages.push({
+                name: 'agence-edite',
+                path: '/agence/edite',
+                file: '@/pages/agence/AgenceEdite.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'Modification']
+                }
+            });
+            pages.push({
                 name: 'contact-liste',
                 path: '/contact/liste',
                 file: '@/pages/contact/ContactListe.vue',

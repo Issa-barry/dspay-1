@@ -257,10 +257,8 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 <Chart type="pie" :data="pieData" :height="300" :options="pieOptions"></Chart>
             </div>
         </div>
-        
-     
-        
-        <div class="col-span-12 lg:col-span-5">
+
+        <div class="col-span-12 lg:col-span-9">
             <div class="card h-full">
                 <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agent</div>
                 <ul class="list-none p-0 m-0">
