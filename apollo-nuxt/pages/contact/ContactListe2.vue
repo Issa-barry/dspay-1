@@ -1,30 +1,47 @@
 <script setup>
-import { ProductService } from '../../service/ProductService';
+import { ContactService } from '../../service/ContactService';
 import { FilterMatchMode } from '@primevue/core/api';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
 
 onMounted(() => {
-    ProductService.getProducts().then((data) => (products.value = data));
+    ContactService.getContacts().then((data) => (products.value = data));
 });
 
 const toast = useToast();
 const dt = ref();
 const products = ref();
 const productDialog = ref(false);
-const deleteProductDialog = ref(false);
-const deleteProductsDialog = ref(false);
-const product = ref({});
-const selectedProducts = ref();
+const deleteContactDialog = ref(false);
+const deleteContactsDialog = ref(false);
+const contact = ref({});
+const selectedContacts = ref();
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS }
 });
+const inviteDialog = ref(false);
 const submitted = ref(false);
+
+
 const statuses = ref([
-    { label: 'INSTOCK', value: 'instock' },
-    { label: 'LOWSTOCK', value: 'lowstock' },
-    { label: 'OUTOFSTOCK', value: 'outofstock' }
+    { label: 'FRANCE', value: 'France' },
+    { label: 'Guinée-Conakry', value: 'Guinée-Conakry' },
 ]);
+
+const selecttedRole = ref([
+    { label: 'PARTENAIRE', value: 'Partenaire' },
+    { label: 'CLIENT', value: 'Client' },
+    { label: 'Admin', value: 'Admin' },
+    
+]);
+
+
+const role = ref([
+    { label: 'Client', value: 'Client' },
+    { label: 'Partenaire', value: 'Partenaire' },
+    { label: 'Admin', value: 'Admin' },
+]);
+
 
 function formatCurrency(value) {
     if (value) return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -32,7 +49,7 @@ function formatCurrency(value) {
 }
 
 function openNew() {
-    product.value = {};
+    contact.value = {};
     submitted.value = false;
     productDialog.value = true;
 }
@@ -42,45 +59,62 @@ function hideDialog() {
     submitted.value = false;
 }
 
-function saveProduct() {
+function openNewInvite() {
+    contact.value = {};
+    submitted.value = false;
+    inviteDialog.value = true;
+}
+
+function inviteContact() {
+    inviteDialog.value = false;
+    toast.add({ severity: 'success', summary: 'Succés', detail: 'Invitation envoyé', life: 3000 });
+}
+
+
+function hideDialogInvite() {
+    inviteDialog.value = false;
+    submitted.value = false;
+}
+
+function saveContact() {
     submitted.value = true;
 
-    if (product?.value.name?.trim()) {
-        if (product.value.id) {
-            product.value.inventoryStatus = product.value.inventoryStatus.value ? product.value.inventoryStatus.value : product.value.inventoryStatus;
-            products.value[findIndexById(product.value.id)] = product.value;
-            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+    if (contact?.value.name?.trim()) {
+        if (contact.value.id) {
+            contact.value.inventoryStatus = contact.value.inventoryStatus.value ? contact.value.inventoryStatus.value : contact.value.inventoryStatus;
+            products.value[findIndexById(contact.value.id)] = contact.value;
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Contact Updated', life: 3000 });
         } else {
-            product.value.id = createId();
-            product.value.code = createId();
-            product.value.image = 'product-placeholder.svg';
-            product.value.inventoryStatus = product.value.inventoryStatus ? product.value.inventoryStatus.value : 'INSTOCK';
-            products.value.push(product.value);
-            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+            contact.value.id = createId();
+            contact.value.code = createId();
+            contact.value.image = 'contact-placeholder.svg';
+            contact.value.inventoryStatus = contact.value.inventoryStatus ? contact.value.inventoryStatus.value : 'INSTOCK';
+            products.value.push(contact.value);
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Contact Created', life: 3000 });
         }
 
         productDialog.value = false;
-        product.value = {};
+        contact.value = {};
     }
 }
 
-function editProduct(prod) {
-    product.value = { ...prod };
+function editContact(prod) {
+    contact.value = { ...prod };
     productDialog.value = true;
-    console.log(product.value)
 }
 
-function confirmDeleteProduct(prod) {
-    product.value = prod;
-    deleteProductDialog.value = true;
+function confirmDeleteContact(prod) {
+    contact.value = prod;
+    deleteContactDialog.value = true;
 }
 
-function deleteProduct() {
-    products.value = products.value.filter((val) => val.id !== product.value.id);
-    deleteProductDialog.value = false;
-    product.value = {};
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+function deleteContact() {
+    products.value = products.value.filter((val) => val.id !== contact.value.id);
+    deleteContactDialog.value = false;
+    contact.value = {};
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Contact Deleted', life: 3000 });
 }
+
 
 function findIndexById(id) {
     let index = -1;
@@ -108,14 +142,14 @@ function exportCSV() {
 }
 
 function confirmDeleteSelected() {
-    deleteProductsDialog.value = true;
+    deleteContactsDialog.value = true;
 }
 
-function deleteSelectedProducts() {
-    products.value = products.value.filter((val) => !selectedProducts.value.includes(val));
-    deleteProductsDialog.value = false;
-    selectedProducts.value = null;
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+function deleteSelectedContacts() {
+    products.value = products.value.filter((val) => !selectedContacts.value.includes(val));
+    deleteContactsDialog.value = false;
+    selectedContacts.value = null;
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Contacts Deleted', life: 3000 });
 }
 
 function getStatusLabel(status) {
@@ -141,7 +175,8 @@ function getStatusLabel(status) {
             <Toolbar class="mb-6">
                 <template #start>
                     <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
-                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
+                    <Button label="Inviter" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNewInvite" />
+                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedContacts || !selectedContacts.length" />
                 </template>
 
                 <template #end>
@@ -151,7 +186,7 @@ function getStatusLabel(status) {
 
             <DataTable
                 ref="dt"
-                v-model:selection="selectedProducts"
+                v-model:selection="selectedContacts"
                 :value="products"
                 dataKey="id"
                 :paginator="true"
@@ -163,7 +198,7 @@ function getStatusLabel(status) {
             >
                 <template #header>
                     <div class="flex flex-wrap gap-2 items-center justify-between">
-                        <h4 class="m-0">Gestion de contact</h4>
+                        <h4 class="m-0">Gestion Contacts</h4>
                         <IconField>
                             <InputIcon>
                                 <i class="pi pi-search" />
@@ -173,15 +208,15 @@ function getStatusLabel(status) {
                     </div>
                 </template>
 
-
-
-
-
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
                 <Column field="code" header="Reference" sortable style="min-width: 12rem"></Column>
-                <Column field="name" header="Nom" sortable style="min-width: 16rem"></Column>
-                <Column field="phone" header="Téléphone" sortable style="min-width: 16rem"></Column>
-                <Column field="test.t1" header="TEST" sortable style="min-width: 16rem"></Column>
+                <Column field="name" header="Name" sortable style="min-width: 16rem"></Column>
+                <Column field="phone" header="Phone" sortable style="min-width: 16rem"></Column>
+                <!-- <Column field="role" header="Role" sortable style="min-width: 12rem">
+                    <template #body="slotProps">
+                        <Tag :value="slotProps.data.role" :severity="getStatusLabel(slotProps.data.role)" />
+                    </template>
+                </Column> -->
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
@@ -189,8 +224,8 @@ function getStatusLabel(status) {
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
-                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
+                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editContact(slotProps.data)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteContact(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
@@ -203,67 +238,85 @@ function getStatusLabel(status) {
 
 
 
-
-        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Product Details" :modal="true">
+        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Contact Details" :modal="true">
             <div class="flex flex-col gap-6">
                 <div>
-                    <label for="name" class="block font-bold mb-3">Nom</label>
-                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.email" class="text-red-500">Name is required.</small>
+                    <label for="nom" class="block font-bold mb-3">Nom</label>
+                    <InputText id="nom" v-model.trim="contact.nom" required="true" autofocus :invalid="submitted && !contact.nom" fluid />
+                    <small v-if="submitted && !contact.nom" class="text-red-500">Nom is required.</small>
                 </div>
 
                 <div>
-                    <label for="t" class="block font-bold mb-3">Nom</label>
-                    <InputText id="t" v-model.trim="product.test.pays" required="true" autofocus :invalid="submitted && !product.test.pays" fluid />
-                    <small v-if="submitted && !product.test.pays" class="text-red-500">Name is required.</small>
+                    <label for="prenom" class="block font-bold mb-3">Prenom</label>
+                    <InputText id="prenom" v-model.trim="contact.prenom" required="true" autofocus :invalid="submitted && !contact.prenom" fluid />
+                    <small v-if="submitted && !contact.prenom" class="text-red-500">prenom is required.</small>
                 </div>
 
                 <div>
-                    <label for="description" class="block font-bold mb-3">Description</label>
-                    <Textarea id="description" v-model="product.description" required="true" rows="3" cols="20" fluid />
-                </div>
-                <div>
-                    <label for="inventoryStatus" class="block font-bold mb-3">Inventory Status</label>
-                    <Select id="inventoryStatus" v-model="product.inventoryStatus" :options="statuses" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <label for="phone" class="block font-bold mb-3">Téléphone</label>
+                    <InputText id="phone" v-model.trim="contact.phone" required="true" autofocus :invalid="submitted && !contact.phone" fluid />
+                    <small v-if="submitted && !contact.phone" class="text-red-500">phone is required.</small>
                 </div>
 
                 <div>
-                    <span class="block font-bold mb-4">Category</span>
-                    <div class="grid grid-cols-12 gap-4">
-                        <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category1" v-model="product.category" name="category" value="Accessories" />
-                            <label for="category1">Accessories</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category2" v-model="product.category" name="category" value="Clothing" />
-                            <label for="category2">Clothing</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category3" v-model="product.category" name="category" value="Electronics" />
-                            <label for="category3">Electronics</label>
-                        </div>
-                        <div class="flex items-center gap-2 col-span-6">
-                            <RadioButton id="category4" v-model="product.category" name="category" value="Fitness" />
-                            <label for="category4">Fitness</label>
-                        </div>
-                    </div>
+                    <label for="email" class="block font-bold mb-3">Email</label>
+                    <InputText id="email" v-model.trim="contact.email" required="true" autofocus :invalid="submitted && !contact.email" fluid />
+                    <small v-if="submitted && !contact.email" class="text-red-500">Email is required.</small>
+                </div>
+
+                <div>
+                    <label for="inventoryStatus" class="block font-bold mb-3">Pays</label>
+                    <Select id="inventoryStatus" v-model="contact.inventoryStatus" :options="statuses" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <small v-if="submitted && !contact.inventoryStatus" class="text-red-500">Pays is required.</small>
+                </div>
+
+                <div>
+                    <label for="email" class="block font-bold mb-3">Adresse</label>
+                    <InputText id="email" v-model.trim="contact.address" required="true" autofocus :invalid="submitted && !contact.address" fluid />
+                    <small v-if="submitted && !contact.address" class="text-red-500">address is required.</small>
                 </div>
 
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-6">
-                        <label for="price" class="block font-bold mb-3">Price</label>
-                        <InputNumber id="price" v-model="product.price" mode="currency" currency="USD" locale="en-US" fluid />
+                        <label for="code_postal" class="block font-bold mb-3">Code Postal</label>
+                        <InputNumber id="code_postal" v-model="contact.code_postal" fluid />
+                        <small v-if="submitted && !contact.code_postal" class="text-red-500">code_postal is required.</small>
                     </div>
                     <div class="col-span-6">
-                        <label for="quantity" class="block font-bold mb-3">Quantity</label>
-                        <InputNumber id="quantity" v-model="product.quantity" integeronly fluid />
+                        <label for="ville" class="block font-bold mb-3">Ville</label>
+                        <InputText id="ville" v-model="contact.ville" integeronly fluid />
+                        <small v-if="submitted && !contact.ville" class="text-red-500">Ville is required.</small>
                     </div>
+                </div>
+                <div>
+                    <label for="inventoryStatus" class="block font-bold mb-3">Role</label>
+                    <Select id="inventoryStatus" v-model="contact.role" :options="selecttedRole" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <small v-if="submitted && !contact.role" class="text-red-500">Pays is required.</small>
                 </div>
             </div>
 
             <template #footer>
                 <Button label="Cancel" icon="pi pi-times" text @click="hideDialog" />
-                <Button label="Save" icon="pi pi-check" @click="saveProduct" />
+                <Button label="Save" icon="pi pi-check" @click="saveContact" />
+            </template>
+        </Dialog>
+
+
+
+
+        <Dialog v-model:visible="inviteDialog" :style="{ width: '450px' }" header="Contact Details" :modal="true">
+            <div class="flex flex-col gap-6">
+                <div>
+                    <label for="email" class="block font-bold mb-3">Email</label>
+                    <InputText id="email" v-model.trim="contact.email" required="true" autofocus :invalid="submitted && !contact.email" fluid />
+                    <small v-if="submitted && !contact.email" class="text-red-500">Email is required.</small>
+                </div>
+
+            </div>
+
+            <template #footer>
+                <Button label="Annuler" icon="pi pi-times" text @click="hideDialogInvite" />
+                <Button label="Envoyer" icon="pi pi-check" @click="inviteContact" />
             </template>
         </Dialog>
 
@@ -272,33 +325,28 @@ function getStatusLabel(status) {
 
 
 
-
-
-
-
-
-        <Dialog v-model:visible="deleteProductDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+        <Dialog v-model:visible="deleteContactDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product"
-                    >Are you sure you want to delete <b>{{ product.name }}</b
+                <span v-if="contact"
+                    >Are you sure you want to delete <b>{{ contact.name }}</b
                     >?</span
                 >
             </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductDialog = false" />
-                <Button label="Yes" icon="pi pi-check" @click="deleteProduct" />
+                <Button label="No" icon="pi pi-times" text @click="deleteContactDialog = false" />
+                <Button label="Yes" icon="pi pi-check" @click="deleteContact" />
             </template>
         </Dialog>
 
-        <Dialog v-model:visible="deleteProductsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
+        <Dialog v-model:visible="deleteContactsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product">Are you sure you want to delete the selected products?</span>
+                <span v-if="contact">Are you sure you want to delete the selected products?</span>
             </div>
             <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductsDialog = false" />
-                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedProducts" />
+                <Button label="No" icon="pi pi-times" text @click="deleteContactsDialog = false" />
+                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedContacts" />
             </template>
         </Dialog>
     </div>

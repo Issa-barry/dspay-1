@@ -5,6 +5,8 @@ export const ContactService = {
                 id: '1000',
                 code: 'f230fh0g3',
                 name: 'Ibrahim Diallo',
+                nom : 'BARRY',
+                prenom:'Ibrahim',
                 description: 'Contact Description',
                 image: 'bamboo-watch.jpg',
                 price: 6547854,
@@ -15,9 +17,10 @@ export const ContactService = {
                 email: 'ibrahim@yahoo.fr',
                 phone: '+224 66 54 85 62',
                 address: 'Dogomet-Centre',
-                test: {
-                    pays: 'test1',
-                 }, 
+                ville: 'Kankan université',
+                code_postal: '24000',
+                pays: 'Guinée-Conakry', 
+                role:'Client'
             },
             { 
                 id: '1000',
@@ -32,10 +35,11 @@ export const ContactService = {
                 rating: 5,
                 email: 'ibrahim@yahoo.fr',
                 phone: '+224 66 54 85 62',
-                address: 'Dogomet-Centre',
-                test: {
-                    pays: 'RomeoL',
-                 }, 
+                address: 'Kankan université',
+                ville: 'Kankan',
+                code_postal: '24000',
+                pays: 'Guinée-Conakry', 
+                role:'Client'
             },
             {
                 id: '1001',
@@ -50,7 +54,11 @@ export const ContactService = {
                 rating: 4,
                 email: 'moussa@yahoo.fr',
                 phone: '+224 622 34 56 78',
-                address: 'Dabola Hamdallaye'
+                address: 'Dabola Hamdallaye',
+                ville: 'Dabola',
+                code_postal: '24000',
+                pays: 'Guinée-Conakry', 
+                role:'Admin'
             },
             {
                 id: '1002',

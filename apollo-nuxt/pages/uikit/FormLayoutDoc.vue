@@ -68,7 +68,7 @@ const dropdownItem = ref(null);
                             <label for="firstname1" class="sr-only">Firstname</label>
                             <InputText id="firstname1" type="text" placeholder="Firstname" />
                         </div>
-                        <div>
+                        <div> 
                             <label for="lastname1" class="sr-only">Lastname</label>
                             <InputText id="lastname1" type="text" placeholder="Lastname" />
                         </div>
