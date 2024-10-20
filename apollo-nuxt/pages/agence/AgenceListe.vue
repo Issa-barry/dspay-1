@@ -3,7 +3,7 @@ import { AgenceService } from '../../service/AgenceService';
 import { FilterMatchMode } from '@primevue/core/api';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
-const router = useRouter();
+const router = useRouter();  
 
 onMounted(() => {
     AgenceService.getAgences().then((data) => (agences.value = data));

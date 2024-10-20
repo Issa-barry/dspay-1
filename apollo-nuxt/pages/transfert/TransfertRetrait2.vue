@@ -20,7 +20,7 @@ const products = ref([
     }
 ]);
 </script>
-
+ 
 <template>
     <div class="card">
          <div class="text-surface-900 dark:text-surface-0 font-bold text-4xl my-2">DSPAY-Ticket🚀</div>

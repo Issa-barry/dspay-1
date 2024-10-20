@@ -13,7 +13,8 @@ export default defineNuxtConfig({
             ]
         }
     },
-    modules: ['@primevue/nuxt-module', '@nuxtjs/tailwindcss'],
+    modules: ['@primevue/nuxt-module', '@nuxtjs/tailwindcss',],
+     
     primevue: {
         options: {
             theme: {
@@ -200,7 +201,40 @@ export default defineNuxtConfig({
                 path: '/parametres/profile',
                 file: '@/pages/Profile/Profile.vue',
                 meta: {
-                    breadcrumb: ['Devise', 'creation']
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-encaissement',
+                path: '/facturation/encaissement',
+                file: '@/pages/Facturation/encaissement/Encaissement.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-rembourssement',
+                path: '/facturation/rembourssement',
+                file: '@/pages/Facturation/rembourssement/Rembourssement.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-liste',
+                path: '/facturation/liste',
+                file: '@/pages/Facturation/facture/FactureListe.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'Liste']
+                }
+            });
+
+            pages.push({
+                name: 'facturation-facture-detail',
+                path: '/facturation/facture/detail',
+                file: '@/pages/Facturation/facture/FactureDetail.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'Detaille']
                 }
             });
 
@@ -527,5 +561,7 @@ export default defineNuxtConfig({
         quill: process.dev ? 'quill/dist/quill.js' : 'quill'
     },
     css: ['@/assets/styles.scss', '@/assets/tailwind.css', 'primeicons/primeicons.css'],
-    devtools: { enabled: false }
+    devtools: { enabled: false },
+
+   
 });

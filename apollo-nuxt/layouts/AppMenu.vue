@@ -36,24 +36,30 @@ const model = ref([
                         label: 'Retrait',
                         icon: 'pi pi-fw pi-arrow-down-left',
                         to: '/transfert/retrait3'
-                    },
-                    // {
-                    //     label: 'Retrait2',
-                    //     icon: 'pi pi-fw pi-arrow-down-left',
-                    //     to: '/transfert/retrait2'
-                    // },
-                    // {
-                    //     label: 'Historique',
-                    //     icon: 'pi pi-fw pi-wallet',
-                    //     to: '/transfert/historique'
-                    // }
+                    }, 
                 ]
             },
-            // {
-            //     label: 'Contacts',
-            //     icon: 'pi pi-fw pi-users',
-            //     to: '/contact/liste'
-            // },
+            {
+                label: 'Facturation',
+                icon: 'pi pi-fw pi-calculator',
+                items: [
+                    {
+                        label: 'Liste',
+                        icon: 'pi pi-fw pi-credit-card',
+                        to: '/facturation/liste'
+                    },
+                    {
+                        label: 'Encaissement',
+                        icon: 'pi pi-fw pi-credit-card',
+                        to: '/facturation/encaissement'
+                    },
+                    {
+                        label: 'Rembourssement',
+                        icon: 'pi  pi-wallet',
+                        to:'/facturation/rembourssement'
+                    }, 
+                ]
+            },
             {
                 label: 'Contacts',
                 icon: 'pi pi-fw pi-users',
@@ -63,7 +69,8 @@ const model = ref([
                 label: 'Agences',
                 icon: 'pi pi-fw pi-map-marker',
                 to: '/agence/liste'
-            },
+            }, 
+            
         ]
     },
     {

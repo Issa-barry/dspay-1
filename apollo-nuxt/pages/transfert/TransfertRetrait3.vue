@@ -25,7 +25,7 @@ function navigateToTransfertListe() {
 <template>
     <div class="card">
         <div class="grid grid-cols-12 gap-4 grid-nogutter">
-            <div class="col-span-12 px-6 mt-6 md:mt-12 md:px-12">
+            <div class="col-span-12 px-2 mt-0 md:mt-6 md:px-12">
                 <span class="text-surface-900 dark:text-surface-0 block font-bold text-xl">Retrait</span>
             </div>
             <div class="col-span-12 lg:col-span-6 h-full px-6 py-6 md:px-12"> 
@@ -43,8 +43,14 @@ function navigateToTransfertListe() {
             </div>
 
             <div class="col-span-12 lg:col-span-6 px-6 py-6 md:px-12">
-                <div class="pb-4 border-surface-200 dark:border-surface-700">
+                <!-- <div class="pb-4 border-surface-200 dark:border-surface-700">
                     <span class="text-surface-900 dark:text-surface-0 font-medium text-xl">Informations de retrait</span>
+                </div> -->
+                <div class="text-surface-900 dark:text-surface-0 font-bold text-4xl my-2">Ticket</div>
+                <div :style="{ height: '3px', background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)' }"></div>
+                <div class="mb-4 mt-6 sm:mb-0">
+                    <span class="font-medium text-xl text-surface-900 dark:text-surface-0 mr-2">Code:</span>
+                    <span class="font-medium text-xl text-blue-500">DP-451234</span>
                 </div>
                 <!-- <div class="flex flex-col lg:flex-row flex-wrap lg:items-center py-2 mt-4 border-surface-200 dark:border-surface-700">
                     <div class="flex-auto lg:ml-4">
@@ -89,7 +95,7 @@ function navigateToTransfertListe() {
               
  
                     <div class="grid grid-cols-12 gap-4"> 
-                        <div class="col-span-12 flex flex-col lg:flex-row justify-center items-center lg:justify-end my-12">
+                        <div class="col-span-12 flex flex-col lg:flex-row justify-center items-center lg:justify-end my-8">
                              <Button class="w-full   order-1 lg:order-2" label="Valider" icon="pi pi-fw pi-check"></Button>
                         </div>
                     </div> 

@@ -188,62 +188,80 @@ watch(
             </div>
         </div> -->
 
-        <div class="col-span-12 xl:col-span-4">
+        <!-- <div class="col-span-12 xl:col-span-4">
             <div class="card">
                 <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Recent Transactions</div>
                 <ul class="list-none p-0 m-0">
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/airbnb.png" class="w-12 flex-shrink-0 mr-4" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Airbnb</span>
-                            <span>05/23/2022</span>
+                         <div class="flex flex-col">
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Aminata DIALLO</span>
+                            <span>GNF 12 350548</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">GNF 250 000</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 04/12/2022 </span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Amazon</span>
-                            <span>04/12/2022</span>
+                         <div class="flex flex-col">
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Oumar SOW</span>
+                            <span>GNF 12 350548</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">GNF 50 150</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 04/12/2022 </span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/nike.svg" class="w-12 flex-shrink-0 mr-4 rounded-full" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Nike Store</span>
-                            <span>04/29/2022</span>
+                         <div class="flex flex-col">
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Mamadou alpha SIDIBE</span>
+                            <span>GNF 12 350548</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">GNF 60 800</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 04/12/2022 </span>
                     </li>
                     <li class="flex items-center p-4 mb-4 border-b border-surface-200 dark:border-surface-700">
-                        <img alt="brands" src="/demo/images/banking/starbucks.svg" class="w-12 flex-shrink-0 mr-4" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Starbucks</span>
-                            <span>04/15/2022</span>
+                         <div class="flex flex-col">
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Mody hamidou</span>
+                            <span>GNF 12 350548</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">GNF 15 924</span>
+                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold"> 24/11/2024 </span>
                     </li>
                     <li class="flex items-center p-4 mb-4">
-                        <img alt="brands" src="/demo/images/banking/amazon.png" class="w-12 flex-shrink-0 mr-4" />
-                        <div class="flex flex-col">
-                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Amazon</span>
-                            <span>04/12/2022</span>
+                         <div class="flex flex-col">
+                            <span class="text-xl font-medium text-surface-900 dark:text-surface-0 mb-1">Yayé Salé</span>
+                            <span>GNF 12 350548</span>
                         </div>
-                        <span class="text-xl text-surface-900 dark:text-surface-0 ml-auto font-semibold">GNF 12 350</span>
+                        <span class="text-xl text-surface-00 dark:text-surface-0 ml-auto font-semibold"> 04/12/2022 </span>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="col-span-12 xl:col-span-8">
+        </div> -->
+        <div class="col-span-12 xl:col-span-6">
             <div class="card h-full">
                 <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Overview</div>
                 <Chart type="line" :data="chartData" :options="chartOptions"></Chart>
             </div>
         </div>
+        
+        <div class="col-span-12 lg:col-span-6">
+            <div class="card">
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Payments</div>
+
+                <DataTable ref="dt" :value="payments" dataKey="id" :rows="5">
+                    <template #empty> No products found.</template>
+                    <Column field="name" header="Name" class="whitespace-nowrap w-4/12"> </Column>
+                    <Column field="price" header="Amount" class="whitespace-nowrap w-4/12">
+                        <template #body="{ data }">
+                            {{ formatCurrency(data.amount) }}
+                        </template>
+                    </Column>
+                    <Column field="date" header="Date" class="whitespace-nowrap w-4/12"> </Column>
+                    <Column field="inventoryStatus" header="Status" class="whitespace-nowrap w-4/12 text-right">
+                        <template #body="{ data }">
+                            <Tag v-if="data.paid" value="COMPLETED" severity="success"></Tag>
+                            <Tag v-else value="PENDING" severity="warn"></Tag>
+                        </template>
+                    </Column>
+                </DataTable>
+            </div>
+        </div>
 
         <div class="col-span-12 lg:col-span-6">
-            <div class="card h-full">
+            <!-- <div class="card h-full">
                 <div class="flex items-center justify-between mb-4">
                     <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Recent Transactions</div>
                     <Button type="button" icon="pi pi-plus" label="Add New" size="small" outlined></Button>
@@ -285,30 +303,8 @@ watch(
                     <InputNumber type="text" :value="price" mode="currency" currency="USD" locale="en-US" fluid></InputNumber>
                     <Button type="button" label="Send"></Button>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-span-12 lg:col-span-6">
-            <div class="card">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Monthly Payments</div>
-
-                <DataTable ref="dt" :value="payments" dataKey="id" :rows="5">
-                    <template #empty> No products found.</template>
-                    <Column field="name" header="Name" class="whitespace-nowrap w-4/12"> </Column>
-                    <Column field="price" header="Amount" class="whitespace-nowrap w-4/12">
-                        <template #body="{ data }">
-                            {{ formatCurrency(data.amount) }}
-                        </template>
-                    </Column>
-                    <Column field="date" header="Date" class="whitespace-nowrap w-4/12"> </Column>
-                    <Column field="inventoryStatus" header="Status" class="whitespace-nowrap w-4/12 text-right">
-                        <template #body="{ data }">
-                            <Tag v-if="data.paid" value="COMPLETED" severity="success"></Tag>
-                            <Tag v-else value="PENDING" severity="warn"></Tag>
-                        </template>
-                    </Column>
-                </DataTable>
-            </div>
+            </div> -->
+            
         </div>
     </div>
 </template>
