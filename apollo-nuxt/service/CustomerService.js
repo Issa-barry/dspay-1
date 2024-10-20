@@ -16,7 +16,7 @@ export const CustomerService = {
                 representative: {
                     name: 'Elhadj Oumar TALL',
                     image: 'ionibowcher.png'
-                },
+                }, 
                 balance: 70663
             },
             {

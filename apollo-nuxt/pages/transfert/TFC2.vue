@@ -58,7 +58,6 @@ function valider() {
     showPopup.value = true; // Afficher la pop-up
 }
 </script>
-
 <template>
     <Fluid>
         <div class="flex flex-col md:flex-row gap-8">
@@ -74,7 +73,7 @@ function valider() {
                         </div>
                         <div class="flex flex-wrap gap-2 w-full">
                             <label for="montantGNF">Montant en GNF</label>
-                            <InputText id="montantGNF" :value="montantGNF" type="text"  />
+                            <InputText id="montantGNF" :value="montantGNF" type="text" />
                         </div>
                     </div>
 
@@ -126,93 +125,67 @@ function valider() {
             <!-- Section récapitulative -->
             <div class="md:w-1/2">
                 <div class="card p-4">
-                    <h2 class="font-semibold text-xl mb-4">Récapitulatif des informations</h2>
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Montant en € :</span>
-                        <span>€ {{ montantEuro }}</span>
-                    </div>
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Montant en GNF :</span>
-                        <span>GNF {{ montantGNF }} </span>
-                    </div>
+                    <div class="text-surface-900 dark:text-surface-0 font-bold text-4xl my-2">DSPAY-Ticket🚀</div>
+                    <div :style="{ height: '3px', background: 'linear-gradient(90deg, var(--primary-color) 0%, rgba(33, 150, 243, 0) 50%)' }"></div>
 
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Beneficiaire:</span>
-                        <span> {{ receveurNom }}  {{ receveurPrenom }} </span>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-8">
+                        <div class="mb-4 sm:mb-0">
+                            <span class="font-medium text-xl text-surface-900 dark:text-surface-0 mr-2">Code:</span>
+                            <span class="font-medium text-xl text-blue-500">{{ randomCode }}</span>
+                        </div>
+                        <div> 
+                            <Button label="Print" icon="pi pi-print" outlined></Button>
+                        </div>
                     </div>
 
-                    <!-- <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">TVA ({{ tva }}%) :</span>
-                        <span>{{ montantTVA }} €</span>
-                    </div> -->
+                    <div class="rounded border-surface-200 dark:border-surface-700 border p-4">
+                        <div class="flex flex-wrap mt-8 pb-4">
+                            <div class="w-full lg:w-6/12 pl-4">
+                                <span class="font-medium text-surface-900 dark:text-surface-0">Receveur</span>
+                                <div class="flex flex-col text-surface-900 dark:text-surface-0 mt-4 mb-8">
+                                    <span class="mb-1">{{ receveurNom }} {{ receveurPrenom }}</span>
+                                    <span class="mb-1">{{ receveurTel }}</span>
+                                </div>
 
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Frais :</span>
-                        <span>{{ frais }} €</span>
+                                <span class="font-medium text-surface-900 dark:text-surface-0">Agence</span>
+                                <div class="flex items-center mt-4">
+                                    <div class="flex flex-col">
+                                        <span class="text-surface-900 dark:text-surface-0 mb-1">Nongo</span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium">621 58 74 69</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full lg:w-6/12 pl-4 lg:pl-0 lg:pr-4 flex items-end mt-8 lg:mt-0">
+                                <ul class="list-none p-0 m-0 w-full">
+                                    <li class="mb-4">
+                                        <span class="font-medium text-surface-900 dark:text-surface-0">Expediteur</span>
+                                    </li>
+                                    <li class="flex justify-between mb-4">
+                                        <span class="text-surface-900 dark:text-surface-0">Nom complet </span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium text-lg">{{ expediteurNom }} {{ expediteurPrenom }}</span>
+                                    </li>
+                                    <li class="flex justify-between mb-4">
+                                        <span class="text-surface-900 dark:text-surface-0">Telephone</span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium text-lg">{{ expediteurTel }}</span>
+                                    </li>
+                                    <li class="flex justify-between mb-4">
+                                        <span class="text-surface-900 dark:text-surface-0">Montant envoyé</span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium text-lg">€ {{ montantEuro }}</span>
+                                    </li>
+                                    <li class="flex justify-between mb-4">
+                                        <span class="text-surface-900 dark:text-surface-0">Frais</span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium text-lg">€ {{ frais }}</span>
+                                    </li>
+                                    <li class="flex justify-between border-t border-surface-200 dark:border-surface-700 py-4">
+                                        <span class="text-surface-900 dark:text-surface-0 font-medium">Total</span>
+                                        <span class="text-surface-900 dark:text-surface-0 font-bold text-lg">€ {{ totalAvecFrais }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Payer les frais :</span>
-                        <InputSwitch v-model="payerFrais" />
-                    </div>
-
-
-                    <div class="mb-4 flex justify-between">
-                        <span class="font-semibold">Total à payer :</span>
-                        <span>{{ totalAvecFrais }} €</span>
-                    </div>
-
-                    <Button label="Valider" class="p-button-success mt-4" @click="valider" />
                 </div>
             </div>
         </div>
-
-        <!-- Pop-up pour afficher le récapitulatif final et le code aléatoire -->
-        <Dialog header="Ticket" v-model:visible="showPopup" modal style="width: 50vw;">
-            <!-- Informations de l'expéditeur -->
-            <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Expéditeur :</span>
-                <span>{{ expediteurNom }} {{ expediteurPrenom }}</span>
-            </div>
-            
-            <!-- Informations du receveur -->
-            <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Receveur :</span>
-                <!-- <span>{{ receveurTel }}</span> -->
-                <div>{{ receveurNom }} {{ receveurPrenom }}</div>
-            </div>
-
-            <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Telephone Receveur :</span>
-                <span>{{ receveurTel }}</span> 
-            </div>
-
-            <!-- Autres informations -->
-            <!-- <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Montant en € :</span>
-                <span>{{ montantEuro }}</span>
-            </div> -->
-            <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Montant à recuperer en GNF :</span>
-                <span>{{ montantGNF }}</span>
-            </div>
-            <!-- <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Frais :</span>
-                <span>{{ frais }} €</span>
-            </div> -->
-            <!-- <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Payer les frais :</span>
-                <span>{{ payerFrais ? 'Oui' : 'Non' }}</span>
-            </div> -->
-            <!-- <div class="mb-4 flex justify-between">
-                <span class="font-semibold">TVA :</span>
-                <span>{{ montantTVA }} €</span>
-            </div> -->
-            <!-- <div class="mb-4 flex justify-between">
-                <span class="font-semibold">Total :</span>
-                <span>{{ totalAvecFrais }} €</span>
-            </div> -->
-            <div class="mt-4 font-semibold text-center">Code de transaction : {{ randomCode }}</div>
-        </Dialog>
     </Fluid>
 </template>

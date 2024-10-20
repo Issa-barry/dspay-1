@@ -141,13 +141,11 @@ function getStatusLabel(status) {
     }
 }
 
-function navigateToTransfertCreate() {
-    router.push({ name: 'transfert-create' });
+function navigateToFactureEncaissement() {
+    router.push({ name: 'facturation-encaissement' });
 }
 
-function navigateToNouveauTransfertRetrait() {
-    router.push({ name: 'transfert-retrait3' });
-}
+ 
 
 </script>
 
@@ -158,7 +156,7 @@ function navigateToNouveauTransfertRetrait() {
                 <template #start>
                     <!-- <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToTransfertCreate" />
                     <Button label="Orange-Money" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToNouveauTransfert" disabled/>-->
-                    <Button  label="Retrait" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToNouveauTransfertRetrait"/> 
+                    <Button  label="Encaissement" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToFactureEncaissement"/> 
                     <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
                 </template>
 

@@ -174,12 +174,12 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
 </script>
 <template>
     <div class="grid grid-cols-12 gap-8">
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
                 <span class="font-semibold text-lg">Clients</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">120 454</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">11 000 000</span>
                         <div class="text-green-500">
                             <span class="font-medium">+12%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -197,12 +197,12 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Agences</span>
+                <span class="font-semibold text-lg">Agents</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">3500</span>
+                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">4500</span>
                         <div class="text-green-500">
                             <span class="font-medium">+20%</span>
                             <i class="pi pi-arrow-up text-xs ml-2"></i>
@@ -219,9 +219,9 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
+        <div class="col-span-12 md:col-span-6 xl:col-span-4">
             <div class="card h-full">
-                <span class="font-semibold text-lg">Agents</span>
+                <span class="font-semibold text-lg">Agences</span>
                 <div class="flex justify-between items-start mt-4">
                     <div class="w-6/12">
                         <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">360</span>
@@ -241,27 +241,11 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
                 </div>
             </div>
         </div>
-        <div class="col-span-12 md:col-span-6 xl:col-span-3">
-            <div class="card h-full">
-                <span class="font-semibold text-lg">Partenaire</span>
-                <div class="flex justify-between items-start mt-4">
-                    <div class="w-6/12">
-                        <span class="text-4xl font-bold text-surface-900 dark:text-surface-0">22</span>
-                        <div class="text-green-500">
-                            <span class="font-medium">+30%</span>
-                            <i class="pi pi-arrow-up text-xs ml-2"></i>
-                        </div>
-                    </div>
-                    <div class="w-6/12 text-right">
-                        <Knob v-model="knobValue" valueTemplate="90%" readonly :strokeWidth="2" :size="90" class="-mt-8 ml-8"></Knob>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <div class="col-span-12 xl:col-span-9">
             <div class="card h-full">
                 <div class="flex items-start justify-between mb-12">
-                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Ajout de clients</span>
+                    <span class="text-surface-900 dark:text-surface-0 text-xl font-semibold">Chiffre d'affaire</span>
                     <Select :options="weeks" v-model="selectedWeek" class="w-40" optionLabel="label" @change="onWeekChange"></Select>
                 </div>
                 <Chart type="bar" :height="300" :data="barData" :options="barOptions"></Chart>
@@ -269,66 +253,25 @@ watch([getPrimary, getSurface, isDarkTheme], () => {
         </div>
         <div class="col-span-12 xl:col-span-3">
             <div class="card h-full">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Categorie de contact</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-12">Categorie partenaire</div>
                 <Chart type="pie" :data="pieData" :height="300" :options="pieOptions"></Chart>
             </div>
         </div>
-        <div class="col-span-12 lg:col-span-7">
-            <div class="card">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4 md:mb-0">Recent Sales</div>
-                    <div class="inline-flex items-center">
-                        <IconField>
-                            <InputIcon class="pi pi-search" />
-                            <InputText type="text" v-model="filterSalesTable.global.value" placeholder="Search" :style="{ borderRadius: '2rem' }" class="w-full" />
-                        </IconField>
-                        <Button icon="pi pi-upload" class="mx-4 export-target-button" rounded v-tooltip="'Export'" @click="exportCSV"></Button>
-                    </div>
-                </div>
-                <DataTable ref="salesTableRef" :value="products" dataKey="id" paginator :rows="5" responsiveLayout="scroll" v-model:filters="filterSalesTable">
-                    <template #empty> No products found.</template>
-                    <Column field="name" header="Name" sortable :headerStyle="{ minWidth: '12rem' }">
-                        <template #body="{ data }">
-                            {{ data.name }}
-                        </template>
-                    </Column>
-                    <Column field="category" header="Category" sortable :headerStyle="{ minWidth: '10rem' }">
-                        <template #body="{ data }">
-                            {{ data.category }}
-                        </template>
-                    </Column>
-                    <Column field="price" header="Price" sortable :headerStyle="{ minWidth: '10rem' }">
-                        <template #body="{ data }">
-                            {{ formatCurrency(data.price) }}
-                        </template>
-                    </Column>
-                    <Column field="inventoryStatus" header="Status" sortable :headerStyle="{ minWidth: '10rem' }">
-                        <template #body="{ data }">
-                            <Tag :severity="getBadgeSeverity(data.inventoryStatus)">{{ data.inventoryStatus }}</Tag>
-                        </template>
-                    </Column>
-                    <Column class="text-center">
-                        <template #body>
-                            <Button type="button" icon="pi pi-search" outlined rounded></Button>
-                        </template>
-                    </Column>
-                </DataTable>
-            </div>
-        </div>
-        <div class="col-span-12 lg:col-span-5">
+
+        <div class="col-span-12 lg:col-span-9">
             <div class="card h-full">
-                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agences</div>
+                <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Top Agent</div>
                 <ul class="list-none p-0 m-0">
                     <template v-for="(product, i) in products" :key="{ i }">
                         <li v-if="i < 6" class="flex items-center justify-between p-4">
                             <div class="inline-flex items-center">
-                                <img :src="`/demo/images/product/${product.image}`" :alt="product.name" width="75" class="shadow flex-shrink-0" />
+                                <!-- <img :src="`/demo/images/product/${product.image}`" :alt="product.name" width="75" class="shadow flex-shrink-0" /> -->
                                 <div class="flex flex-col ml-4">
                                     <span class="font-medium text-lg mb-1">{{ product.name }}</span>
                                     <Rating v-model="product.rating" readonly :cancel="false"></Rating>
                                 </div>
                             </div>
-                            <span class="ml-auto font-semibold text-xl p-text-secondary">${{ product.price }}</span>
+                            <span class="ml-auto font-semibold text-xl p-text-secondary">GNF {{ product.price }}</span>
                         </li>
                     </template>
                 </ul>

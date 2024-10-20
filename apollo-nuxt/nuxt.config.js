@@ -2,6 +2,8 @@
 import Aura from "@primevue/themes/aura";
 
 export default defineNuxtConfig({
+    ssr: false, // Désactiver le mode SSR pour générer un site statique
+    target: 'static', // Génère une version statique de l'application
     typescript: false,
     app: {
         head: {
@@ -11,7 +13,8 @@ export default defineNuxtConfig({
             ]
         }
     },
-    modules: ['@primevue/nuxt-module', '@nuxtjs/tailwindcss'],
+    modules: ['@primevue/nuxt-module', '@nuxtjs/tailwindcss',],
+     
     primevue: {
         options: {
             theme: {
@@ -29,6 +32,7 @@ export default defineNuxtConfig({
             include: ['quill']
         }
     },
+    compatibilityDate: '2024-10-12',
     hooks: {
         'pages:extend'(pages) {
             pages.push({
@@ -72,6 +76,30 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'transfert-retrait',
+                path: '/transfert/retrait',
+                file: '@/pages/transfert/TransfertRetrait.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Retrait']
+                }
+            });
+            pages.push({
+                name: 'transfert-retrait2',
+                path: '/transfert/retrait2',
+                file: '@/pages/transfert/TransfertRetrait2.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Retrait2']
+                }
+            });
+            pages.push({
+                name: 'transfert-retrait3',
+                path: '/transfert/retrait3',
+                file: '@/pages/transfert/TransfertRetrait3.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'Retrait3']
+                }
+            });
+            pages.push({
                 name: 'agence-liste',
                 path: '/agence/liste',
                 file: '@/pages/agence/AgenceListe.vue',
@@ -88,6 +116,22 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'agence-show',
+                path: '/agence/show',
+                file: '@/pages/agence/AgenceShow.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'Détaille']
+                }
+            });
+            pages.push({
+                name: 'agence-edite',
+                path: '/agence/edite',
+                file: '@/pages/agence/AgenceEdite.vue',
+                meta: {
+                    breadcrumb: ['Agence', 'Modification']
+                }
+            });
+            pages.push({
                 name: 'contact-liste',
                 path: '/contact/liste',
                 file: '@/pages/contact/ContactListe.vue',
@@ -96,11 +140,27 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'contact-liste2',
+                path: '/contact/liste2',
+                file: '@/pages/contact/ContactListe2.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'Liste2']
+                }
+            });
+            pages.push({
                 name: 'contact-create',
                 path: '/contact/create',
                 file: '@/pages/contact/ContactCreate.vue',
                 meta: {
                     breadcrumb: ['Contact', 'creation']
+                }
+            });
+            pages.push({
+                name: 'contact-create2',
+                path: '/contact/create2',
+                file: '@/pages/contact/ContactCreate2.vue',
+                meta: {
+                    breadcrumb: ['Contact', 'creation 2']
                 }
             });
             pages.push({
@@ -133,6 +193,48 @@ export default defineNuxtConfig({
                 file: '@/pages/parametres/DeviseCreate.vue',
                 meta: {
                     breadcrumb: ['Devise', 'creation']
+                }
+            });
+
+            pages.push({
+                name: 'profile',
+                path: '/parametres/profile',
+                file: '@/pages/Profile/Profile.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-encaissement',
+                path: '/facturation/encaissement',
+                file: '@/pages/Facturation/encaissement/Encaissement.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-rembourssement',
+                path: '/facturation/rembourssement',
+                file: '@/pages/Facturation/rembourssement/Rembourssement.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-liste',
+                path: '/facturation/liste',
+                file: '@/pages/Facturation/facture/FactureListe.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'Liste']
+                }
+            });
+
+            pages.push({
+                name: 'facturation-facture-detail',
+                path: '/facturation/facture/detail',
+                file: '@/pages/Facturation/facture/FactureDetail.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'Detaille']
                 }
             });
 
@@ -459,5 +561,7 @@ export default defineNuxtConfig({
         quill: process.dev ? 'quill/dist/quill.js' : 'quill'
     },
     css: ['@/assets/styles.scss', '@/assets/tailwind.css', 'primeicons/primeicons.css'],
-    devtools: { enabled: false }
+    devtools: { enabled: false },
+
+   
 });

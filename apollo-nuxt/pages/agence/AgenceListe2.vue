@@ -69,7 +69,7 @@ function saveProduct() {
     }
 }
 
-function editProduct(prod) {
+function editProduct(prod) { 
     product.value = { ...prod };
     productDialog.value = true;
 }
@@ -127,43 +127,40 @@ function getStatusLabel(status) {
         case 'ACTIVE':
             return 'success';
 
-        case 'FINIE':
-            return 'success';
-
         case 'ATTENTE':
             return 'warn';
 
         case 'BLOQUE':
             return 'danger';
 
+        case 'ARCHIVE':
+            return 'secondary';
+
         default:
             return null;
     }
 }
 
-function navigateToTransfertCreate() {
-    router.push({ name: 'transfert-create' });
+function navigateToAgenceCreate() {
+    router.push({ name: 'agence-create' });
 }
 
-function navigateToNouveauTransfertRetrait() {
-    router.push({ name: 'transfert-retrait3' });
-}
-
-</script>
+</script> 
 
 <template>
     <div>
         <div class="card">
             <Toolbar class="mb-6">
                 <template #start>
-                    <!-- <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToTransfertCreate" />
-                    <Button label="Orange-Money" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToNouveauTransfert" disabled/>-->
-                    <Button  label="Retrait" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToNouveauTransfertRetrait"/> 
-                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
+                    <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToAgenceCreate" />
+                    <!-- <Button label="Retrait" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" /> -->
+                    <!-- <Button label="Delete" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" /> -->
                 </template>
 
                 <template #end>
-                    <Button label="Filtre" icon="pi pi-filter" severity="succes" @click="exportCSV($event)" />
+                    <Button label="Export" class="ml-2" icon="pi pi-download" severity="secondary" @click="exportCSV($event)" />
+                    <!-- <Button label="Import" class="ml-2" icon="pi pi-filter" severity="secondary" @click="exportCSV($event)" /> -->
+                    <Button type="button"  icon="pi pi-filter" label="Filtrer" class="ml-2 w-full sm:w-auto order-none sm:order-1" outlined />
                 </template>
             </Toolbar>
 
@@ -181,7 +178,7 @@ function navigateToNouveauTransfertRetrait() {
             >
                 <template #header>
                     <div class="flex flex-wrap gap-2 items-center justify-between">
-                        <h4 class="m-0">Vos transferts</h4>
+                        <h4 class="m-0">Nos Agences</h4>
                         <IconField>
                             <InputIcon>
                                 <i class="pi pi-search" />
@@ -192,24 +189,29 @@ function navigateToNouveauTransfertRetrait() {
                 </template>
 
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-                <Column field="code" header="Code" sortable style="min-width: 12rem"></Column>
-                <Column field="name" header="Expediteur" sortable style="min-width: 16rem"></Column>
+                <Column field="code" header="Reference" sortable style="min-width: 10rem"></Column>
+                <Column field="name" header="Responssable" sortable style="min-width: 16rem"></Column>
+                <Column field="phone" header="Téléphone" sortable style="min-width: 12rem"></Column>
+                <Column field="address" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <!-- <Column field="email" header="Email" sortable style="min-width: 16rem"></Column> -->
                 <!-- <Column header="Image">
                     <template #body="slotProps">
                         <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
                     </template>
                 </Column> -->
-                <Column field="price" header="Montant" sortable style="min-width: 8rem">
+                <!-- <Column field="price" header="Chiffre" sortable style="min-width: 8rem">
                     <template #body="slotProps">
                         {{ formatCurrency(slotProps.data.price) }}
                     </template>
-                </Column>
-                <Column field="category" header="Category" sortable style="min-width: 10rem"></Column>
-                <Column field="rating" header="Agence" sortable style="min-width: 12rem">
+                </Column> -->
+                <!-- <Column field="category" header="Category" sortable style="min-width: 10rem"></Column> -->
+
+                <!-- <Column field="rating" header="Reviews" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Rating :modelValue="slotProps.data.rating" :readonly="true" />
                     </template>
-                </Column>
+                </Column> -->
+
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
@@ -217,9 +219,8 @@ function navigateToNouveauTransfertRetrait() {
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
-                        <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" /> -->
-                        <Button icon="pi pi-eye" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
+                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
+                        <Button icon="pi pi-eye" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
@@ -230,15 +231,46 @@ function navigateToNouveauTransfertRetrait() {
                 <!-- <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" /> -->
                 <div>
                     <label for="name" class="block font-bold mb-3">Code</label>
-                    <InputText id="name" v-model.trim="product.code" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.code" class="text-red-500">Code is required.</small>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">Name is required.</small>
                 </div>
-                
+                 <div>
+                    <span class="block font-bold mb-4">Receveur</span>
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category1">Mamadou saliou BARRY</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2">Montant : 1 230 000 GNF</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category3">Tel : +224 621 17 70 06</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="block font-bold mb-4">Expediteur</span>
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category1">Aissatou BALDE</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2">Montant : 105 €</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category2"> Frais : 5 €</label>
+                        </div>
+                        <div class="flex items-center gap-2 col-span-12">
+                             <label for="category3">Tel : +224 621 17 70 06</label>
+                        </div>
+                    </div>
+                </div>  
             </div>
 
             <template #footer>
                 <Button label="Annuler" icon="pi pi-times" text @click="hideDialog" />
-                <Button label="Continuer" icon="pi pi-check" @click="navigateToNouveauTransfertRetrait" />
+                <Button label="Enregistrer" icon="pi pi-check" @click="saveProduct" />
             </template>
         </Dialog>
 
@@ -259,7 +291,7 @@ function navigateToNouveauTransfertRetrait() {
         <Dialog v-model:visible="deleteProductsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product">Are you sure you want to delete the selected products?</span>
+                <span v-if="product">Are you sure you want to delete the selected products?</span> 
             </div>
             <template #footer>
                 <Button label="No" icon="pi pi-times" text @click="deleteProductsDialog = false" />

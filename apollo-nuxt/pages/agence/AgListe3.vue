@@ -1,13 +1,9 @@
 <script setup>
-import { ProductService } from '@/service/ProductService';
+import { ProductService } from '../../service/ProductService';
 import { FilterMatchMode } from '@primevue/core/api';
 import { useToast } from 'primevue/usetoast';
 import { onMounted, ref } from 'vue';
-
-import { useRouter } from 'vue-router';
-
 const router = useRouter();
-
 
 onMounted(() => {
     ProductService.getProducts().then((data) => (products.value = data));
@@ -61,7 +57,7 @@ function saveProduct() {
             product.value.image = 'product-placeholder.svg';
             product.value.inventoryStatus = product.value.inventoryStatus ? product.value.inventoryStatus.value : 'INSTOCK';
             products.value.push(product.value);
-            toast.add({ severity: 'success', summary: 'Succéss', detail: 'Retrait effectué avec succées', life: 3000 });
+            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
         }
 
         productDialog.value = false;
@@ -127,28 +123,23 @@ function getStatusLabel(status) {
         case 'ACTIVE':
             return 'success';
 
-        case 'FINIE':
-            return 'success';
-
         case 'ATTENTE':
             return 'warn';
 
         case 'BLOQUE':
             return 'danger';
 
+        case 'ARCHIVE':
+            return 'secondary';
+
         default:
             return null;
     }
 }
 
-function navigateToTransfertCreate() {
-    router.push({ name: 'transfert-create' });
+function navigateToAgenceCreate() {
+    router.push({ name: 'agence-create' });
 }
-
-function navigateToNouveauTransfertRetrait() {
-    router.push({ name: 'transfert-retrait3' });
-}
-
 </script>
 
 <template>
@@ -156,14 +147,12 @@ function navigateToNouveauTransfertRetrait() {
         <div class="card">
             <Toolbar class="mb-6">
                 <template #start>
-                    <!-- <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToTransfertCreate" />
-                    <Button label="Orange-Money" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToNouveauTransfert" disabled/>-->
-                    <Button  label="Retrait" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToNouveauTransfertRetrait"/> 
+                    <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
                     <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
                 </template>
 
                 <template #end>
-                    <Button label="Filtre" icon="pi pi-filter" severity="succes" @click="exportCSV($event)" />
+                    <Button label="Export" icon="pi pi-upload" severity="secondary" @click="exportCSV($event)" />
                 </template>
             </Toolbar>
 
@@ -181,7 +170,7 @@ function navigateToNouveauTransfertRetrait() {
             >
                 <template #header>
                     <div class="flex flex-wrap gap-2 items-center justify-between">
-                        <h4 class="m-0">Vos transferts</h4>
+                        <h4 class="m-0">Manage Products</h4>
                         <IconField>
                             <InputIcon>
                                 <i class="pi pi-search" />
@@ -192,24 +181,20 @@ function navigateToNouveauTransfertRetrait() {
                 </template>
 
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-                <Column field="code" header="Code" sortable style="min-width: 12rem"></Column>
-                <Column field="name" header="Expediteur" sortable style="min-width: 16rem"></Column>
+                <Column field="code" header="Reference" sortable style="min-width: 12rem"></Column>
+                <Column field="name" header="Nom" sortable style="min-width: 16rem"></Column>
                 <!-- <Column header="Image">
                     <template #body="slotProps">
                         <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
                     </template>
                 </Column> -->
-                <Column field="price" header="Montant" sortable style="min-width: 8rem">
+                <!-- <Column field="price" header="Chiffres affaire" sortable style="min-width: 8rem">
                     <template #body="slotProps">
                         {{ formatCurrency(slotProps.data.price) }}
                     </template>
-                </Column>
-                <Column field="category" header="Category" sortable style="min-width: 10rem"></Column>
-                <Column field="rating" header="Agence" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Rating :modelValue="slotProps.data.rating" :readonly="true" />
-                    </template>
-                </Column>
+                </Column> -->
+                <Column field="phone" header="Phone" sortable style="min-width: 10rem"></Column>
+                <Column field="name" header="Responssable" sortable style="min-width: 10rem"></Column>
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
@@ -217,28 +202,64 @@ function navigateToNouveauTransfertRetrait() {
                 </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
-                        <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" /> -->
-                        <Button icon="pi pi-eye" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
+                        <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
                         <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
         </div>
 
-        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Retrait" :modal="true">
+        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Product Details" :modal="true">
             <div class="flex flex-col gap-6">
                 <!-- <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" /> -->
                 <div>
-                    <label for="name" class="block font-bold mb-3">Code</label>
-                    <InputText id="name" v-model.trim="product.code" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.code" class="text-red-500">Code is required.</small>
+                    <label for="name" class="block font-bold mb-3">Nom agence</label>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">Le nom de l'agence est obligatoire.</small>
                 </div>
-                
+                <div>
+                    <label for="name" class="block font-bold mb-3">Email</label>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">L'email de l'agence est obligatoire.</small>
+                </div>
+                <div>
+                    <label for="name" class="block font-bold mb-3">Téléphone</label>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">Le numéro de téléphone de l'agence est obligatoire.</small>
+                </div>
+                <!-- <div>
+                    <label for="description" class="block font-bold mb-3">Description</label>
+                    <Textarea id="description" v-model="product.description" required="true" rows="3" cols="20" fluid />
+                </div> -->
+                <div>
+                    <label for="inventoryStatus" class="block font-bold mb-3">Pays</label>
+                    <Select id="inventoryStatus" v-model="product.inventoryStatus" :options="statuses" optionLabel="label" placeholder="Select a Status" fluid></Select>
+                    <small v-if="submitted && !product.name" class="text-red-500">Le pays est obligatoire.</small>
+                </div>
+
+                <div>
+                    <label for="name" class="block font-bold mb-3">Adresse</label>
+                    <InputText id="name" v-model.trim="product.name" required="true" autofocus :invalid="submitted && !product.name" fluid />
+                    <small v-if="submitted && !product.name" class="text-red-500">L'adresse est obligatoire.</small>
+                </div>
+
+                <div class="grid grid-cols-12 gap-4">
+                    <div class="col-span-6">
+                        <label for="price" class="block font-bold mb-3">Code Postal</label>
+                        <InputNumber id="price" v-model="product.price" mode="currency" currency="USD" locale="en-US" fluid />
+                        <small v-if="submitted && !product.name" class="text-red-500">Le code postal est obligatoire.</small>
+                    </div>
+                    <div class="col-span-6">
+                        <label for="quantity" class="block font-bold mb-3">Ville</label>
+                        <InputNumber id="quantity" v-model="product.quantity" integeronly fluid />
+                        <small v-if="submitted && !product.name" class="text-red-500">La ville est obligatoire.</small>
+                    </div>
+                </div>
             </div>
 
             <template #footer>
-                <Button label="Annuler" icon="pi pi-times" text @click="hideDialog" />
-                <Button label="Continuer" icon="pi pi-check" @click="navigateToNouveauTransfertRetrait" />
+                <Button label="Cancel" icon="pi pi-times" text @click="hideDialog" />
+                <Button label="Save" icon="pi pi-check" @click="saveProduct" />
             </template>
         </Dialog>
 

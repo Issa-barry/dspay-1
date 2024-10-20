@@ -28,22 +28,49 @@ const model = ref([
                         to: '/transfert/liste'
                     },
                     {
-                        label: 'Historique',
-                        icon: 'pi pi-fw pi-wallet',
-                        to: '/transfert/historique'
-                    }
+                        label: 'Envoie',
+                        icon: 'pi pi-fw pi-arrow-up-right',
+                        to: '/transfert/create'
+                    },
+                    {
+                        label: 'Retrait',
+                        icon: 'pi pi-fw pi-arrow-down-left',
+                        to: '/transfert/retrait3'
+                    }, 
+                ]
+            },
+            {
+                label: 'Facturation',
+                icon: 'pi pi-fw pi-calculator',
+                items: [
+                    {
+                        label: 'Liste',
+                        icon: 'pi pi-fw pi-credit-card',
+                        to: '/facturation/liste'
+                    },
+                    {
+                        label: 'Encaissement',
+                        icon: 'pi pi-fw pi-credit-card',
+                        to: '/facturation/encaissement'
+                    },
+                    {
+                        label: 'Rembourssement',
+                        icon: 'pi  pi-wallet',
+                        to:'/facturation/rembourssement'
+                    }, 
                 ]
             },
             {
                 label: 'Contacts',
                 icon: 'pi pi-fw pi-users',
-                to: '/contact/liste'
+                to: '/contact/liste2'
             },
             {
                 label: 'Agences',
                 icon: 'pi pi-fw pi-map-marker',
                 to: '/agence/liste'
-            },
+            }, 
+            
         ]
     },
     {
@@ -53,14 +80,14 @@ const model = ref([
                 icon: 'pi pi-fw pi-cog',
                 items: [
                     {
-                        label: 'Taux',
+                        label: 'Général',
                         icon: 'pi pi-fw pi-percentage',
                         to:'/parametres/taux/liste'
                     },
                     {
-                        label: 'Devise',
-                        icon: 'pi pi-fw pi-wallet',
-                        to:'/parametres/devise/liste'
+                        label: 'Profile',
+                        icon: 'pi pi-user pi-wallet',
+                        to:'/parametres/profile'
                     }
                 ]
             }
