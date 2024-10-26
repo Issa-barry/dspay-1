@@ -1,268 +1,199 @@
-<script setup>
-import { ProductService } from '@/service/ProductService';
-import { FilterMatchMode } from '@primevue/core/api';
-import { useToast } from 'primevue/usetoast';
-import { onMounted, ref } from 'vue';
-
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
-
-
-onMounted(() => {
-    ProductService.getProducts().then((data) => (products.value = data));
-});
-
-const toast = useToast();
-const dt = ref();
-const products = ref();
-const productDialog = ref(false);
-const deleteProductDialog = ref(false);
-const deleteProductsDialog = ref(false);
-const product = ref({});
-const selectedProducts = ref();
-const filters = ref({
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS }
-});
-const submitted = ref(false);
-const statuses = ref([
-    { label: 'INSTOCK', value: 'instock' },
-    { label: 'LOWSTOCK', value: 'lowstock' },
-    { label: 'OUTOFSTOCK', value: 'outofstock' }
-]);
-
-function formatCurrency(value) {
-    if (value) return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    return;
-}
-
-function openNew() {
-    product.value = {};
-    submitted.value = false;
-    productDialog.value = true;
-}
-
-function hideDialog() {
-    productDialog.value = false;
-    submitted.value = false;
-}
-
-function saveProduct() {
-    submitted.value = true;
-
-    if (product?.value.name?.trim()) {
-        if (product.value.id) {
-            product.value.inventoryStatus = product.value.inventoryStatus.value ? product.value.inventoryStatus.value : product.value.inventoryStatus;
-            products.value[findIndexById(product.value.id)] = product.value;
-            toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-        } else {
-            product.value.id = createId();
-            product.value.code = createId();
-            product.value.image = 'product-placeholder.svg';
-            product.value.inventoryStatus = product.value.inventoryStatus ? product.value.inventoryStatus.value : 'INSTOCK';
-            products.value.push(product.value);
-            toast.add({ severity: 'success', summary: 'Succéss', detail: 'Retrait effectué avec succées', life: 3000 });
-        }
-
-        productDialog.value = false;
-        product.value = {};
-    }
-}
-
-function editProduct(prod) {
-    product.value = { ...prod };
-    productDialog.value = true;
-}
-
-function confirmDeleteProduct(prod) {
-    product.value = prod;
-    deleteProductDialog.value = true;
-}
-
-function deleteProduct() {
-    products.value = products.value.filter((val) => val.id !== product.value.id);
-    deleteProductDialog.value = false;
-    product.value = {};
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-}
-
-function findIndexById(id) {
-    let index = -1;
-    for (let i = 0; i < products.value.length; i++) {
-        if (products.value[i].id === id) {
-            index = i;
-            break;
-        }
-    }
-
-    return index;
-}
-
-function createId() {
-    let id = '';
-    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 5; i++) {
-        id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
-}
-
-function exportCSV() {
-    dt.value.exportCSV();
-}
-
-function confirmDeleteSelected() {
-    deleteProductsDialog.value = true;
-}
-
-function deleteSelectedProducts() {
-    products.value = products.value.filter((val) => !selectedProducts.value.includes(val));
-    deleteProductsDialog.value = false;
-    selectedProducts.value = null;
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-}
-
-function getStatusLabel(status) {
-    switch (status) {
-        case 'ACTIVE':
-            return 'success';
-
-        case 'FINIE':
-            return 'success';
-
-        case 'ATTENTE':
-            return 'warn';
-
-        case 'BLOQUE':
-            return 'danger';
-
-        default:
-            return null;
-    }
-}
-
-function navigateToFactureEncaissement() {
-    router.push({ name: 'facturation-encaissement' });
-}
-
- 
-
-</script>
-
 <template>
-    <div>
-        <div class="card">
+    <div class="card">
+        <DataTable
+            v-model:expandedRows="expandedRows"
+            :value="factures"
+            :filters="filters"
+            :globalFilterFields="['name', 'phone', 'price', 'factureStatus', 'orderIds', 'orderDates', 'orderAmounts', 'orderTypes']"
+            dataKey="id"
+            tableStyle="min-width: 60rem"
+            :paginator="true"
+            :rows="10"
+            paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+            :rowsPerPageOptions="[5, 10, 25]"
+            currentPageReportTemplate="Affichage de {first} à {last} sur {totalRecords} factures"
+        >
             <Toolbar class="mb-6">
                 <template #start>
-                    <!-- <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToTransfertCreate" />
-                    <Button label="Orange-Money" icon="pi pi-plus" severity="secondary" class="mr-2"  @click="navigateToNouveauTransfert" disabled/>-->
-                    <Button  label="Encaissement" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToFactureEncaissement"/> 
-                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedProducts || !selectedProducts.length" />
+                    <Button label="Paiement" icon="pi pi-money-bill" severity="secondary" class="mr-2" @click="navigateToNouveauTransfertRetrait" />
                 </template>
-
                 <template #end>
-                    <Button label="Filtre" icon="pi pi-filter" severity="succes" @click="exportCSV($event)" />
+                    <Button label="Filtre" icon="pi pi-filter" severity="success" />
                 </template>
             </Toolbar>
 
-            <DataTable
-                ref="dt"
-                v-model:selection="selectedProducts"
-                :value="products"
-                dataKey="id"
-                :paginator="true"
-                :rows="10"
-                :filters="filters"
-                paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                :rowsPerPageOptions="[5, 10, 25]"
-                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
-            >
-                <template #header>
-                    <div class="flex flex-wrap gap-2 items-center justify-between">
-                        <h4 class="m-0">Vos transferts</h4>
-                        <IconField>
-                            <InputIcon>
-                                <i class="pi pi-search" />
-                            </InputIcon>
-                            <InputText v-model="filters['global'].value" placeholder="Search..." />
-                        </IconField>
-                    </div>
-                </template>
-
-                <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-                <Column field="code" header="Code" sortable style="min-width: 12rem"></Column>
-                <Column field="name" header="Expediteur" sortable style="min-width: 16rem"></Column>
-                <!-- <Column header="Image">
-                    <template #body="slotProps">
-                        <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
-                    </template>
-                </Column> -->
-                <Column field="price" header="Montant" sortable style="min-width: 8rem">
-                    <template #body="slotProps">
-                        {{ formatCurrency(slotProps.data.price) }}
-                    </template>
-                </Column>
-                <Column field="category" header="Category" sortable style="min-width: 10rem"></Column>
-                <Column field="rating" header="Agence" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Rating :modelValue="slotProps.data.rating" :readonly="true" />
-                    </template>
-                </Column>
-                <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />
-                    </template>
-                </Column>
-                <Column :exportable="false" style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" /> -->
-                        <Button icon="pi pi-eye" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
-                    </template>
-                </Column>
-            </DataTable>
-        </div>
-
-        <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Retrait" :modal="true">
-            <div class="flex flex-col gap-6">
-                <!-- <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" /> -->
-                <div>
-                    <label for="name" class="block font-bold mb-3">Code</label>
-                    <InputText id="name" v-model.trim="product.code" required="true" autofocus :invalid="submitted && !product.name" fluid />
-                    <small v-if="submitted && !product.code" class="text-red-500">Code is required.</small>
+            <template #header>
+                <div class="flex flex-wrap gap-2 items-center justify-between">
+                    <h4 class="m-0 font-semibold text-lg">Vos Factures :</h4>
+                    <IconField>
+                        <InputIcon>
+                            <i class="pi pi-search" />
+                        </InputIcon>
+                        <InputText v-model="filters['global'].value" placeholder="Rechercher..." />
+                    </IconField>
                 </div>
-                
+            </template>
+
+            <Column expander style="width: 5rem" />
+            <Column field="name" header="Client" sortable></Column>
+            <Column field="phone" header="Téléphone" sortable></Column>
+            <Column field="price" header="Montant" sortable>
+                <template #body="slotProps">
+                    {{ formatCurrency(slotProps.data.price) }}
+                </template>
+            </Column>
+            <Column field="factureStatus" header="Status" sortable>
+                <template #body="slotProps">
+                    <Tag :value="slotProps.data.factureStatus" :severity="getSeverity(slotProps.data)" />
+                </template>
+            </Column>
+            <Column header="Action" headerStyle="width:4rem">
+                <template #body="slotProps">
+                    <!-- <Button icon="pi pi-eye" @click="openFactureDetaille(slotProps.data)" /> -->
+                    <Button icon="pi pi-eye" @click="navigateToFactureAffichage" />
+                </template>
+            </Column>
+
+            <template #expansion="slotProps">
+                <div class="p-4">
+                    <h5>Reste à payer : {{ formatCurrency(slotProps.data.price - getTotalPaid(slotProps.data.orders)) }}</h5>
+                    <DataTable :value="slotProps.data.orders">
+                        <Column field="id" header="Id" sortable></Column>
+                        <Column field="date" header="Date" sortable></Column>
+                        <Column field="amount" header="Montant réglé" sortable>
+                            <template #body="orderSlot">
+                                {{ formatCurrency(orderSlot.data.amount) }}
+                            </template>
+                        </Column>
+                        <Column field="typePaiement" header="Type" sortable>
+                            <template #body="orderSlot">
+                                <Tag :value="orderSlot.data.typePaiement.toLowerCase()" :severity="getOrderTypePaiement(orderSlot.data)" />
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
+            </template>
+        </DataTable>
+        <Toast />
+
+        <!-- Boîte de dialogue pour détails de paiement -->
+        <Dialog v-model:visible="factureDialog" :style="{ width: '600px' }" header="Détails de la Facture" :modal="true">
+            <div class="flex flex-col gap-6">
+                <div>
+                    <label for="name" class="block font-bold mb-3">Nom du Client</label>
+                    <InputText id="name" v-model.trim="selectedFacture.name" required="true" autofocus fluid />
+                </div>
+                <div>
+                    <label for="phone" class="block font-bold mb-3">Téléphone</label>
+                    <InputText id="phone" v-model="selectedFacture.phone" required="true" fluid />
+                </div>
+                <div>
+                    <label for="amount" class="block font-bold mb-3">Montant Total</label>
+                    <InputText id="amount" v-model="selectedFacture.price" :disabled="true" fluid />
+                </div>
+                <div>
+                    <label for="factureStatus" class="block font-bold mb-3">Status de la Facture</label>
+                    <Dropdown id="factureStatus" v-model="selectedFacture.factureStatus" :options="['Payé', 'Partiel', 'Brouillon']" fluid />
+                </div>
+                <div>
+                    <h5>Reste à payer : {{ formatCurrency(selectedFacture.price - getTotalPaid(selectedFacture.orders)) }}</h5>
+                    <DataTable :value="selectedFacture.orders">
+                        <Column field="id" header="Id" sortable></Column>
+                        <Column field="date" header="Date" sortable></Column>
+                        <Column field="amount" header="Montant réglé" sortable>
+                            <template #body="orderSlot">
+                                {{ formatCurrency(orderSlot.data.amount) }}
+                            </template>
+                        </Column>
+                        <Column field="typePaiement" header="Type" sortable>
+                            <template #body="orderSlot">
+                                <Tag :value="orderSlot.data.typePaiement.toLowerCase()" :severity="getOrderTypePaiement(orderSlot.data)" />
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
             </div>
 
             <template #footer>
                 <Button label="Annuler" icon="pi pi-times" text @click="hideDialog" />
-                <Button label="Continuer" icon="pi pi-check" @click="navigateToNouveauTransfertRetrait" />
-            </template>
-        </Dialog>
-
-        <Dialog v-model:visible="deleteProductDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
-            <div class="flex items-center gap-4">
-                <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product"
-                    >Are you sure you want to delete <b>{{ product.name }}</b
-                    >?</span
-                >
-            </div>
-            <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductDialog = false" />
-                <Button label="Yes" icon="pi pi-check" @click="deleteProduct" />
-            </template>
-        </Dialog>
-
-        <Dialog v-model:visible="deleteProductsDialog" :style="{ width: '450px' }" header="Confirm" :modal="true">
-            <div class="flex items-center gap-4">
-                <i class="pi pi-exclamation-triangle !text-3xl" />
-                <span v-if="product">Are you sure you want to delete the selected products?</span>
-            </div>
-            <template #footer>
-                <Button label="No" icon="pi pi-times" text @click="deleteProductsDialog = false" />
-                <Button label="Yes" icon="pi pi-check" text @click="deleteSelectedProducts" />
             </template>
         </Dialog>
     </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useToast } from 'primevue/usetoast';
+import { FactureService } from '@/service/FactureService';
+import { FilterMatchMode } from '@primevue/core/api';
+import {useRouter} from '#vue-router'
+
+const router =  useRouter();
+
+const factures = ref([]);
+const expandedRows = ref({});
+const toast = useToast();
+const selectedFacture = ref({});
+const filters = ref({
+    'global': { value: null, matchMode: FilterMatchMode.CONTAINS },
+});
+
+const getTotalPaid = (orders) => {
+    return orders.reduce((total, order) => total + order.amount, 0);
+};
+
+const formatCurrency = (value) => {
+    return value.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+};
+
+const getSeverity = (facture) => {
+    switch (facture.factureStatus) {
+        case 'Payé':
+            return 'success';
+        case 'Partiel':
+            return 'info';
+        case 'Brouillon':
+            return 'danger';
+        default:
+            return null;
+    }
+};
+
+const getOrderTypePaiement = (order) => {
+    switch (order.typePaiement) {
+        case 'Espèce':
+            return 'info';
+        case 'Carte':
+            return 'primary';
+        case 'Chèque':
+            return 'warning';
+        default:
+            return 'secondary';
+    }
+};
+
+const factureDialog = ref(false);
+
+function openFactureDetaille(facture) {
+    selectedFacture.value = { ...facture };
+    factureDialog.value = true;
+}
+
+function hideDialog() {
+    factureDialog.value = false;
+}
+
+onMounted(() => {
+    FactureService.getFacturesWithOrdersSmall().then((data) => {
+        factures.value = data;
+    });
+});
+
+function navigateToFactureDetaille() {
+    router.push({name:'facturation-detaille'})
+}
+
+function navigateToFactureAffichage() {
+    router.push({name:'facturation-affichage'})
+}
+</script>

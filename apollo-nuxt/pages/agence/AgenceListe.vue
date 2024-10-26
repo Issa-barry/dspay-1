@@ -14,8 +14,7 @@ const dt = ref();
 const agences = ref();
 const agenceDialog = ref(false);
 const deleteAgenceDialog = ref(false);
-const deleteAgencesDialog = ref(false);
-const agence = ref({});
+ const agence = ref({});
 const selectedAgences = ref();
 const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS }

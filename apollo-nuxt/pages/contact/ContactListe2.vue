@@ -10,7 +10,7 @@ onMounted(() => {
 
 const toast = useToast();
 const dt = ref();
-const products = ref();
+const products = ref(); 
 const productDialog = ref(false);
 const deleteContactDialog = ref(false);
 const deleteContactsDialog = ref(false);

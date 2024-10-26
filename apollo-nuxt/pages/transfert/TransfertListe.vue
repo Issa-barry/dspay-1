@@ -27,7 +27,7 @@ const filters = ref({
 const submitted = ref(false);
 const statuses = ref([
     { label: 'INSTOCK', value: 'instock' },
-    { label: 'LOWSTOCK', value: 'lowstock' },
+    { label: 'LOWSTOCK', value: 'lowstock' }, 
     { label: 'OUTOFSTOCK', value: 'outofstock' }
 ]);
 
