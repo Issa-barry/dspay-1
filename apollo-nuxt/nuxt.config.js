@@ -164,6 +164,14 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'general-liste',
+                path: '/parametres/general',
+                file: '@/pages/parametres/General.vue',
+                meta: {
+                    breadcrumb: ['Configuration', 'Général']
+                }
+            });
+            pages.push({
                 name: 'taux-liste',
                 path: '/parametres/taux/liste',
                 file: '@/pages/parametres/TauxListe.vue',
@@ -204,12 +212,30 @@ export default defineNuxtConfig({
                     breadcrumb: ['Facture', 'creation']
                 }
             });
+
+             
             pages.push({
                 name: 'facturation-encaissement',
                 path: '/facturation/encaissement',
                 file: '@/pages/Facturation/encaissement/Encaissement.vue',
                 meta: {
                     breadcrumb: ['Facture', 'creation']
+                }
+            });
+            pages.push({
+                name: 'facturation-detaille',
+                path: '/facturation/detaille',
+                file: '@/pages/Facturation/facture/FactureDetail.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'detaile']
+                }
+            });
+            pages.push({
+                name: 'facturation-affichage',
+                path: '/facturation/affichage/facture',
+                file: '@/pages/Facturation/facture/FactureAfficher.vue',
+                meta: {
+                    breadcrumb: ['Facture', 'Affichage']
                 }
             });
             pages.push({
@@ -220,30 +246,31 @@ export default defineNuxtConfig({
                     breadcrumb: ['Facture', 'creation']
                 }
             });
+            
             pages.push({
                 name: 'facturation-liste',
                 path: '/facturation/liste',
                 file: '@/pages/Facturation/facture/FactureListe.vue',
                 meta: {
                     breadcrumb: ['Facture', 'Liste']
-                }
+                },
+                children: [
+                    {
+                        path: '/facturation/paiement',
+                        name: 'mail-inbox',
+                        file: '@/pages/apps/mail/MailTypes.vue'
+                    },
+                ] 
             });
 
-            pages.push({
-                name: 'facturation-facture-detail',
-                path: '/facturation/facture/detail',
-                file: '@/pages/Facturation/facture/FactureDetail.vue',
-                meta: {
-                    breadcrumb: ['Facture', 'Detaille']
-                }
-            });
-
+         
 
             pages.push({
                 name: 'chat',
                 path: '/apps/chat/',
                 file: '@/pages/apps/chat/Index.vue'
             });
+
             pages.push({
                 name: 'mail',
                 path: '/apps/mail/',
