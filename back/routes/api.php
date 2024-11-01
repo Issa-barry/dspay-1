@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ContactController;
+
  
 
 Route::get('/user', function (Request $request) {
@@ -14,3 +16,4 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('agents', AgentController::class); 
 Route::apiResource('contacts', ContactController::class);
+Route::apiResource('agences', AgenceController::class);
