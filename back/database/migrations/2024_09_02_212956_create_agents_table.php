@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('reference', 4)->unique();
+            $table->string('nom', 100);
+            $table->string('prenom', 100);
             $table->string('phone')->unique();
-            $table->text('adresse');
-            $table->enum('statut', ['active', 'desactive', 'attente'])->default('attente');    
+            $table->string('email')->unique();
+            $table->string('pays', 100);
+            $table->string('adresse', 255);
+            $table->string('ville', 100);
+            $table->string('code_postal', 5);
+            $table->enum('statut', ['active', 'desactive', 'attente'])->default('attente');
             $table->timestamps();
         });
     }
 
-    /**
+    /** 
      * Reverse the migrations.
      */
     public function down(): void

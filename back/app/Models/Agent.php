@@ -9,6 +9,17 @@ class Agent extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'prenom', 'email', 'phone', 'adresse', 'statut'];
+    protected $fillable = [
+    'reference',
+    'nom', 
+    'prenom', 
+    'email', 
+    'phone',
+    'pays',
+    'adresse', 
+    'ville',
+    'code_postal',
+    'statut'
+   ];
 
 }
