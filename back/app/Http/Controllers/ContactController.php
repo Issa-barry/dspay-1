@@ -24,7 +24,7 @@ class ContactController extends Controller
         $reference = strtoupper(substr(md5(uniqid(rand(), true)), 0, 5));
 
         $validator = Validator::make($request->all(), [
-            'civilite' => 'in:Mr,Mme,Mlle',
+            'civilite' => 'in:Mr,Mme,Mlle,Autre',
             'nom' => 'required|string|max:100',
             'prenom' => 'required|string|max:100',
             'email' => 'required|string|email|max:255|unique:contacts,email',
@@ -75,7 +75,7 @@ class ContactController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'civilite' => 'in:Mr,Mme,Mlle',
+            'civilite' => 'in:Mr,Mme,Mlle,Autre',
             'nom' => 'string|max:100',
             'prenom' => 'string|max:100',
             'email' => 'string|email|max:255|unique:contacts,email,' . $id,

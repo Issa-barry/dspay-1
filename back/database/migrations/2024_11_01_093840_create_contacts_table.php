@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('reference', 10)->unique(); // code de référence unique, max 10 caractères
-            $table->enum('civilite', ['Mr', 'Mme', 'Mlle']); // civilité avec choix limités
+            $table->enum('civilite', ['Mr', 'Mme', 'Mlle', 'Autre'])->default('Autre'); // civilité avec choix limités
             $table->string('nom', 100);
             $table->string('prenom', 100);
             $table->string('email', 255)->unique();
