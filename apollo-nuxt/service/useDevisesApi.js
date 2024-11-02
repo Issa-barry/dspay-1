@@ -27,7 +27,7 @@ export const useDevises = () => {
  
   const createDevise = async (nom, tag) => {
     try {
-        const response = await useNuxtApp().$api.post('/devises', 
+        const response = await useNuxtApp().$api.post('/devises',  
             {
                 nom,
                 tag,

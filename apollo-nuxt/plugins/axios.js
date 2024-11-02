@@ -1,17 +1,46 @@
+// plugins/axios.js
 import axios from 'axios';
 
 export default defineNuxtPlugin(nuxtApp => {
-  const api = axios.create({
-    // baseURL: 'http://localhost:1337/api', // Remplacez par l'URL de votre  
-    baseURL: 'http://127.0.0.1:8000/api', // Remplacez par l'URL de votre Strapi
-    headers: {
-      // 'Authorization': `Bearer ${TOKEN}`,
-      'Content-Type': 'application/json',
-  }
-  });
+    const api = axios.create({
+        baseURL: 'http://localhost:8000/api', // Changez l'URL selon votre API
+        headers: {
+          //       // 'Authorization': `Bearer ${TOKEN}`,
+                'Content-Type': 'application/json',
+            }
+    });
 
-  nuxtApp.provide('api', api);
+    // Optionnel : vous pouvez définir des interceptors si nécessaire
+    api.interceptors.response.use(
+        response => response,
+        error => {
+            // Gérer les erreurs ici
+            return Promise.reject(error);
+        }
+    );
+
+    // Enregistrer Axios pour utilisation dans tout le projet
+    nuxtApp.provide('axios', api);
 });
+
+
+
+
+
+// import axios from 'axios';
+
+// export default defineNuxtPlugin(nuxtApp => {
+//   const api = axios.create({
+//     // baseURL: 'http://localhost:1337/api', // Remplacez par l'URL de votre  
+//     baseURL: 'http://127.0.0.1:8000/api', // Remplacez par l'URL de votre Strapi
+//     headers: {
+//       // 'Authorization': `Bearer ${TOKEN}`,
+//       'Content-Type': 'application/json',
+//   }
+//   });
+
+//   nuxtApp.provide('api', api);
+// });
 
 
 

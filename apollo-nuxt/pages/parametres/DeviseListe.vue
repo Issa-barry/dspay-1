@@ -44,7 +44,7 @@
           </tr>
         </tbody>
       </table>
-  
+   
 
     </div>
   </template>
@@ -53,7 +53,13 @@
   import { ref, onMounted } from 'vue'; 
   import { useDevises } from '../../../service/useDevisesApi';
   
-  const { devises, fetchDevises, createDevise, updateDevise, deleteDevise, error } = useDevises();
+  const { 
+    devises, 
+    fetchDevises, 
+    createDevise, 
+    updateDevise, 
+    deleteDevise, 
+    error } = useDevises();
   
   const newNom = ref('');
   const newTag = ref('');
