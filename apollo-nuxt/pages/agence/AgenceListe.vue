@@ -5,7 +5,7 @@
             <Toolbar class="mb-6">
                 <template #start>
                     <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
-                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="deleteAgenceById()"   />
+                    <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedAgences || !selectedAgences.length" />
                 </template>
                 <template #end>
                     <Button label="Export" icon="pi pi-upload" severity="secondary" @click="exportCSV" />
@@ -34,21 +34,21 @@
                 <Column field="id" header="Reference" sortable style="min-width: 12rem"></Column>
                 <Column field="reference" header="Reference" sortable style="min-width: 12rem"></Column>
                 <Column field="nom" header="Nom-agence" sortable style="min-width: 12rem"></Column>
-                <!-- <Column field="adresse" header="Adresse" sortable style="min-width: 12rem"></Column> -->
-                <!-- <Column field="phone" header="Phone" sortable style="min-width: 13rem"></Column> -->
+                <Column field="adresse" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <Column field="phone" header="Phone" sortable style="min-width: 13rem"></Column>
                 <!-- <Column field="email" header="Email" sortable style="min-width: 13rem"></Column> -->
                 <Column field="pays" header="Pays" sortable style="min-width: 13rem"></Column> 
-                <!-- <Column field="ville" header="Ville" sortable style="min-width: 13rem"></Column> -->
-                <!-- <Column field="code_postal" header="Code_postal" sortable style="min-width: 13rem"></Column>  -->
-                <!-- <Column field="statut" header="Status" sortable style="min-width: 12rem">
+                <Column field="ville" header="Ville" sortable style="min-width: 13rem"></Column>
+                <Column field="code_postal" header="Code_postal" sortable style="min-width: 13rem"></Column> 
+                <Column field="statut" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.statut" :severity="getStatusLabel(slotProps.data.statut)" />
                     </template>
-                </Column> -->
+                </Column>
                 <Column :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
                         <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editAgence(slotProps.data)" />
-                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="deleteAgenceById(slotProps.data.id)" />
+                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteAgence(slotProps.data)" />
                     </template>
                 </Column>
             </DataTable>
@@ -113,7 +113,7 @@
             <div>Êtes-vous sûr de vouloir supprimer cette agence ?</div>
             <template #footer>
                 <Button label="Non" icon="pi pi-times" outlined @click="deleteAgenceDialog = false" />
-                <Button label="Oui" icon="pi pi-check" @click="deleteAgenceConfirmed" />
+                <Button label="Oui" icon="pi pi-check" @click="deleteOneAgence" />
             </template>
         </Dialog>
     </div>
@@ -170,32 +170,7 @@ function editAgence(prod) {
     agence.value = { ...prod };
     agenceDialog.value = true;
 }
-
-function confirmDeleteAgence(prod) {
-    // agence.value = prod;
-    // deleteAgenceDialog.value = true;
-   
-}
-
-function deleteAgenceConfirmed() {
-    deleteAgence(agence.value.id).then(() => {
-        toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence supprimée', life: 3000 });
-        deleteAgenceDialog.value = false;
-    });
-}
-
-function confirmDeleteSelected() {
-    deleteAgencesDialog.value = true;
-}
-
-function deleteSelectedAgences() {
-    selectedAgences.value.forEach(selected => {
-        deleteAgence(selected.id);
-    });
-    deleteAgencesDialog.value = false;
-    selectedAgences.value = null;
-    toast.add({ severity: 'success', summary: 'Successful', detail: 'Agences supprimées', life: 3000 });
-}
+ 
 
 function getStatusLabel(status) {
     switch (status) {
@@ -258,12 +233,25 @@ function saveAgence() {
     }
 }
 
-  
+
+function confirmDeleteAgence(prod) {
+    agence.value = prod;
+    deleteAgenceDialog.value = true;
+}
+
+function deleteOneAgence() {
+    // agences.value = agences.value.filter((val) => val.id !== agence.value.id);
+    deleteAgenceDialog.value = false;
+    deleteAgenceById(agence.value.id)
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence supprimé', life: 3000 });
+    // agence.value = {};
+}
+
 const deleteAgenceById = async (id) => {
     try {
       await deleteAgence(id);
       await fetchAgences();  
-    // console.log(id);
+    console.log(id);
     } catch (err) {
       error.value = err;
       console.error("Erreur lors de la suppression de la devise:", err);
@@ -271,8 +259,4 @@ const deleteAgenceById = async (id) => {
   };
 
 
-// function deleteAgenceById() {
-
-// }
-  
 </script>
