@@ -39,8 +39,28 @@ export const useAgenceApi = () => {
           'Content-Type': 'application/json',
         },
       })
+      
       agences.value.push(response.data)
-    } catch (err) {
+      
+    } catch (err) { 
+      error.value = err
+      console.error('Erreur lors de la création de l\'agence:', err.response ? err.response.data : err)
+    }
+  }
+
+  const createAgence2 = async (nom, email, phone, pays, adresse, ville, code_postal) => {
+    try {
+      const response = await useNuxtApp().$axios.post('/agences', {
+        nom, email, phone, pays, adresse, ville, code_postal,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      
+      agences.value.push(response.data)
+      
+    } catch (err) { 
       error.value = err
       console.error('Erreur lors de la création de l\'agence:', err.response ? err.response.data : err)
     }

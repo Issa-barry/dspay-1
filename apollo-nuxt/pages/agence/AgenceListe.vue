@@ -4,6 +4,7 @@
         <div class="card">
             <Toolbar class="mb-6">
                 <template #start>
+                    <Button label="" icon="pi pi-plus" severity="secondary" class="mr-2" @click="addAgence" />
                     <Button label="Nouveau" icon="pi pi-plus" severity="secondary" class="mr-2" @click="openNew" />
                     <Button label="Supprimer" icon="pi pi-trash" severity="secondary" @click="confirmDeleteSelected" :disabled="!selectedAgences || !selectedAgences.length" />
                 </template>
@@ -61,11 +62,11 @@
                     <label for="nom" class="block font-bold mb-3">Nom agence</label>
                     <InputText id="nom" v-model.trim="agence.nom" required="true"  fluid />
                  </div>  
-                <div>
+                  <div>
                     <label for="email" class="block font-bold mb-3">Email</label>
                     <InputText id="email" v-model.trim="agence.email" required="true" autofocus :invalid="submitted && !agence.value.email" fluid />
                     <small v-if="submitted && !agence.value.email" class="text-red-500">L'email de l'agence est obligatoire.</small>
-                </div>
+                </div>  
                 <div>
                     <label for="phone" class="block font-bold mb-3">Téléphone</label>
                     <InputText id="phone" v-model.trim="agence.phone" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
@@ -139,6 +140,7 @@ const {
 
 const dt = ref();
 const agenceDialog = ref(false);
+const newAgenceDialog = ref(false);
 const deleteAgenceDialog = ref(false);
 const agence = ref({});
 const selectedAgences = ref();
@@ -214,49 +216,99 @@ function saveAgence() {
         // statut: agence.value.status || 'attente' // Défaut à 'attente' si non défini
     };
 
-    if (agence.value.nom?.trim()) {
-        if (agence.value.id) {
-            updateAgence(agence.value.id, data).then(() => {
-                toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence mise à jour', life: 3000 });
-                hideDialog();
-            });
-       console.log(agence.value);
-        } else {
-            agence.value.reference = createId();
-            agence.value.status = 'attente';
-            createAgence(agence.value).then(() => {
-                toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence créée', life: 3000 });
-                hideDialog();
-            });
-        }
-        agence.value = {};
-    }
+    // if (agence.value.nom?.trim()) {
+    //     if (agence.value.id) {
+    //         updateAgence(agence.value.id, data).then(() => {
+    //             toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence mise à jour', life: 3000 });
+    //             hideDialog();
+    //         });
+    //     } else {
+    //         // agence.value.reference = createId();
+    //         // agence.value.status = 'attente';
+    //         console.log("ee");
+            
+    //     }
+    //     // agence.value = {};
+    // }
+    addAgence2(data);
 }
 
+const newNom = ref('');
+const newEmail = ref('');
+const newPhone = ref('');
+const newPays = ref('');
+const newAdresse = ref('');
+const newVille = ref('');
+const newCodePostal = ref('');
 
+const addAgence2 = async () => {
+   
+      await createAgence(
+      newNom.value, 
+      newEmail.value, 
+      newPhone.value, 
+      newPays.value,
+      newAdresse.value, 
+      newVille.value,
+      newCodePostal.value
+    );
+       newNom.value = '', 
+      newEmail.valuev='', 
+      newPhone.value ='', 
+      newPays.value='',
+      newAdresse.value='', 
+      newVille.value='',
+      newCodePostal.value='',
+      await fetchAgences();  
+   
+  };
+  
+
+const addAgence = async (data) => {
+    // if (newNom.value && newTag.value) {
+      await createAgence(data);
+      console.log(data);
+    //   newNom.value = '';
+    //   newTag.value = '';
+    await fetchAgences();  
+    // }
+  };
+  
+//Suppression d'une seule agence
 function confirmDeleteAgence(prod) {
     agence.value = prod;
     deleteAgenceDialog.value = true;
 }
 
 function deleteOneAgence() {
-    // agences.value = agences.value.filter((val) => val.id !== agence.value.id);
     deleteAgenceDialog.value = false;
     deleteAgenceById(agence.value.id)
     toast.add({ severity: 'success', summary: 'Successful', detail: 'Agence supprimé', life: 3000 });
-    // agence.value = {};
 }
 
 const deleteAgenceById = async (id) => {
     try {
       await deleteAgence(id);
       await fetchAgences();  
-    console.log(id);
     } catch (err) {
       error.value = err;
       console.error("Erreur lors de la suppression de la devise:", err);
     }
   };
 
+// Suppression multiple d'agence
+
+function confirmDeleteSelected() {
+    deleteAgenceDialog.value = true;
+}
+
+function deleteSelectedAgences() {
+    agences.value = agences.value.filter((val) => !selectedAgences.value.includes(val));
+    deleteAgencesDialog.value = false;
+    selectedAgences.value = null;
+    toast.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
+}
+
+ 
 
 </script>
