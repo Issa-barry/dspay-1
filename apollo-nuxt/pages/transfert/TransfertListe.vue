@@ -133,6 +133,9 @@ function getStatusLabel(status) {
         case 'ATTENTE':
             return 'warn';
 
+        case 'ARCHIVE':
+            return 'danger';
+        
         case 'BLOQUE':
             return 'danger';
 
@@ -193,23 +196,14 @@ function navigateToNouveauTransfertRetrait() {
 
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
                 <Column field="code" header="Code" sortable style="min-width: 12rem"></Column>
-                <Column field="name" header="Expediteur" sortable style="min-width: 16rem"></Column>
-                <!-- <Column header="Image">
-                    <template #body="slotProps">
-                        <img :src="`https://primefaces.org/cdn/primevue/images/product/${slotProps.data.image}`" :alt="slotProps.data.image" class="rounded" style="width: 64px" />
-                    </template>
-                </Column> -->
+                <Column field="name" header="Expediteur" sortable style="min-width: 16rem"></Column> 
                 <Column field="price" header="Montant" sortable style="min-width: 8rem">
                     <template #body="slotProps">
                         {{ formatCurrency(slotProps.data.price) }}
                     </template>
                 </Column>
                 <Column field="category" header="Category" sortable style="min-width: 10rem"></Column>
-                <Column field="rating" header="Agence" sortable style="min-width: 12rem">
-                    <template #body="slotProps">
-                        <Rating :modelValue="slotProps.data.rating" :readonly="true" />
-                    </template>
-                </Column>
+              
                 <Column field="inventoryStatus" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.inventoryStatus" :severity="getStatusLabel(slotProps.data.inventoryStatus)" />

@@ -27,11 +27,17 @@ const model = ref([
                         icon: 'pi pi-fw pi-list',
                         to: '/transfert/liste'
                     },
+                    // {
+                    //     label: 'Envoie',
+                    //     icon: 'pi pi-fw pi-arrow-up-right',
+                    //     to: '/transfert/create2'
+                    // },
                     {
                         label: 'Envoie',
                         icon: 'pi pi-fw pi-arrow-up-right',
                         to: '/transfert/create'
                     },
+
                     {
                         label: 'Retrait',
                         icon: 'pi pi-fw pi-arrow-down-left',
@@ -86,12 +92,12 @@ const model = ref([
                 items: [
                     {
                         label: 'Général',
-                        icon: 'pi pi-fw pi-percentage',
+                        icon: 'pi pi-fw pi-globe',
                         to:'/parametres/general'
                     },
                     {
                         label: 'Devise',
-                        icon: 'pi pi-fw pi-percentage',
+                        icon: 'pi pi-fw pi-money-bill',
                         to:'/parametres/devise/liste'
                     },
                     {

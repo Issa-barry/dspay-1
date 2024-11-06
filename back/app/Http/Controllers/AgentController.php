@@ -28,16 +28,34 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
+        $reference = strtoupper(substr(md5(uniqid(rand(), true)), 0, 4));
+
         $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:agents',
-            'phone' => 'required|string|max:20',
-            'adresse' => 'required|string|max:255',
-            'statut' => 'required|in:active,blocke,attente',
+            'nom' => 'required|string|max:100',
+          'prenom' => 'required|string|max:100',
+          'email' => 'required|string|email|max:255|unique:agents,email',
+         'phone' => 'required|numeric|unique:agents,phone',
+         'pays' => 'required|string|max:100',
+        'adresse' => 'required|string|max:255',
+        'ville' => 'required|string|max:100',
+        'code_postal' => 'required|string|regex:/^\d{5}$/', // Format 5 chiffres
+        'statut' => 'required|in:active,blocke,attente',
         ]);
 
-        $agent = Agent::create($request->all());
+        // $agent = Agent::create($request->all());
+        $agent = Agent::create([
+            'reference' => $reference,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'pays' => $request->pays,
+            'adresse' => $request->adresse,
+            'ville' => $request->ville,
+            'code_postal' => $request->code_postal,
+            'statut' => $request->statut,
+        ]);
+    
         return response()->json($agent, 201);
     }
 

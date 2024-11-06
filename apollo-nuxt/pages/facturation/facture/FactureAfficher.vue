@@ -9,12 +9,12 @@
         </template>
 
         <template #end>
-            <Button label="Telecharger" icon="pi pi-download" severity="succes" @click="exportCSV($event)" />
+            <Button label="Telecharger" icon="pi pi-download" severity="succes" @click="generatePDF" />
             <Button label="Envoyer" icon="pi pi-send" severity="succes" @click="exportCSV($event)"  class="ml-4"/>
         </template>
     </Toolbar>
 
-    <div class="card py-20 px-12 md:px-20 overflow-auto">
+    <div class="card py-20 px-12 md:px-20 overflow-auto pdf-content" ref="pdfContent" >
         <div class="flex flex-col items-start md:flex-row md:items-center md:justify-between border-b border-surface-200 dark:border-surface-700 pb-8 min-w-max">
             <div class="flex flex-col">
                 <svg width="48" height="50" viewBox="0 0 48 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
                         fill="var(--p-primary-color)"
                     />
                 </svg>
-                <div class="my-4 text-4xl font-bold text-surface-900 dark:text-surface-0">DSPAY</div>
+                <div class="my-4 text-4xl font-bold text-surface-900 dark:text-surface-0">FELLO</div>
                 <span class="mb-2">5 allé du Foehn Ostwald</span>
                 <span>67540, Strasbourg.</span>
             </div>
@@ -85,7 +85,7 @@
         <div class="flex flex-col md:flex-row md:items-start md:justify-between mt-10">
             <div class=" mb-4 md:mb-0">
                 <span class="font-semibold">NOTES</span>
-                <p>Payer votre facture, j'ai faim.</p>
+                <p>Payez votre facture, j'ai faim.</p>
             </div>
             <div class="flex flex-col">
                 <div class="flex justify-between items-center mb-2">
@@ -124,12 +124,12 @@
                     <span>€15.00</span>
                 </div>
                 <div class="flex justify-between items-center mb-2">
-                    <span class="font-semibold mr-12">25/10/2024</span>
+                    <span class="font-semibold mr-12">01/11/2024</span>
                     <span class="font-semibold mr-12">orange</span>
                     <span>€15.00</span>
                 </div>
                 <div class="flex justify-between items-center mb-2">
-                    <span class="font-semibold mr-12">25/10/2024</span>
+                    <span class="font-semibold mr-12">15/12/2024</span>
                     <span class="font-semibold mr-12">virement</span>
                     <span>€15.00</span>
                 </div>

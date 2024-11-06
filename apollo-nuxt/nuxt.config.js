@@ -68,6 +68,14 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'transfert-create2',
+                path: '/transfert/create2',
+                file: '@/pages/transfert/TransfertCreate2.vue',
+                meta: {
+                    breadcrumb: ['Transfert', 'creation']
+                }
+            });
+            pages.push({
                 name: 'transfert-historique',
                 path: '/transfert/historique',
                 file: '@/pages/transfert/TransfertHistorique.vue',
@@ -355,6 +363,11 @@ export default defineNuxtConfig({
                 name: 'login',
                 path: '/auth/login',
                 file: '@/pages/pages/auth/Login.vue'
+            });
+            pages.push({
+                name: 'login2',
+                path: '/auth/login2',
+                file: '@/pages/pages/auth/Login2.vue'
             });
             pages.push({
                 name: 'newpassword',
