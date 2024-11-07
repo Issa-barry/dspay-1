@@ -27,11 +27,11 @@ function showProfileSidebar() {
                     </IconField>
                 </li>
                 <li class="ml-4">
-                    <Button icon="pi pi-cog" text rounded severity="secondary" @click="onConfigSidebarToggle"></Button>
+                    <Button icon="pi pi-palette" text rounded severity="secondary" @click="onConfigSidebarToggle"></Button>
                 </li>
                 <li class="topbar-profile">
                     <Button type="button" class="topbar-sidebarbutton" @click="showProfileSidebar">
-                        <img src="/demo/images/avatar/avatar.png" alt="Profile" />
+                        <img src="/demo/images/avatar/circle/avatar-m-7-1.png" alt="Profile" />
                     </Button>
                 </li>
             </ul>

@@ -200,9 +200,9 @@ function onPresetChange() {
 </script>
 
 <template>
-    <button class="layout-config-button config-link" type="button" @click="onConfigSidebarToggle">
+    <!-- <button class="layout-config-button config-link" type="button" @click="onConfigSidebarToggle">
         <i class="pi pi-cog"></i>
-    </button>
+    </button> -->
 
     <Drawer
         v-model:visible="layoutState.configSidebarVisible"
