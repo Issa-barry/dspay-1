@@ -17,6 +17,7 @@ class User extends Authenticatable  implements MustVerifyEmail
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -24,9 +25,21 @@ class User extends Authenticatable  implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nom',
+        'prenom',
         'email',
+        'phone',
+        'statut',
+        'civilite',
+        'reference',
         'password',
+        'date_naissance',
+        
+    ];
+
+    protected $attributes = [
+        'civilite' => 'Autre',
+        'statut' => 'attente',
     ];
 
     /**
@@ -62,4 +75,16 @@ class User extends Authenticatable  implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($user) {
+    //         do {
+    //             $user->reference = 'RF' . mt_rand(1000, 9999);
+    //         } while (User::where('reference', $user->reference)->exists());
+    //     });
+    // }
+
 }

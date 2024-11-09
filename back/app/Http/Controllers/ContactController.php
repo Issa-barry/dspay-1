@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class ContactController extends Controller
 {
@@ -13,7 +14,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return response()->json(Contact::all(), 200);
+        // return response()->json(Contact::all(), 200);
+        $users = User::all();
+        return response()->json($users);
     }
 
     /**

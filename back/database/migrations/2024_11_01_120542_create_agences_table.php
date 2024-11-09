@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('ville', 100);
             $table->string('code_postal')->regex('/^\d{5}$/'); // 5 chiffres pour le code postal
             $table->string('numero_tva')->nullable();
-            $table->enum('statut', ['active', 'attente', 'blocke', 'archive'])->default('attente');
+            $table->enum('statut', ['activé', 'attente', 'bloqué', 'archivé'])->default('attente');
             $table->timestamps();
         });
     }

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('adress', 255);  // adresse
             $table->string('ville', 100);
             $table->string('code_postal', 10);
-            $table->enum('statut', ['active', 'attente', 'bloque', 'archive'])->default('attente'); // statut par défaut
+            $table->enum('statut', ['activé', 'attente', 'bloqué', 'archivé'])->default('attente'); // statut par défaut
             $table->timestamps();
         });
     }
