@@ -180,6 +180,14 @@ export default defineNuxtConfig({
                 }
             });
             pages.push({
+                name: 'frais-liste',
+                path: '/parametres/taux/liste',
+                file: '@/pages/parametres/FraisListe.vue',
+                meta: {
+                    breadcrumb: ['Frais', 'Liste']
+                }
+            });
+            pages.push({
                 name: 'taux-liste',
                 path: '/parametres/taux/liste',
                 file: '@/pages/parametres/TauxListe.vue',

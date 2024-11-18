@@ -252,7 +252,7 @@ const addAgence2 = async () => {
       newVille.value,
       newCodePostal.value
     );
-       newNom.value = '', 
+      newNom.value = '', 
       newEmail.valuev='', 
       newPhone.value ='', 
       newPays.value='',

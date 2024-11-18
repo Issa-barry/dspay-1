@@ -2,8 +2,7 @@
 import { ref } from 'vue';
 
 import InputNumber from 'primevue/inputnumber';
-
-
+ 
 const radioValue = ref(null);
 const deviseNom = ref(null);
 const deviseTag = ref(null);
@@ -31,11 +30,43 @@ function setSize(val) {
 function setSelectedImageIndex(index) {
     selectedImageIndex.value = index;
 }
+
+/****************************************/
+ 
+import useTauxApi from '../../../service/useTauxApi';
+// import useDevise  from '../../../service/useDevisesApi';
+const { getAllTaux } = useTauxApi();
+const tauxList = ref(null);
+const loading = ref(false);
+const error = ref(null);
+
+onMounted(async () => {
+  loading.value = true;
+  try {
+    const response = await getAllTaux();
+    tauxList.value = response.data; // Assurez-vous que le backend renvoie bien un `data`
+  } catch (err) {
+    error.value = 'Erreur lors du chargement des taux.';
+  } finally {
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
     <div class="card">
-         
+        <div>
+            <h1>Liste des Taux de Change</h1>
+            <div v-if="loading">Chargement...</div>
+            <ul v-if="tauxList">
+              <li v-for="taux in tauxList" :key="taux.id">
+                {{ taux.devise_source.nom }} -> {{ taux.devise_cible.nom }} : {{ taux.taux }}
+              </li>
+            </ul>
+            <p v-if="error">{{ error }}</p>
+          </div>
+
+          
         <Tabs value="0">
             <TabList>
                 <Tab value="0">Taux</Tab>

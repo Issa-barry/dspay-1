@@ -9,8 +9,9 @@ export const useDevises = () => {
     try {
       const response = await useNuxtApp().$api.get('/devises');
       devises.value = response.data;  
-      console.log(devises.value);  
-    } catch (err) {
+      console.log(response);
+      
+    } catch (err) { 
       error.value = err;
       console.error('Erreur lors de la récupération des devises:', err);
     } 
