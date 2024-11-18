@@ -30,7 +30,7 @@
                           <ul class="py-0 pl-4 m-0 text-surface-600 dark:text-surface-200 mb-4">
                             <li class="mb-4">
                               Devise source
-                              <InputDropdown v-model="deviseSourceId" :options="deviseOptions" optionLabel="name" optionValue="id" placeholder="Choisir la devise source" fluid />
+                              <InputDropdown v-model="deviseSourceId" :options="deviseOptions" optionLabel="name" optionValue="id" :placeholder="deviseSourcePlaceholder" fluid />
                             </li>
                           </ul>
                         </div>
@@ -40,7 +40,7 @@
                           <ul class="py-0 pl-4 m-0 text-surface-600 dark:text-surface-200 mb-4">
                             <li class="mb-4">
                               Devise cible
-                              <InputDropdown v-model="deviseCibleId" :options="deviseOptions" optionLabel="name" optionValue="id" placeholder="Choisir la devise cible" fluid />
+                              <InputDropdown v-model="deviseCibleId" :options="deviseOptions" optionLabel="name" optionValue="id" :placeholder="deviseCiblePlaceholder" fluid />
                             </li>
                           </ul>
                         </div>
@@ -73,8 +73,8 @@
                                 <Column header="Action" :exportable="false" style="min-width: 12rem">
                                     <template #body="slotProps">
                                         <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" /> -->
-                                        <Button icon="pi pi-eye"   rounded class="mr-2" @click="editProduct(slotProps.data)" />
-                                        <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteProduct(slotProps.data)" />
+                                        <Button icon="pi pi-eye"   rounded class="mr-2" @click="editTaux(slotProps.data)" />
+                                        <Button icon="pi pi-trash" outlined rounded severity="danger"  />
                                     </template>
                                 </Column>
                             </DataTable>
@@ -319,12 +319,16 @@ const {
     getAllTaux,
     getTauxByDevises,
     createTaux,
+    updateTaux,
     deleteTaux
    } = useTauxApi();
 
 const tauxList = ref(null);
 const loading = ref(false);
 const error = ref(null);
+const selectedTaux = ref(null); 
+const deviseSourcePlaceholder = ref('Choisir la devise source');
+const deviseCiblePlaceholder = ref('Choisir la devise cible');
 
 onMounted(async () => {
   loading.value = true;
@@ -355,27 +359,49 @@ const tauxValeur = computed({
 const deviseOptions = ref([
   { id: 1, name: 'FRANC-GUINEEN' },
   { id: 2, name: 'EUR' },
-  { id: 3, name: 'DOLLAR' },
+  { id: 7, name: 'DOLLAR' },
 ]);
+ 
+const addTaux = async () => {
+  const payload = {
+    devise_source_id: deviseSourceId.value,
+    devise_cible_id: deviseCibleId.value,
+    taux: tauxValeur.value
+  };
 
-async function addTaux() {
-  if (deviseSourceId.value && deviseCibleId.value && tauxValeur.value) {
-    const payload = {
-      devise_source_id: deviseSourceId.value,
-      devise_cible_id: deviseCibleId.value,
-      taux: tauxValeur.value
-    };
+  if (selectedTaux.value) {
+    // Si un taux est sélectionné, vous effectuez une mise à jour
     try {
-      const response = await createTaux(payload);  // Appel à l'API avec les données formatées
-      deviseSourceId.value = null;
-      deviseCibleId.value = null;
-      tauxValeur.value = 0;
-      await getAllTaux();
+        console.log(selectedTaux.value.id);
+        
+      const response = await updateTaux(selectedTaux.value.id, payload); // Appelez updateTaux avec l'ID du taux et les données à mettre à jour
+      await getAllTaux(); // Recharger la liste des taux après mise à jour
     } catch (error) {
-        console.log('Erreur lors de la création du taux');
+      console.error('Erreur lors de la mise à jour', error);
     }
   } else {
-    console.log('Veuillez remplir tous les champs');
+    // Si aucun taux n'est sélectionné, vous ajoutez un nouveau taux
+    try {
+      const response = await createTaux(payload); // Vous utilisez createTaux ici pour créer un nouveau taux
+      console.log('Nouveau taux créé', response);
+      await getAllTaux(); // Recharger la liste des taux après création
+    } catch (error) {
+      console.error('Erreur lors de la création', error);
+    }
   }
-}
+};
+
+
+const editTaux = (tauxData) => {
+  selectedTaux.value = tauxData; // Stocker le taux sélectionné
+  deviseSourceId.value = tauxData.devise_source_id;
+  deviseCibleId.value = tauxData.devise_cible_id;
+  tauxValeurRaw.value = tauxData.taux;
+
+  const deviseSource = deviseOptions.value.find(devise => devise.id === deviseSourceId.value);
+  const deviseCible = deviseOptions.value.find(devise => devise.id === deviseCibleId.value);
+
+  deviseSourcePlaceholder.value = deviseSource ? `Devise source : ${deviseSource.nom}` : 'Choisir la devise source';
+  deviseCiblePlaceholder.value = deviseCible ? `Devise cible : ${deviseCible.nom}` : 'Choisir la devise cible';
+};
 </script>

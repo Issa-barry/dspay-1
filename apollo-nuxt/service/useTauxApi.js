@@ -1,6 +1,5 @@
 
 import { useNuxtApp } from '#app'; 
-
 export default function useTauxApi() {
  
 
@@ -46,30 +45,28 @@ export default function useTauxApi() {
     }
   }
 
-
-//   const createTaux = async (devise_source_id, devise_cible_id, taux) => {
-//     console.log(devise_source_id);
+ // Mettre à jour un taux existant
+ const updateTaux = async (tauxId, data) => {
+  try {
+    const response = await useNuxtApp().$axios.put(`/taux-echanges/${tauxId}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    // Trouver le taux à mettre à jour dans la liste existante
+    // const index = taux_echanges.value.findIndex((taux) => taux.id === tauxId);
+    // if (index !== -1) {
+    //   taux_echanges.value[index] = response.data; // Remplacer le taux existant par le taux mis à jour
+    // }
+    console.log(response.data);
     
-//     try {
-//         const response = await useNuxtApp().$axios.post('/taux-echanges',  
-//             {
-//               devise_cible_id,
-//               devise_source_id,
-//               taux
-//             },
-//             {
-//                 headers: {
-//                     'Content-Type': 'application/json' ,
-//                 },
-//             }
-//         );
-//         taux_echanges.value.push(response.data);
-//     } catch (err) {
-//         error.value = err;
-//         console.error('Erreur lors de la création de la devise:', err.response ? err.response.data : err);
-//     }
-// };
-
+    return response.data;
+  } catch (err) {
+    error.value = err;
+    console.error('Erreur lors de la mise à jour du taux :', err.response ? err.response.data : err);
+    throw err;
+  }
+};
 
   // Supprimer un taux
   const deleteTaux = async (tauxId) => {
@@ -86,6 +83,7 @@ export default function useTauxApi() {
     getAllTaux,
     getTauxByDevises,
     createTaux,
-    deleteTaux, // Nouvelle méthode
+    updateTaux,
+    deleteTaux, 
   };
 }
