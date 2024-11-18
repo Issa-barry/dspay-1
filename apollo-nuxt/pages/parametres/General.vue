@@ -283,17 +283,13 @@ function setSelectedImageIndex(index) {
   const newDeviseTag = ref(''); 
   const selectedDeviseId = ref(null); 
 
- // Fonction pour ajouter ou mettre à jour une devise
 const addDevise = async () => { 
     if (newDeviseNom.value && newDeviseTag.value) {
         if (selectedDeviseId.value) {
-            // Si une devise est sélectionnée (mode édition)
             await updateDevise(selectedDeviseId.value, newDeviseNom.value, newDeviseTag.value);
         } else {
-            // Sinon, créer une nouvelle devise
             await createDevise(newDeviseNom.value, newDeviseTag.value);
         }
-        // Réinitialisation des champs et récupération des devises
         newDeviseNom.value = '';
         newDeviseTag.value = '';
         selectedDeviseId.value = null;
@@ -301,7 +297,6 @@ const addDevise = async () => {
     }
 };
 
-// Fonction pour sélectionner une devise et remplir le formulaire avec ses données
 const editProduct = (deviseData) => {
     selectedDeviseId.value = deviseData.id;
     newDeviseNom.value = deviseData.nom;

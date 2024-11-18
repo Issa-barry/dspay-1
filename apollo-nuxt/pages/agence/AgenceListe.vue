@@ -32,21 +32,17 @@
                     </div>
                 </template>
                 <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-                <Column field="id" header="Reference" sortable style="min-width: 12rem"></Column>
                 <Column field="reference" header="Reference" sortable style="min-width: 12rem"></Column>
-                <Column field="nom" header="Nom-agence" sortable style="min-width: 12rem"></Column>
-                <Column field="adresse" header="Adresse" sortable style="min-width: 12rem"></Column>
+                <Column field="nom_agence" header="Nom-agence" sortable style="min-width: 12rem"></Column>
+                <Column field="adresse.adresse" header="Adresse" sortable style="min-width: 12rem"></Column>
                 <Column field="phone" header="Phone" sortable style="min-width: 13rem"></Column>
                 <!-- <Column field="email" header="Email" sortable style="min-width: 13rem"></Column> -->
-                <Column field="pays" header="Pays" sortable style="min-width: 13rem"></Column> 
-                <Column field="ville" header="Ville" sortable style="min-width: 13rem"></Column>
-                <Column field="code_postal" header="Code_postal" sortable style="min-width: 13rem"></Column> 
                 <Column field="statut" header="Status" sortable style="min-width: 12rem">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.statut" :severity="getStatusLabel(slotProps.data.statut)" />
                     </template>
                 </Column>
-                <Column :exportable="false" style="min-width: 12rem">
+                <Column header="Action" :exportable="false" style="min-width: 12rem">
                     <template #body="slotProps">
                         <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editAgence(slotProps.data)" />
                         <Button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteAgence(slotProps.data)" />
@@ -60,7 +56,7 @@
                 <!-- <img v-if="product.image" :src="`https://primefaces.org/cdn/primevue/images/product/${product.image}`" :alt="product.image" class="block m-auto pb-4" /> -->
                 <div>
                     <label for="nom" class="block font-bold mb-3">Nom agence</label>
-                    <InputText id="nom" v-model.trim="agence.nom" required="true"  fluid />
+                    <InputText id="nom" v-model.trim="agence.nom_agence" required="true"  fluid />
                  </div>  
                   <div>
                     <label for="email" class="block font-bold mb-3">Email</label>
@@ -78,26 +74,26 @@
                 </div> -->
               <div>
                     <label for="pays" class="block font-bold mb-3">Pays</label>
-                    <Select id="pays" v-model="agence.pays" :options="statusPays" optionLabel="label" placeholder="Selectionner 1 pays" fluid></Select>
+                    <Select id="pays" v-model="agence.adresse.pays" :options="statusPays" optionLabel="label" :placeholder="paysPlaceholder" fluid></Select>
                     <!-- <small v-if="submitted && !agence.statusPays" class="text-red-500">Le pays est obligatoire.</small> -->
                 </div>
 
                 <div>
                     <label for="adresse" class="block font-bold mb-3">Adresse</label>
-                    <InputText id="adresse" v-model.trim="agence.adresse" required="true" autofocus :invalid="submitted && !agence.adresse" fluid />
+                    <InputText id="adresse" v-model.trim="agence.adresse.adresse" required="true" autofocus :invalid="submitted && !agence.adresse" fluid />
                     <small v-if="submitted && !agence.adresse" class="text-red-500">L'adresse est obligatoire.</small>
                 </div>
               
 
                 <div class="grid grid-cols-12 gap-4">
                     <div  class="col-span-6">
-                        <label for="phone" class="block font-bold mb-3">Ville2</label>
-                        <InputText id="phone" v-model.trim="agence.ville" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
+                        <label for="phone" class="block font-bold mb-3">Ville</label>
+                        <InputText id="phone" v-model.trim="agence.adresse.ville" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
                         <small v-if="submitted && !agence.phone" class="text-red-500">Le numéro de téléphone de l'agence est obligatoire.</small>
                     </div>
                     <div  class="col-span-6">
-                        <label for="code_postal" class="block font-bold mb-3">Ville</label>
-                        <InputText id="code_postal" v-model.trim="agence.code_postal" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
+                        <label for="code_postal" class="block font-bold mb-3">Code-Postal</label>
+                        <InputText id="code_postal" v-model.trim="agence.adresse.code_postal" required="true" autofocus :invalid="submitted && !agence.phone" fluid />
                         <small v-if="submitted && !agence.code_postal" class="text-red-500">Le code postal est obligatoire.</small>
                     </div>
                   
@@ -151,6 +147,9 @@ const statusPays = ref([
     { label: 'FRANCE', value: 'France' },
 ]);
 
+const paysPlaceholder = ref('Selectionner 1 tetstst pays');
+
+
 onMounted(() => {
     fetchAgences();
 });
@@ -170,6 +169,7 @@ function hideDialog() {
 
 function editAgence(prod) {
     agence.value = { ...prod };
+    paysPlaceholder.value = agence.value.adresse.pays ? ` ${agence.value.adresse.pays}` : 'Choisir pays';
     agenceDialog.value = true;
 }
  
