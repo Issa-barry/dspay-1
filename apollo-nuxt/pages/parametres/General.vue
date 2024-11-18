@@ -55,13 +55,12 @@
                           </ul>
                         </div>
                       </div>
-
                       <div class="col-span-12 lg:col-span-6">
                         <div class="card">
                             <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Dévises : </div>
             
                             <DataTable ref="dt" :value="tauxList" dataKey="id" :rows="5">
-                                <template #empty> No products found.</template>
+                                <template #empty> Aucun taux touver.</template>
                                 <Column field="devise_source.nom" header="devise_source" class="whitespace-nowrap w-4/12"> </Column>
                                 <Column field="devise_cible.nom" header="devise_cible" class="whitespace-nowrap w-4/12">
                                 </Column>
@@ -83,6 +82,11 @@
                     </div>
                 </TabPanel>
 
+
+                        <!-- ***********************************************
+                                        FRAIS
+                      
+                         **************************************************-->
                 <TabPanel value="1">
                     <div class="flex flex-auto justify-between ">
                         <div class="col-span-12 lg:col-span-6  text-surface-900 dark:text-surface-0 font-bold text-3xl mb-6 mt-2">
@@ -125,24 +129,17 @@
                                 <li class="mb-4">Montant supperieur à 50 €. <InputNumber v-model="pourcentateSuperieur50" inputId="percent" prefix="%" fluid /></li>
                              </ul>
                         </div>
-                        <!--                         
-                        <div class="col-span-12 lg:col-span-4">
-                            <span class="text-surface-900 dark:text-surface-0 block mb-4 font-bold">Pourcentage %</span>
-                            <ul class="list-none p-0 m-0 text-surface-600 dark:text-surface-200 mb-6">  
-                                <li class="mb-4">Montant inferieur à 50 €. <InputNumber v-model="pourcentateInferieur50" inputId="percent" prefix="%" fluid /></li>
-                                <li class="mb-4">Montant supperieur à 50 €. <InputNumber v-model="pourcentateSuperieur50" inputId="percent" prefix="%" fluid /></li>
-                            </ul>
-                        </div> -->
-                    
-                        
                     </div>
                 </TabPanel>
 
-
+                          <!-- ***********************************************
+                                        DEVISE
+                      
+                         **************************************************-->
                 <TabPanel value="2">
                     <div class="flex flex-auto justify-between ">
                        <div class="col-span-12 lg:col-span-6  text-surface-900 dark:text-surface-0 font-bold text-3xl mb-6 mt-2">
-                           Ajouter une devise Devise
+                           <!-- Ajouter une devise Devise -->
                        </div>
                        <div class="col-span-12 lg:col-span-6">
                            <Button label="Sauvegarder" :fluid="false"></Button> 
@@ -153,7 +150,7 @@
                    </p>
                    <ul class="list-none p-0 m-0">
                        <li class="pb-8 border-b border-surface-200 dark:border-surface-700"> 
-                           <div class="font-semibold text-xl mb-6">Nom de la devise</div> 
+                           <div class="font-semibold text-xl mb-6">Ajouter une devise</div> 
                            <div class="mx-0 mt-0 mt-2  text-surface-600 dark:text-surface-200 leading-normal">
                                <FloatLabel class="mb-6">
                                    <InputText id="username" type="text" v-model="deviseNom"  />
@@ -166,9 +163,28 @@
                            </div>
                         </li> 
                    </ul>
+
+                   <div class="card">
+                    <div class="text-surface-900 dark:text-surface-0 text-xl font-semibold mb-4">Dévises : </div>
+                    <DataTable ref="dt" :value="devises" dataKey="id" :rows="5">
+                        <template #empty> Aucun taux touver.</template>
+                        <Column field="nom" header="Nom" class="whitespace-nowrap w-4/12"> </Column>
+                        <Column field="tag" header="Tag" class="whitespace-nowrap w-4/12">
+                        </Column> 
+                        <Column header="Action" :exportable="false" style="min-width: 12rem">
+                            <template #body="slotProps">
+                                <!-- <Button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editProduct(slotProps.data)" /> -->
+                                <Button icon="pi pi-eye"   rounded class="mr-2" @click="editProduct(slotProps.data)" />
+                                <Button icon="pi pi-trash" outlined rounded severity="danger" @click="deleteDeviseById(slotProps.data.id)" />
+                            </template>
+                        </Column>
+                    </DataTable>
+                </div>
                </TabPanel>
 
-               
+               <!-- ***********************************************
+                                        NOTIFICATION
+                **************************************************-->
 
                 <TabPanel value="3">
                     <div class="text-surface-900 dark:text-surface-0 font-bold text-3xl mb-6 mt-2">Gestion des notification</div>
@@ -211,6 +227,10 @@ const radioValue = ref(null);
 const deviseNom = ref(null);
 const deviseTag = ref(null);
 
+/**********************************************************
+ *    FRAIS
+ * **********************************************************/
+
 const pourcentateInferieur50 = ref(0);
 const pourcentateSuperieur50 = ref(0);
 const montantateInferieur50 = ref(0);
@@ -235,7 +255,34 @@ function setSelectedImageIndex(index) {
     selectedImageIndex.value = index;
 }
 
-/**********************************************************/
+/**********************************************************
+ *    DEVISE
+ * **********************************************************/
+ import { useDevises } from '../../../service/useDevisesApi';
+
+ const { 
+    devises, 
+    fetchDevises, 
+    createDevise, 
+    updateDevise, 
+    deleteDevise, 
+    errorDevise } = useDevises();
+
+    const deleteDeviseById = async (id) => {
+    try {
+      await deleteDevise(id);
+      await fetchDevises();  
+    } catch (err) {
+      error.value = err;
+      console.error("Erreur lors de la suppression de la devise:", err);
+    }
+  };
+  
+  
+
+/**********************************************************
+ *    TAUX ECHANGE
+ * **********************************************************/
 import useTauxApi from '../../../service/useTauxApi';
 const { 
     getAllTaux,
@@ -253,7 +300,8 @@ onMounted(async () => {
   try {
     const response = await getAllTaux();
     tauxList.value = response.data; // Assurez-vous que le backend renvoie bien un `data`
-  } catch (err) {
+    fetchDevises();
+} catch (err) {
     error.value = 'Erreur lors du chargement des taux.';
   } finally {
     loading.value = false;
@@ -265,10 +313,8 @@ function formatTaux(taux) {
   return Number(taux).toFixed(0); // Garantit un format à 2 décimales
 }
 
-
-// Variables réactives pour le formulaire
-const deviseSourceId = ref(null);  // ID de la devise source
-const deviseCibleId = ref(null);   // ID de la devise cible
+const deviseSourceId = ref(null);  
+const deviseCibleId = ref(null);   
 const tauxValeurRaw = ref('');
 const tauxValeur = computed({
   get: () => (tauxValeurRaw.value === '' ? 0 : Number(tauxValeurRaw.value)),
@@ -281,8 +327,6 @@ const deviseOptions = ref([
   { id: 3, name: 'DOLLAR' },
 ]);
 
-
-// // Fonction pour créer le taux
 async function addTaux() {
   if (deviseSourceId.value && deviseCibleId.value && tauxValeur.value) {
     const payload = {
@@ -290,7 +334,6 @@ async function addTaux() {
       devise_cible_id: deviseCibleId.value,
       taux: tauxValeur.value
     };
-
     try {
       const response = await createTaux(payload);  // Appel à l'API avec les données formatées
       deviseSourceId.value = null;

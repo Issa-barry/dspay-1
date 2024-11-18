@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { useNuxtApp } from '#app';
 
 export const useDevises = () => {
   const devises = ref([]);
@@ -7,10 +8,8 @@ export const useDevises = () => {
  
   const fetchDevises = async () => {
     try {
-      const response = await useNuxtApp().$api.get('/devises');
-      devises.value = response.data;  
-      console.log(response);
-      
+      const response = await useNuxtApp().$axios.get('/devises');
+      devises.value = response.data.data;  
     } catch (err) { 
       error.value = err;
       console.error('Erreur lors de la récupération des devises:', err);
@@ -19,7 +18,7 @@ export const useDevises = () => {
  
   const fetchDeviseById = async (id) => {
     try {
-      const response = await useNuxtApp().$api.get(`/devises/${id}`);
+      const response = await useNuxtApp().$axios.get(`/devises/${id}`);
       devise.value = response.data.data;
     } catch (err) {
       error.value = err;
@@ -28,7 +27,7 @@ export const useDevises = () => {
  
   const createDevise = async (nom, tag) => {
     try {
-        const response = await useNuxtApp().$api.post('/devises',  
+        const response = await useNuxtApp().$axios.post('/devises',  
             {
                 nom,
                 tag,
@@ -48,7 +47,7 @@ export const useDevises = () => {
  
   const updateDevise = async (id, nom, tag) => {
     try {
-      const response = await useNuxtApp().$api.put(`/devises/${id}`, {
+      const response = await useNuxtApp().$axios.put(`/devises/${id}`, {
         nom,
         tag,
       });
@@ -62,7 +61,7 @@ export const useDevises = () => {
    
   const deleteDevise = async (id) => {
     try {
-      const response = await useNuxtApp().$api.delete(`/devises/${id}`);
+      const response = await useNuxtApp().$axios.delete(`/devises/${id}`);
       console.log('Réponse de la suppression:', response);
       if (response.status === 204) {
         

@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useNuxtApp } from '#app'; // Importez useNuxtApp pour accéder aux plugins
 
 export const useAgenceApi = () => {
-  const agences = ref([])
+  const agences = ref([]) 
   const agence = ref(null)
   const error = ref(null)
 
@@ -11,7 +11,7 @@ export const useAgenceApi = () => {
   const fetchAgences = async () => {
     try {
       const response = await useNuxtApp().$axios.get('/agences')
-      agences.value = response.data
+      agences.value = response.data.data
     //   console.log(agences.value)
     } catch (err) {
       error.value = err

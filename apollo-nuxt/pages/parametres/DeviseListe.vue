@@ -62,7 +62,7 @@
     error } = useDevises();
   
   const newNom = ref('');
-  const newTag = ref('');
+  const newTag = ref(''); 
   
   const editId = ref(null);
   const editNom = ref('');
