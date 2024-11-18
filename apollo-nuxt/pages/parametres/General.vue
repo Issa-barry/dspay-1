@@ -142,7 +142,7 @@
                            <!-- Ajouter une devise Devise -->
                        </div>
                        <div class="col-span-12 lg:col-span-6">
-                           <Button label="Sauvegarder" :fluid="false"></Button> 
+                           <Button label="Sauvegarder" :fluid="false" @click="addDevise"></Button> 
                        </div>
                    </div>
                    <p class="leading-normal text-surface-600 dark:text-surface-200 p-0 mx-0 mt-0 mb-6">
@@ -153,12 +153,12 @@
                            <div class="font-semibold text-xl mb-6">Ajouter une devise</div> 
                            <div class="mx-0 mt-0 mt-2  text-surface-600 dark:text-surface-200 leading-normal">
                                <FloatLabel class="mb-6">
-                                   <InputText id="username" type="text" v-model="deviseNom"  />
-                                   <label for="username" >Exemple : euro</label>
+                                   <InputText id="newDeviseNom" type="text" v-model="newDeviseNom"  />
+                                   <label for="newDeviseNom" >Exemple : euro</label>
                                </FloatLabel> 
                                <FloatLabel class="mt-6">
-                                   <InputText id="username" type="text" v-model="deviseTag"  />
-                                   <label for="username">Tag : €</label>
+                                   <InputText id="newDeviseTag" type="text" v-model="newDeviseTag"  />
+                                   <label for="newDeviseTag">Tag : €</label>
                                </FloatLabel> 
                            </div>
                         </li> 
@@ -267,6 +267,7 @@ function setSelectedImageIndex(index) {
     updateDevise, 
     deleteDevise, 
     errorDevise } = useDevises();
+    const devise = ref({});
 
     const deleteDeviseById = async (id) => {
     try {
@@ -276,6 +277,19 @@ function setSelectedImageIndex(index) {
       error.value = err;
       console.error("Erreur lors de la suppression de la devise:", err);
     }
+  };
+  
+  const newDeviseNom = ref('');
+  const newDeviseTag = ref(''); 
+
+  const addDevise = async () => { 
+    if (newDeviseNom.value && newDeviseTag.value) {
+      await createDevise(newDeviseNom.value, newDeviseTag.value);
+      newDeviseNom.value= '';
+      newDeviseTag.value = '';
+      await fetchDevises();  
+    }
+
   };
   
   
